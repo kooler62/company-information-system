@@ -21,7 +21,7 @@ class CreateLorriesTable extends Migration
             $table->string('transmission');
             $table->date('production_year');
             $table->string('wheel');
-            $table->boolean('dump_truck');
+            $table->string('dump_truck');
             $table->float('carrying');
             $table->boolean('make_now')->nullable();
             $table->integer('workshop_id');

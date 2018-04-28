@@ -1,27 +1,32 @@
 <template>
     <div class="ws-edit">
-        <span class="md-display-1">Редагування</span>
+        <md-dialog-alert
+                class="dialog-alert"
+                :md-active.sync="edited"
+                md-title="Збережено!"
+                md-content="Ваші дані успішно оновлено" />
 
+        <span class="md-display-1">Редагування</span>
         <md-field>
             <label>Назва цеху</label>
             <md-input v-model="workshop.workshop_name" name="workshop_name"></md-input>
             <span class="md-helper-text"></span>
         </md-field>
 
-        <md-button class="md-raised md-accent" style="margin-left: 0" :to="{name: 'Transport'}">Назад</md-button>
-        <md-button class="md-raised md-primary" v-on:click="updateCar()">Зберегти</md-button>
+        <md-button class="md-raised md-accent">Назад</md-button>
+        <md-button class="md-raised md-primary" @click="updateCar()">Зберегти</md-button>
     </div>
 </template>
 
 <script>
     import axios from 'axios';
     export default {
-        data() {
-            return {
-                workshops: [],
-                workshop: {}
-            }
-        },
+        props: ['workshopId'],
+        data: () => ({
+            workshops: [],
+            workshop: [],
+            edited: false,
+        }),
         created() {
             this.fetchWorkshops();
         },

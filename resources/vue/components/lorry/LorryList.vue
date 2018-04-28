@@ -1,10 +1,22 @@
 <template>
     <div>
-        <md-table>
+        <md-dialog :md-active.sync="lorryAdd" class="form-dialog md-scrollbar">
+            <lorry-add></lorry-add>
+        </md-dialog>
+
+        <md-dialog :md-active.sync="lorryEdit" class="form-dialog md-scrollbar">
+            <lorry-edit :lorryId="lorryId"></lorry-edit>
+        </md-dialog>
+
+        <md-table md-card>
             <md-table-toolbar>
-                <md-button class="md-raised md-primary" :to="{name: 'LorryAdd'}" style="margin-right: 700px;">
+                <md-button class="md-raised md-primary" @click="lorryAdd = true">
                     <span><md-icon>add</md-icon></span>
                     Додати вантажівку
+                </md-button>
+                <md-button class="md-raised md-primary" @click="fetchLorries()">
+                    <span><md-icon>refresh</md-icon></span>
+                    Оновити
                 </md-button>
             </md-table-toolbar>
 
@@ -34,12 +46,10 @@
                 <md-table-cell>{{ lorry.carrying }}</md-table-cell>
                 <md-table-cell>{{ lorry.workshop_name }}</md-table-cell>
                 <md-table-cell>
-                    <md-button class="md-icon-button md-raised md-primary"
-                               :to="{name: 'LorryEdit', params: {id: lorry.id}}">
+                    <md-button class="md-icon-button md-raised md-primary" @click="edit(lorry.id)">
                         <md-icon>mode_edit</md-icon>
                     </md-button>
-                    <md-button class="md-icon-button md-raised md-accent"
-                               v-on:click="deleteLorry(lorry)">
+                    <md-button class="md-icon-button md-raised md-accent" @click="deleteLorry(lorry)">
                         <md-icon>remove</md-icon>
                     </md-button>
                 </md-table-cell>
@@ -55,14 +65,14 @@
         data: () => ({
             lorry: [],
             lorries: [],
+            lorryAdd: false,
+            lorryEdit: false,
+            lorryId: ''
         }),
         created () {
             this.fetchLorries();
         },
         methods: {
-            searchOnTable () {
-                this.searched = searchByName(this.lorries, this.search)
-            },
             fetchLorries() {
                 axios.get('/lorry').then((response) => {
                     this.lorries = response.data.lorries;
@@ -73,6 +83,10 @@
                     let index = this.lorry.indexOf(lorry);
                     this.lorries.splice(index, 1);
                 });
+            },
+            edit(id) {
+                this.lorryId = id;
+                this.lorryEdit = true;
             },
         },
     }

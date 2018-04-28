@@ -1,10 +1,26 @@
 <template>
     <div class="workshops">
-        <md-button class="md-raised md-primary" :to="{name: 'WorkshopAdd'}">
-            <span><md-icon>add</md-icon></span>
-            Додати цех
-        </md-button>
-        <md-table>
+        <md-dialog :md-active.sync="workshopAdd" class="form-dialog md-scrollbar">
+            <workshop-add></workshop-add>
+        </md-dialog>
+
+        <md-dialog :md-active.sync="workshopEdit" class="form-dialog md-scrollbar">
+            <workshop-edit :workshopId="workshopId"></workshop-edit>
+        </md-dialog>
+
+        <md-table md-card>
+
+            <md-table-toolbar>
+                <md-button class="md-raised md-primary" @click="workshopAdd = true">
+                    <span><md-icon>add</md-icon></span>
+                    Додати цех
+                </md-button>
+                <md-button class="md-raised md-primary" @click="fetchWorkshops()">
+                    <span><md-icon>refresh</md-icon></span>
+                    Оновити
+                </md-button>
+            </md-table-toolbar>
+
             <md-table-row>
                 <md-table-head>№</md-table-head>
                 <md-table-head>Назва</md-table-head>
@@ -16,10 +32,10 @@
                 <md-table-cell>{{ workshop.workshop_name }}</md-table-cell>
                 <md-table-cell>3</md-table-cell>
                 <md-table-cell>
-                <md-button class="md-icon-button md-raised md-primary" :to="{name: 'WorkshopEdit', params: {id: workshop.id}}">
+                <md-button class="md-icon-button md-raised md-primary" @click="edit(workshop.id)">
                     <md-icon>mode_edit</md-icon>
                 </md-button>
-                <md-button class="md-icon-button md-raised md-accent" v-on:click="deleteWorkshop(workshop)">
+                <md-button class="md-icon-button md-raised md-accent" @click="deleteWorkshop(workshop)">
                     <md-icon>remove</md-icon>
                 </md-button>
                 </md-table-cell>
@@ -31,15 +47,13 @@
 <script>
     import axios from 'axios';
     export default {
-        data() {
-            return {
-                workshop: [],
-                workshops: {
-                    'id': '',
-                    'workshop_name': ''
-                }
-            }
-        },
+        data: () => ({
+            workshops: [],
+            workshop: [],
+            workshopAdd: false,
+            workshopEdit: false,
+            workshopId: ''
+        }),
         created() {
             this.fetchWorkshops();
         },
@@ -54,6 +68,10 @@
                     let index = this.workshop.indexOf(workshop);
                     this.workshops.splice(index, 1);
                 })
+            },
+            edit(id) {
+                this.workshopId = id;
+                this.workshopEdit = true;
             }
         }
     }

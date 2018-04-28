@@ -10,11 +10,3 @@
             <router-view style="padding: 10px 16px"></router-view>
     </section>
 </template>
-
-<script>
-    export default {
-        mounted() {
-            console.log('App mounted.')
-        }
-    }
-</script>

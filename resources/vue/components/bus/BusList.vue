@@ -46,8 +46,7 @@
                     <md-button class="md-icon-button md-raised md-primary" @click="edit(bus.id)">
                         <md-icon >mode_edit</md-icon>
                     </md-button>
-                    <md-button class="md-icon-button md-raised md-accent"
-                               v-on:click="deleteBus(bus)">
+                    <md-button class="md-icon-button md-raised md-accent" @click="deleteBus(bus)">
                         <md-icon>remove</md-icon>
                     </md-button>
                 </md-table-cell>

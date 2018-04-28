@@ -58,8 +58,8 @@
             </md-select>
         </md-field>
 
-        <md-button class="md-raised md-accent" style="margin-left: 0" :to="{name: 'Transport'}">Назад</md-button>
-        <md-button class="md-raised md-primary" v-on:click="createBus()">Додати</md-button>
+        <md-button class="md-raised md-accent">Назад</md-button>
+        <md-button class="md-raised md-primary" @click="createBus()">Додати</md-button>
 
     </div>
 </template>
@@ -70,7 +70,6 @@
             buses: [],
             workshops: [],
             bus: {},
-            type: 'date',
             added: false,
         }),
         created() {

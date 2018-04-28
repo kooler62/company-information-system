@@ -59,7 +59,7 @@
         </md-field>
 
         <md-button class="md-raised md-accent">Назад</md-button>
-        <md-button class="md-raised md-primary" v-on:click="updateBus()">Зберегти</md-button>
+        <md-button class="md-raised md-primary" @click="updateBus()">Зберегти</md-button>
     </div>
 </template>
 

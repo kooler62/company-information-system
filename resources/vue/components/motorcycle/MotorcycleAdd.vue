@@ -1,9 +1,15 @@
 <template>
     <div class="car-add">
+        <md-dialog-alert
+                class="dialog-alert"
+                :md-active.sync="added"
+                md-title="Додано!"
+                md-content="Ваші дані успішно внесено до бази даних" />
+
         <span class="md-display-1">Додати мотоцикл</span>
 
         <md-field>
-            <label>Марка</label>
+            <label>Марка мотоцикла</label>
             <md-input v-model="motorcycle.brand"></md-input>
             <span class="md-helper-text"></span>
         </md-field>
@@ -37,9 +43,8 @@
             <span class="md-helper-text">yyyy-mm-dd</span>
         </md-field>
 
-        <md-checkbox v-model="motorcycle.stroller">З коляскою?</md-checkbox>
-
-        <md-checkbox v-model="motorcycle.make_now">Виготовляється зараз?</md-checkbox>
+        <md-checkbox v-model="motorcycle.stroller" value="1">З коляскою?</md-checkbox>
+        <md-checkbox v-model="motorcycle.make_now" value="1">Виготовляється зараз?</md-checkbox>
 
         <md-field>
             <label>Цех</label>
@@ -48,36 +53,20 @@
             </md-select>
         </md-field>
 
-        <md-button class="md-raised md-accent" style="margin-left: 0" :to="{name: 'Transport'}">Назад</md-button>
-        <md-button class="md-raised md-primary" v-on:click="createMotorcycle()">Додати</md-button>
+        <md-button class="md-raised md-accent">Назад</md-button>
+        <md-button class="md-raised md-primary" @click="createMotorcycle()">Додати</md-button>
 
     </div>
 </template>
 <script>
     import axios from 'axios';
     export default {
-        data() {
-            return {
-                motorcycles: [],
-                workshops: [],
-                edit: false,
-                type: 'date',
-                workshop: {
-                    id: '',
-                    workshop_name: '',
-                },
-                motorcycle: {
-                    brand: '',
-                    engine: '',
-                    color: '',
-                    transmission: '',
-                    production_year: '',
-                    stroller: 0,
-                    make_now: 0,
-                    workshop_id: '',
-                },
-            }
-        },
+        data: () => ({
+            motorcycles: [],
+            workshops: [],
+            motorcycle: {},
+            added: false,
+        }),
         created() {
             this.fetchWorkshops();
         },
@@ -85,7 +74,7 @@
             createMotorcycle() {
                 axios.post('/motorcycle', this.motorcycle).then(response => {
                     this.motorcycles.push(response.data.motorcycle);
-                    alert("Успішно додано");
+                    this.added = true;
                 }).catch(error => {
                     console.log(error.message);
                 })
@@ -99,3 +88,12 @@
         }
     }
 </script>
+
+<style lang="scss">
+    .md-select-menu {
+        z-index: 200;
+    }
+    .dialog-alert {
+        z-index: 999;
+    }
+</style>

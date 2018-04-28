@@ -18,6 +18,12 @@ Vue.component('car-add',         require('./components/car/CarAdd'));
 Vue.component('car-edit',        require('./components/car/CarEdit'));
 Vue.component('bus-add',         require('./components/bus/BusAdd'));
 Vue.component('bus-edit',        require('./components/bus/BusEdit'));
+Vue.component('motorcycle-add',  require('./components/motorcycle/MotorcycleAdd'));
+Vue.component('motorcycle-edit', require('./components/motorcycle/MotorcycleEdit'));
+Vue.component('lorry-add',       require('./components/lorry/LorryAdd'));
+Vue.component('lorry-edit',      require('./components/lorry/LorryEdit'));
+Vue.component('workshop-add',    require('./components/workshop/WorkshopAdd'));
+Vue.component('workshop-edit',   require('./components/workshop/WorkshopEdit'));
 
 let AppLayout         = require('./components/App.vue');
 let Transport         = require('./components/Transport.vue');

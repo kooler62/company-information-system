@@ -1,5 +1,10 @@
 <template>
     <div class="ws-add">
+        <md-dialog-alert
+                class="dialog-alert"
+                :md-active.sync="added"
+                md-title="Додано!"
+                md-content="Ваші дані успішно внесено до бази даних" />
         <span class="md-display-1">Додати Цех</span>
         <md-field>
             <label>Назва цеху</label>
@@ -9,13 +14,13 @@
         <md-field>
             <label>Іспитові Лабораторії</label>
             <md-select multiple>
-                <md-option value="fight-club">Fight Club</md-option>
-                <md-option value="godfather">Godfather</md-option>
-                <md-option value="godfather-ii">Godfather II</md-option>
+                <md-option value="1">Лабораторія якості</md-option>
+                <md-option value="2">Лабораторія характеристик</md-option>
+                <md-option value="3">Фінальна лабораторія</md-option>
             </md-select>
         </md-field>
-        <md-button class="md-raised md-accent" style="margin-left: 0" :to="{name: 'Transport'}">Назад</md-button>
-        <md-button class="md-raised md-primary" v-on:click="createWorkshop()">Додати</md-button>
+        <md-button class="md-raised md-accent">Назад</md-button>
+        <md-button class="md-raised md-primary" @click="createWorkshop()">Додати</md-button>
     </div>
 </template>
 
@@ -24,17 +29,14 @@
     export default {
         data: () => ({
             workshops: [],
-            workshop: {
-                id: '',
-                workshop_name: '',
-            },
-            selectedMovies: [],
+            workshop: {},
+            added: false
         }),
         methods: {
             createWorkshop() {
                 axios.post('/workshop', this.workshop).then(response => {
                     this.workshops.push(response.data.workshop);
-                    alert("Успішно додано");
+                    this.added = true;
                 }).catch(error => {
                     console.log(error.message);
                 })
@@ -42,3 +44,12 @@
         }
     }
 </script>
+
+<style lang="scss">
+    .md-select-menu {
+        z-index: 200;
+    }
+    .dialog-alert {
+        z-index: 999;
+    }
+</style>

@@ -1,10 +1,23 @@
 <template>
-    <div class="motorcycles">
-        <md-table>
-            <md-table-toolbar style="padding: 0;">
-                <md-button class="md-raised md-primary" :to="{name: 'MotorcycleAdd'}" style="margin-right: 700px;">
+    <div class="buses">
+        <md-dialog :md-active.sync="motorcycleAdd" class="form-dialog md-scrollbar">
+            <motorcycle-add></motorcycle-add>
+        </md-dialog>
+
+        <md-dialog :md-active.sync="motorcycleEdit" class="form-dialog md-scrollbar">
+            <motorcycle-edit :motorcycleId="motorcycleId"></motorcycle-edit>
+        </md-dialog>
+
+        <md-table md-card>
+            <md-table-toolbar>
+                <md-button class="md-raised md-primary" @click="motorcycleAdd = true">
                     <span><md-icon>add</md-icon></span>
                     Додати мотоцикл
+                </md-button>
+
+                <md-button class="md-raised md-primary" @click="fetchMotorcycles()">
+                    <span><md-icon>refresh</md-icon></span>
+                    Оновити
                 </md-button>
             </md-table-toolbar>
 
@@ -30,12 +43,10 @@
                 <md-table-cell>{{ motorcycle.stroller }}</md-table-cell>
                 <md-table-cell>{{ motorcycle.workshop_name }}</md-table-cell>
                 <md-table-cell>
-                    <md-button class="md-icon-button md-raised md-primary"
-                               :to="{name: 'MortorcycleEdit', params: {id: motorcycle.id}}">
-                        <md-icon>mode_edit</md-icon>
+                    <md-button class="md-icon-button md-raised md-primary" @click="edit(motorcycle.id)">
+                        <md-icon >mode_edit</md-icon>
                     </md-button>
-                    <md-button class="md-icon-button md-raised md-accent"
-                                v-on:click="deleteMotorcycle(motorcycle)">
+                    <md-button class="md-icon-button md-raised md-accent" @click="deleteMotorcycle(motorcycle)">
                         <md-icon>remove</md-icon>
                     </md-button>
                 </md-table-cell>
@@ -47,12 +58,13 @@
 <script>
     import axios from 'axios';
     export default {
-        data() {
-            return {
-                motorcycle: [],
-                motorcycles: []
-            }
-        },
+        data: () => ({
+            motorcycle: [],
+            motorcycles: [],
+            motorcycleAdd: false,
+            motorcycleEdit: false,
+            motorcycleId: ''
+        }),
         created() {
             this.fetchMotorcycles();
         },
@@ -67,7 +79,21 @@
                     let index = this.motorcycle.indexOf(motorcycle);
                     this.motorcycles.splice(index, 1);
                 });
+            },
+            edit(id) {
+                this.motorcycleId = id;
+                this.motorcycleEdit = true;
             }
         },
     }
 </script>
+
+<style lang="scss">
+    .form-dialog {
+        padding: 30px;
+        z-index: 100;
+        width: 1100px;
+        max-height: 600px;
+        overflow: auto;
+    }
+</style>
