@@ -51,7 +51,7 @@
         <md-field>
             <label>Дата випуску</label>
             <md-input v-model="car.production_year" ></md-input>
-            <span class="md-helper-text">yyyy-mm-dd</span>
+            <span class="md-helper-text">dd.mm.yyyy</span>
         </md-field>
 
         <md-checkbox v-model="car.make_now" value="1">Виготовляється зараз?</md-checkbox>
@@ -63,8 +63,16 @@
             </md-select>
         </md-field>
 
-        <md-button class="md-raised md-accent">Назад</md-button>
-        <md-button class="md-raised md-primary" @click="createCar()">Додати</md-button>
+        <div class="buttons">
+            <md-button class="md-raised md-accent">
+                <span><md-icon>arrow_back</md-icon></span>
+                Назад
+            </md-button>
+            <md-button class="md-raised md-primary" @click="createCar()">
+                <span><md-icon>done</md-icon></span>
+                Додати
+            </md-button>
+        </div>
     </div>
 </template>
 <script>
