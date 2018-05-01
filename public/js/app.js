@@ -53136,6 +53136,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(129)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(116)
@@ -53144,7 +53148,7 @@ var __vue_template__ = __webpack_require__(117)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -53212,22 +53216,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['workshopId'],
     data: function data() {
         return {
-            workshops: [],
-            workshop: [],
+            workshop: {},
             edited: false
         };
     },
     created: function created() {
-        this.fetchWorkshops();
+        this.fetchWorkshop();
     },
 
     methods: {
-        updateCar: function updateCar() {
+        updateWorkshop: function updateWorkshop() {
             var _this = this;
 
-            var uri = '/workshop/' + this.$route.params.id;
+            var uri = '/workshop/' + this.workshopId;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put(uri, this.workshop).then(function (response) {
                 _this.$router.push({ name: 'Transport' });
+                _this.edited = true;
+            });
+        },
+        fetchWorkshop: function fetchWorkshop() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/workshop/' + this.workshopId, this.workshop).then(function (response) {
+                _this2.workshop = response.data;
             });
         }
     }
@@ -53292,7 +53303,7 @@ var render = function() {
           staticClass: "md-raised md-primary",
           on: {
             click: function($event) {
-              _vm.updateCar()
+              _vm.updateWorkshop()
             }
           }
         },
@@ -53596,63 +53607,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             workshops: [],
-            category: '',
-            width: null,
-            on: null
+            transport: [],
+            item: [],
+            workshop: null,
+            category: null,
+            dateStart: null,
+            dateEnd: null
         };
     },
     created: function created() {
@@ -53667,8 +53633,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.workshops = response.data.workshops;
             });
         },
-        dateConvert: function dateConvert(date) {
-            return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+        getTransport: function getTransport() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/transport/', {
+                params: {
+                    workshop: this.workshop,
+                    category: this.category,
+                    dateStart: this.dateStart,
+                    dateEnd: this.dateEnd
+                }
+            }).then(function (response) {
+                _this2.transport = response.data.transport;
+            });
         }
     }
 });
@@ -53706,6 +53683,16 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "md-select",
+                            {
+                              attrs: { multiple: "" },
+                              model: {
+                                value: _vm.workshop,
+                                callback: function($$v) {
+                                  _vm.workshop = $$v
+                                },
+                                expression: "workshop"
+                              }
+                            },
                             [
                               _c("md-option", { attrs: { value: "0" } }, [
                                 _vm._v("Всі")
@@ -53739,6 +53726,7 @@ var render = function() {
                           _c(
                             "md-select",
                             {
+                              attrs: { multiple: "" },
                               model: {
                                 value: _vm.category,
                                 callback: function($$v) {
@@ -53776,21 +53764,21 @@ var render = function() {
                       _vm._v(" "),
                       _c("md-datepicker", {
                         model: {
-                          value: _vm.width,
+                          value: _vm.dateStart,
                           callback: function($$v) {
-                            _vm.width = $$v
+                            _vm.dateStart = $$v
                           },
-                          expression: "width"
+                          expression: "dateStart"
                         }
                       }),
                       _vm._v(" "),
                       _c("md-datepicker", {
                         model: {
-                          value: _vm.on,
+                          value: _vm.dateEnd,
                           callback: function($$v) {
-                            _vm.on = $$v
+                            _vm.dateEnd = $$v
                           },
-                          expression: "on"
+                          expression: "dateEnd"
                         }
                       }),
                       _vm._v(" "),
@@ -53805,7 +53793,7 @@ var render = function() {
                         "md-button",
                         {
                           staticClass: "md-raised md-primary",
-                          on: { click: _vm.dateConvert }
+                          on: { click: _vm.getTransport }
                         },
                         [
                           _c("span", [_c("md-icon", [_vm._v("done")])], 1),
@@ -53818,194 +53806,67 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _c(
-                    "md-table",
-                    { attrs: { "md-card": "" } },
-                    [
-                      _c("md-table-toolbar", [
-                        _c("h1", { staticClass: "md-title" }, [
-                          _vm._v("Автомобілі")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "md-table-row",
-                        [
-                          _c("md-table-head", { attrs: { "md-numeric": "" } }, [
-                            _vm._v("ID")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-head", [_vm._v("Name")]),
-                          _vm._v(" "),
-                          _c("md-table-head", [_vm._v("Email")]),
-                          _vm._v(" "),
-                          _c("md-table-head", [_vm._v("Gender")]),
-                          _vm._v(" "),
-                          _c("md-table-head", [_vm._v("Job Title")])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "md-table-row",
-                        [
-                          _c("md-table-cell", { attrs: { "md-numeric": "" } }, [
-                            _vm._v("1")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Shawna Dubbin")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [
-                            _vm._v("sdubbin0@geocities.com")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Male")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [
-                            _vm._v("Assistant Media Planner")
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "md-table-row",
-                        [
-                          _c("md-table-cell", { attrs: { "md-numeric": "" } }, [
-                            _vm._v("2")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Odette Demageard")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [
-                            _vm._v("odemageard1@spotify.com")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Female")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Account Coordinator")])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "md-table-row",
-                        [
-                          _c("md-table-cell", { attrs: { "md-numeric": "" } }, [
-                            _vm._v("3")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Vera Taleworth")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [
-                            _vm._v("vtaleworth2@google.ca")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Male")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [
-                            _vm._v("Community Outreach Specialist")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
+                  _c("md-table-empty-state", {
+                    attrs: {
+                      "md-label": "Даних не знайдено",
+                      "md-description":
+                        "Для запиту '' не знайдено даних. Змініть запит або створіть новий автомобіль"
+                    }
+                  }),
                   _vm._v(" "),
                   _c(
                     "md-table",
                     { attrs: { "md-card": "" } },
                     [
-                      _c("md-table-toolbar", [
-                        _c("h1", { staticClass: "md-title" }, [
-                          _vm._v("Вантажівки")
-                        ])
-                      ]),
-                      _vm._v(" "),
                       _c(
                         "md-table-row",
                         [
-                          _c("md-table-head", { attrs: { "md-numeric": "" } }, [
-                            _vm._v("ID")
-                          ]),
+                          _c("md-table-cell", [_vm._v("№")]),
                           _vm._v(" "),
-                          _c("md-table-head", [_vm._v("Name")]),
+                          _c("md-table-cell", [_vm._v("Марка")]),
                           _vm._v(" "),
-                          _c("md-table-head", [_vm._v("Email")]),
+                          _c("md-table-cell", [_vm._v("Двигун")]),
                           _vm._v(" "),
-                          _c("md-table-head", [_vm._v("Gender")]),
+                          _c("md-table-cell", [_vm._v("Колір")]),
                           _vm._v(" "),
-                          _c("md-table-head", [_vm._v("Job Title")])
+                          _c("md-table-cell", [_vm._v("Дата випуску")]),
+                          _vm._v(" "),
+                          _c("md-table-cell", [_vm._v("Категорія")]),
+                          _vm._v(" "),
+                          _c("md-table-cell", [_vm._v("Цех")])
                         ],
                         1
                       ),
                       _vm._v(" "),
-                      _c(
-                        "md-table-row",
-                        [
-                          _c("md-table-cell", { attrs: { "md-numeric": "" } }, [
-                            _vm._v("1")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Shawna Dubbin")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [
-                            _vm._v("sdubbin0@geocities.com")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Male")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [
-                            _vm._v("Assistant Media Planner")
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "md-table-row",
-                        [
-                          _c("md-table-cell", { attrs: { "md-numeric": "" } }, [
-                            _vm._v("2")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Odette Demageard")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [
-                            _vm._v("odemageard1@spotify.com")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Female")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Account Coordinator")])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "md-table-row",
-                        [
-                          _c("md-table-cell", { attrs: { "md-numeric": "" } }, [
-                            _vm._v("3")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Vera Taleworth")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [
-                            _vm._v("vtaleworth2@google.ca")
-                          ]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [_vm._v("Male")]),
-                          _vm._v(" "),
-                          _c("md-table-cell", [
-                            _vm._v("Community Outreach Specialist")
-                          ])
-                        ],
-                        1
-                      )
+                      _vm._l(_vm.transport, function(item, index) {
+                        return _c(
+                          "md-table-row",
+                          [
+                            _c("md-table-cell", [_vm._v(_vm._s(index + 1))]),
+                            _vm._v(" "),
+                            _c("md-table-cell", [_vm._v(_vm._s(item.brand))]),
+                            _vm._v(" "),
+                            _c("md-table-cell", [_vm._v(_vm._s(item.engine))]),
+                            _vm._v(" "),
+                            _c("md-table-cell", [_vm._v(_vm._s(item.color))]),
+                            _vm._v(" "),
+                            _c("md-table-cell", [
+                              _vm._v(_vm._s(item.production_year))
+                            ]),
+                            _vm._v(" "),
+                            _c("md-table-cell", [
+                              _vm._v(_vm._s(item.category))
+                            ]),
+                            _vm._v(" "),
+                            _c("md-table-cell", [
+                              _vm._v(_vm._s(item.workshop_name))
+                            ])
+                          ],
+                          1
+                        )
+                      })
                     ],
-                    1
+                    2
                   )
                 ],
                 1
@@ -54163,6 +54024,47 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 128 */,
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(130);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("2b2280b3", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10845c8a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkshopEdit.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10845c8a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkshopEdit.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.md-select-menu {\n  z-index: 200;\n}\n.dialog-alert {\n  z-index: 999;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

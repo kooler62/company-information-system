@@ -14,7 +14,7 @@
         </md-field>
 
         <md-button class="md-raised md-accent">Назад</md-button>
-        <md-button class="md-raised md-primary" @click="updateCar()">Зберегти</md-button>
+        <md-button class="md-raised md-primary" @click="updateWorkshop()">Зберегти</md-button>
     </div>
 </template>
 
@@ -23,20 +23,34 @@
     export default {
         props: ['workshopId'],
         data: () => ({
-            workshops: [],
-            workshop: [],
+            workshop: {},
             edited: false,
         }),
         created() {
-            this.fetchWorkshops();
+            this.fetchWorkshop();
         },
         methods: {
-            updateCar: function() {
-                let uri = '/workshop/' + this.$route.params.id;
+            updateWorkshop: function() {
+                let uri = '/workshop/' + this.workshopId;
                 axios.put(uri, this.workshop).then((response) => {
-                    this.$router.push({name: 'Transport'})
+                    this.$router.push({name: 'Transport'});
+                    this.edited = true;
                 })
-            }
+            },
+            fetchWorkshop() {
+                axios.get('/workshop/' + this.workshopId, this.workshop).then(response => {
+                    this.workshop = response.data;
+                })
+            },
         }
     }
 </script>
+
+<style lang="scss">
+    .md-select-menu {
+        z-index: 200;
+    }
+    .dialog-alert {
+        z-index: 999;
+    }
+</style>

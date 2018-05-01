@@ -11,9 +11,15 @@
 |
 */
 
+Route::get('/', function() {
+   return view('title');
+});
+
 Route::any('{all}', function() {
     return view('app');
 })->where(['all' => 'app/.*']);
+
+Route::get('/transport', 'TransportController@index');
 
 Route::resource('/car', 'CarController');
 

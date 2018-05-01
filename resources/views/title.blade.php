@@ -10,7 +10,7 @@
 </head>
 <body style="margin: 0">
 
-<div class="container" style="width: 1366px; margin: 0 auto;">
+<div class="container" style="width: 1200px; margin: 0 auto;">
     <p style="text-align: right; font-weight: bold; margin-right: 40px">Форма №Н-6.01</p>
     <div>
         <p style="margin-left: 79%">ЗАТВЕРДЖЕНО<br>
