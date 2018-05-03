@@ -24,6 +24,7 @@ Vue.component('lorry-add',       require('./components/lorry/LorryAdd'));
 Vue.component('lorry-edit',      require('./components/lorry/LorryEdit'));
 Vue.component('workshop-add',    require('./components/workshop/WorkshopAdd'));
 Vue.component('workshop-edit',   require('./components/workshop/WorkshopEdit'));
+Vue.component('transport-production',   require('./components/TransportProduction'));
 
 let AppLayout         = require('./components/App.vue');
 let Transport         = require('./components/Transport.vue');

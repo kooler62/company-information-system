@@ -8,7 +8,7 @@
             <lorry-edit :lorryId="lorryId"></lorry-edit>
         </md-dialog>
 
-        <md-table md-card>
+        <md-table class="table" md-card>
             <md-table-toolbar>
                 <md-button class="md-raised md-primary" @click="lorryAdd = true">
                     <span><md-icon>add</md-icon></span>

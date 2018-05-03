@@ -8,7 +8,7 @@
             <car-edit :carId="carId"></car-edit>
         </md-dialog>
 
-        <md-table v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
+        <md-table class="table" v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
             <md-table-toolbar>
 
                 <md-button class="md-raised md-primary" @click="carAdd = true">

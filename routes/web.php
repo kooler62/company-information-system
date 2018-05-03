@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function() {
-   return view('title');
-});
-
 Route::any('{all}', function() {
     return view('app');
 })->where(['all' => 'app/.*']);
+
+Route::get('/', function() {
+    return view('title');
+});
 
 Route::get('/transport', 'TransportController@index');
 

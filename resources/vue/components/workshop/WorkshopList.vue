@@ -8,7 +8,7 @@
             <workshop-edit :workshopId="workshopId"></workshop-edit>
         </md-dialog>
 
-        <md-table md-card>
+        <md-table class="table" md-card>
 
             <md-table-toolbar>
                 <md-button class="md-raised md-primary" @click="workshopAdd = true">
