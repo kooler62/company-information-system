@@ -38,7 +38,12 @@
                 <md-table-cell md-label="Двигун" md-sort-by="engine">{{ item.engine }}</md-table-cell>
                 <md-table-cell md-label="Колір" md-sort-by="color">{{ item.color }}</md-table-cell>
                 <md-table-cell md-label="Кор. передач" md-sort-by="transmission">{{ item.transmission }}</md-table-cell>
-                <md-table-cell md-label="Рік випуску" md-sort-by="production_year">{{ item.production_year }}</md-table-cell>
+                <md-table-cell md-label="Рік випуску"
+                               v-if="item.make_now === 0"
+                               md-sort-by="production_year">{{ item.production_year }}</md-table-cell>
+                <md-table-cell md-label="Рік випуску"
+                               v-if="item.make_now === 1"
+                               md-sort-by="production_year">Вигот.</md-table-cell>
                 <md-table-cell md-label="Цех" md-sort-by="workshop_name">{{ item.workshop_name }}</md-table-cell>
                 <md-table-cell md-label="Дії">
                     <md-button class="md-icon-button md-raised md-primary"

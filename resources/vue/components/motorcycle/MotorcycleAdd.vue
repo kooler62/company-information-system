@@ -43,8 +43,8 @@
             <span class="md-helper-text">yyyy-mm-dd</span>
         </md-field>
 
-        <md-checkbox v-model="motorcycle.stroller" value="1">З коляскою?</md-checkbox>
-        <md-checkbox v-model="motorcycle.make_now" value="1">Виготовляється зараз?</md-checkbox>
+        <md-checkbox v-model="motorcycle.stroller">З коляскою?</md-checkbox>
+        <md-checkbox v-model="motorcycle.make_now">Виготовляється зараз?</md-checkbox>
 
         <md-field>
             <label>Цех</label>
@@ -72,6 +72,10 @@
         },
         methods: {
             createMotorcycle() {
+                if (this.motorcycle.make_now) this.motorcycle.make_now = 1;
+                else this.motorcycle.make_now = 0;
+                if (this.motorcycle.stroller) this.motorcycle.stroller = 1;
+                else this.motorcycle.stroller = 0;
                 axios.post('/motorcycle', this.motorcycle).then(response => {
                     this.motorcycles.push(response.data.motorcycle);
                     this.added = true;

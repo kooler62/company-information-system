@@ -49,7 +49,7 @@
             <span class="md-helper-text">yyyy-mm-dd</span>
         </md-field>
 
-        <md-checkbox v-model="bus.make_now" value="1">Виготовляється зараз?</md-checkbox>
+        <md-checkbox v-model="bus.make_now">Виготовляється зараз?</md-checkbox>
 
         <md-field>
             <label>Цех</label>
@@ -77,6 +77,8 @@
         },
         methods: {
             createBus() {
+                if (this.bus.make_now) this.bus.make_now = 1;
+                else this.bus.make_now = 0;
                 axios.post('/bus', this.bus).then(response => {
                     this.buses.push(response.data.bus);
                     this.added = true;

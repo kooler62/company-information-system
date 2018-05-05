@@ -13,16 +13,12 @@ class CarController extends Controller
      */
     public function index()
     {
-        $car = new Car();
-
-        $cars = $car
-            ->join('workshops', 'cars.workshop_id', '=', 'workshops.id')
-            ->select('cars.*', 'workshops.workshop_name')
-            ->get();
+        $cars = Car::all();
 
         foreach ($cars as $car) {
             $car['production_year'] = DateTime::createFromFormat('Y-m-d', $car['production_year'])
                 ->format('d-m-Y');
+            $car['workshop_name'] = $car->workshop->workshop_name;
         }
 
         return response()->json([

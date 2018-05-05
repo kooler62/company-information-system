@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+use App\Entity\Bus;
+use App\Entity\Car;
+use App\Entity\Lorry;
+use App\Entity\Motorcycle;
 use Illuminate\Http\Request;
 
 class TransportController extends Controller
 {
-    public function index(Request $params)
+    public function index(Request $request)
     {
-        $workshops = $params['workshops'];
+        $car = new Car();
+        $bus = new Bus();
+        $lorry = new Lorry();
+        $motorcycle = new Motorcycle();
 
-        $cars = DB::table('cars')
-            ->whereIn('workshop_id', $workshops)
+        $cars = $car
+            ->whereIn('workshop_id', $request['workshops'])
+            ->where('make_now', $request->input('makeNow'))
             ->get([
                 'brand',
                 'engine',
@@ -21,8 +28,9 @@ class TransportController extends Controller
                 'workshop_id'
             ]);
 
-        $buses = DB::table('buses')
-            ->whereIn('workshop_id', $workshops)
+        $buses = $bus
+            ->whereIn('workshop_id', $request['workshops'])
+            ->where('make_now', $request->input('makeNow'))
             ->get([
                 'brand',
                 'engine',
@@ -31,8 +39,9 @@ class TransportController extends Controller
                 'workshop_id'
             ]);
 
-        $motorcycles = DB::table('motorcycles')
-            ->whereIn('workshop_id', $workshops)
+        $motorcycles = $motorcycle
+            ->whereIn('workshop_id', $request['workshops'])
+            ->where('make_now', $request->input('makeNow'))
             ->get([
                 'brand',
                 'engine',
@@ -41,8 +50,9 @@ class TransportController extends Controller
                 'workshop_id'
             ]);
 
-        $lorries = DB::table('lorries')
-            ->whereIn('workshop_id', $workshops)
+        $lorries = $lorry
+            ->whereIn('workshop_id', $request['workshops'])
+            ->where('make_now', $request->input('makeNow'))
             ->get([
                 'brand',
                 'engine',

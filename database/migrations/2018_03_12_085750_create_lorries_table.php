@@ -20,10 +20,13 @@ class CreateLorriesTable extends Migration
             $table->string('color');
             $table->string('transmission');
             $table->date('production_year');
+            //колесна база
             $table->string('wheel');
+            //самоскид
             $table->string('dump_truck');
+            //грузопідйомність
             $table->float('carrying');
-            $table->boolean('make_now')->nullable();
+            $table->boolean('make_now');
             $table->integer('workshop_id');
             $table->timestamps();
         });

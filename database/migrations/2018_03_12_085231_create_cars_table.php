@@ -21,7 +21,7 @@ class CreateCarsTable extends Migration
             $table->string('color');
             $table->string('transmission');
             $table->date('production_year');
-            $table->boolean('make_now')->nullable();
+            $table->boolean('make_now');
             $table->integer('workshop_id');
             $table->timestamps();
         });

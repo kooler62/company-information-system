@@ -5,7 +5,7 @@
                 <md-field>
                     <label>Цех</label>
                     <md-select v-model="selectedWorkshops"
-                               @md-closed="getTransport()"
+                               @md-closed="getTransport"
                                multiple>
                         <md-option v-for="workshop in workshops"
                                    :value="workshop.id">
@@ -28,12 +28,13 @@
                 <md-datepicker v-model="dateStart"></md-datepicker>
                 <md-datepicker v-model="dateEnd"></md-datepicker>
 
-                <md-checkbox v-model="makeNow" title="Виготовляється зараз">
+                <md-checkbox v-model="makeNow"
+                             @change="getTransport"
+                             title="Виготовляється зараз">
                     Вир. зараз
                 </md-checkbox>
 
-                <md-button class="md-raised md-accent"
-                           @click="reset">
+                <md-button class="md-raised md-accent">
                     <span><md-icon>undo</md-icon></span>
                     Скинути
                 </md-button>
@@ -119,7 +120,7 @@
             categories: null,
             dateStart: null,
             dateEnd: null,
-            makeNow: null,
+            makeNow: false,
             testLab: null
         }),
         created() {
@@ -136,6 +137,7 @@
                 axios.get('/transport/', {
                     params: {
                         workshops: this.selectedWorkshops,
+                        makeNow: this.makeNow ? 1 : 0,
                         dateStart: this.dateStart,
                         dateEnd: this.dateEnd,
                     },
@@ -146,11 +148,6 @@
                     this.lorries = response.data.lorries;
                 });
             },
-            reset() {
-                alert('reset');
-                this.selectedWorkshops = null;
-                this.categories = null;
-            }
         }
     }
 </script>

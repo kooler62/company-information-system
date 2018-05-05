@@ -19,35 +19,6 @@
   margin: 0;
 }
 
-.select-custom {
-  width: 968px;
-  min-height: 48px;
-  margin: 4px 0 24px;
-}
-
-.select-custom .md-field {
-  padding: 0;
-  height: 32px;
-  margin-bottom: 24px;
-}
-
-.select-custom label {
-  font-size: 12px;
-  position: absolute;
-  margin-top: -16px;
-  color: #c8c8c8;
-}
-
-.select-custom select {
-  height: 32px;
-  width: 968px;
-  display: block;
-  border: none;
-  border-bottom: #c8c8c8 1px solid;
-  font-size: 16px;
-  line-height: 32px;
-}
-
 .buttons {
   text-align: right;
   margin-bottom: 15px;

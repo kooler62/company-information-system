@@ -66,12 +66,15 @@
 
         <md-checkbox v-model="lorry.make_now" value="1">Виготовляється зараз?</md-checkbox>
 
-        <md-field>
-            <label>Цех</label>
-            <md-select v-model="lorry.workshop_id" name="workshop_id">
-                <md-option v-for="workshop in workshops" :value="workshop.id">{{ workshop.workshop_name }}</md-option>
-            </md-select>
-        </md-field>
+        <div class="select-custom">
+            <p class="label">Цех:</p>
+            <select v-model="lorry.workshop_id" title="Цех">
+                <option v-for="workshop in workshops"
+                        :value="workshop.id">
+                    {{ workshop.workshop_name }}
+                </option>
+            </select>
+        </div>
 
         <md-button class="md-raised md-accent">Назад</md-button>
         <md-button class="md-raised md-primary" @click="updateLorry()">Зберегти</md-button>

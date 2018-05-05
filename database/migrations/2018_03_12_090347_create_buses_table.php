@@ -21,7 +21,7 @@ class CreateBusesTable extends Migration
             $table->string('transmission');
             $table->date('production_year');
             $table->integer('man_capacity');
-            $table->boolean('make_now')->nullable();
+            $table->boolean('make_now');
             $table->integer('workshop_id');
             $table->timestamps();
         });

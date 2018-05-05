@@ -54,7 +54,7 @@
             <span class="md-helper-text">dd.mm.yyyy</span>
         </md-field>
 
-        <md-checkbox v-model="car.make_now" value="1">Виготовляється зараз?</md-checkbox>
+        <md-checkbox v-model="car.make_now">Виготовляється зараз?</md-checkbox>
 
         <md-field>
             <label>Цех</label>
@@ -94,6 +94,8 @@
                 })
             },
             createCar() {
+                if (this.car.make_now) this.car.make_now = 1;
+                else this.car.make_now = 0;
                 axios.post('/car', this.car).then(response => {
                     this.cars.push(response.data.car);
                     this.added = true;

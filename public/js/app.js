@@ -46894,6 +46894,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -47066,16 +47071,31 @@ var render = function() {
                       [_vm._v(_vm._s(item.transmission))]
                     ),
                     _vm._v(" "),
-                    _c(
-                      "md-table-cell",
-                      {
-                        attrs: {
-                          "md-label": "Рік випуску",
-                          "md-sort-by": "production_year"
-                        }
-                      },
-                      [_vm._v(_vm._s(item.production_year))]
-                    ),
+                    item.make_now === 0
+                      ? _c(
+                          "md-table-cell",
+                          {
+                            attrs: {
+                              "md-label": "Рік випуску",
+                              "md-sort-by": "production_year"
+                            }
+                          },
+                          [_vm._v(_vm._s(item.production_year))]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    item.make_now === 1
+                      ? _c(
+                          "md-table-cell",
+                          {
+                            attrs: {
+                              "md-label": "Рік випуску",
+                              "md-sort-by": "production_year"
+                            }
+                          },
+                          [_vm._v("Вигот.")]
+                        )
+                      : _vm._e(),
                     _vm._v(" "),
                     _c(
                       "md-table-cell",
@@ -49260,6 +49280,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         createCar: function createCar() {
             var _this2 = this;
 
+            if (this.car.make_now) this.car.make_now = 1;else this.car.make_now = 0;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/car', this.car).then(function (response) {
                 _this2.cars.push(response.data.car);
                 _this2.added = true;
@@ -49469,7 +49490,6 @@ var render = function() {
       _c(
         "md-checkbox",
         {
-          attrs: { value: "1" },
           model: {
             value: _vm.car.make_now,
             callback: function($$v) {
@@ -50249,6 +50269,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         createBus: function createBus() {
             var _this = this;
 
+            if (this.bus.make_now) this.bus.make_now = 1;else this.bus.make_now = 0;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/bus', this.bus).then(function (response) {
                 _this.buses.push(response.data.bus);
                 _this.added = true;
@@ -50442,7 +50463,6 @@ var render = function() {
       _c(
         "md-checkbox",
         {
-          attrs: { value: "1" },
           model: {
             value: _vm.bus.make_now,
             callback: function($$v) {
@@ -50610,6 +50630,9 @@ exports.push([module.i, "\n.md-select-menu {\n  z-index: 200;\n}\n.dialog-alert 
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
 //
 //
 //
@@ -50905,32 +50928,50 @@ var render = function() {
         [_vm._v("Виготовляється зараз?")]
       ),
       _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Цех")]),
-          _vm._v(" "),
-          _c(
-            "md-select",
-            {
-              attrs: { name: "workshop_id" },
-              model: {
+      _c("div", { staticClass: "select-custom" }, [
+        _c("p", { staticClass: "label" }, [_vm._v("Цех:")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
                 value: _vm.bus.workshop_id,
-                callback: function($$v) {
-                  _vm.$set(_vm.bus, "workshop_id", $$v)
-                },
                 expression: "bus.workshop_id"
               }
-            },
-            _vm._l(_vm.workshops, function(workshop) {
-              return _c("md-option", { attrs: { value: workshop.id } }, [
-                _vm._v(_vm._s(workshop.workshop_name))
-              ])
-            })
-          )
-        ],
-        1
-      ),
+            ],
+            attrs: { title: "Цех" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.bus,
+                  "workshop_id",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          _vm._l(_vm.workshops, function(workshop) {
+            return _c("option", { domProps: { value: workshop.id } }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(workshop.workshop_name) +
+                  "\n            "
+              )
+            ])
+          })
+        )
+      ]),
       _vm._v(" "),
       _c("md-button", { staticClass: "md-raised md-accent" }, [
         _vm._v("Назад")
@@ -51140,6 +51181,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         createMotorcycle: function createMotorcycle() {
             var _this = this;
 
+            if (this.motorcycle.make_now) this.motorcycle.make_now = 1;else this.motorcycle.make_now = 0;
+            if (this.motorcycle.stroller) this.motorcycle.stroller = 1;else this.motorcycle.stroller = 0;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/motorcycle', this.motorcycle).then(function (response) {
                 _this.motorcycles.push(response.data.motorcycle);
                 _this.added = true;
@@ -51313,7 +51356,6 @@ var render = function() {
       _c(
         "md-checkbox",
         {
-          attrs: { value: "1" },
           model: {
             value: _vm.motorcycle.stroller,
             callback: function($$v) {
@@ -51328,7 +51370,6 @@ var render = function() {
       _c(
         "md-checkbox",
         {
-          attrs: { value: "1" },
           model: {
             value: _vm.motorcycle.make_now,
             callback: function($$v) {
@@ -51496,6 +51537,9 @@ exports.push([module.i, "\n.md-select-menu {\n  z-index: 200;\n}\n.dialog-alert 
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
 //
 //
 //
@@ -51781,32 +51825,50 @@ var render = function() {
         [_vm._v("Виготовляється зараз?")]
       ),
       _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Цех")]),
-          _vm._v(" "),
-          _c(
-            "md-select",
-            {
-              attrs: { name: "workshop_id" },
-              model: {
+      _c("div", { staticClass: "select-custom" }, [
+        _c("p", { staticClass: "label" }, [_vm._v("Цех:")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
                 value: _vm.motorcycle.workshop_id,
-                callback: function($$v) {
-                  _vm.$set(_vm.motorcycle, "workshop_id", $$v)
-                },
                 expression: "motorcycle.workshop_id"
               }
-            },
-            _vm._l(_vm.workshops, function(workshop) {
-              return _c("md-option", { attrs: { value: workshop.id } }, [
-                _vm._v(_vm._s(workshop.workshop_name))
-              ])
-            })
-          )
-        ],
-        1
-      ),
+            ],
+            attrs: { title: "Цех" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.motorcycle,
+                  "workshop_id",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          _vm._l(_vm.workshops, function(workshop) {
+            return _c("option", { domProps: { value: workshop.id } }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(workshop.workshop_name) +
+                  "\n            "
+              )
+            ])
+          })
+        )
+      ]),
       _vm._v(" "),
       _c("md-button", { staticClass: "md-raised md-accent" }, [
         _vm._v("Назад")
@@ -52036,6 +52098,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         createLorry: function createLorry() {
             var _this = this;
 
+            if (this.lorry.make_now) this.lorry.make_now = 1;else this.lorry.make_now = 0;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/lorry', this.lorry).then(function (response) {
                 _this.lorries.push(response.data.lorry);
                 _this.added = true;
@@ -52287,7 +52350,6 @@ var render = function() {
       _c(
         "md-checkbox",
         {
-          attrs: { value: "1" },
           model: {
             value: _vm.lorry.make_now,
             callback: function($$v) {
@@ -52455,6 +52517,9 @@ exports.push([module.i, "\n.md-select-menu {\n  z-index: 200;\n}\n.dialog-alert 
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
 //
 //
 //
@@ -52821,32 +52886,50 @@ var render = function() {
         [_vm._v("Виготовляється зараз?")]
       ),
       _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Цех")]),
-          _vm._v(" "),
-          _c(
-            "md-select",
-            {
-              attrs: { name: "workshop_id" },
-              model: {
+      _c("div", { staticClass: "select-custom" }, [
+        _c("p", { staticClass: "label" }, [_vm._v("Цех:")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
                 value: _vm.lorry.workshop_id,
-                callback: function($$v) {
-                  _vm.$set(_vm.lorry, "workshop_id", $$v)
-                },
                 expression: "lorry.workshop_id"
               }
-            },
-            _vm._l(_vm.workshops, function(workshop) {
-              return _c("md-option", { attrs: { value: workshop.id } }, [
-                _vm._v(_vm._s(workshop.workshop_name))
-              ])
-            })
-          )
-        ],
-        1
-      ),
+            ],
+            attrs: { title: "Цех" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.lorry,
+                  "workshop_id",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          _vm._l(_vm.workshops, function(workshop) {
+            return _c("option", { domProps: { value: workshop.id } }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(workshop.workshop_name) +
+                  "\n            "
+              )
+            ])
+          })
+        )
+      ]),
       _vm._v(" "),
       _c("md-button", { staticClass: "md-raised md-accent" }, [
         _vm._v("Назад")
@@ -53571,6 +53654,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53586,7 +53670,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             categories: null,
             dateStart: null,
             dateEnd: null,
-            makeNow: null,
+            makeNow: false,
             testLab: null
         };
     },
@@ -53609,6 +53693,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/transport/', {
                 params: {
                     workshops: this.selectedWorkshops,
+                    makeNow: this.makeNow ? 1 : 0,
                     dateStart: this.dateStart,
                     dateEnd: this.dateEnd
                 }
@@ -53618,11 +53703,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.motorcycles = response.data.motorcycles;
                 _this2.lorries = response.data.lorries;
             });
-        },
-        reset: function reset() {
-            alert('reset');
-            this.selectedWorkshops = null;
-            this.categories = null;
         }
     }
 });
@@ -53654,11 +53734,7 @@ var render = function() {
                     "md-select",
                     {
                       attrs: { multiple: "" },
-                      on: {
-                        "md-closed": function($event) {
-                          _vm.getTransport()
-                        }
-                      },
+                      on: { "md-closed": _vm.getTransport },
                       model: {
                         value: _vm.selectedWorkshops,
                         callback: function($$v) {
@@ -53753,6 +53829,7 @@ var render = function() {
                 "md-checkbox",
                 {
                   attrs: { title: "Виготовляється зараз" },
+                  on: { change: _vm.getTransport },
                   model: {
                     value: _vm.makeNow,
                     callback: function($$v) {
@@ -53764,17 +53841,10 @@ var render = function() {
                 [_vm._v("\n                Вир. зараз\n            ")]
               ),
               _vm._v(" "),
-              _c(
-                "md-button",
-                {
-                  staticClass: "md-raised md-accent",
-                  on: { click: _vm.reset }
-                },
-                [
-                  _c("span", [_c("md-icon", [_vm._v("undo")])], 1),
-                  _vm._v("\n                Скинути\n            ")
-                ]
-              ),
+              _c("md-button", { staticClass: "md-raised md-accent" }, [
+                _c("span", [_c("md-icon", [_vm._v("undo")])], 1),
+                _vm._v("\n                Скинути\n            ")
+              ]),
               _vm._v(" "),
               _c(
                 "md-button",

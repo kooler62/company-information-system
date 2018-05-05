@@ -46,12 +46,15 @@
         <md-checkbox v-model="motorcycle.stroller" value="1">З коляскою?</md-checkbox>
         <md-checkbox v-model="motorcycle.make_now" value="1">Виготовляється зараз?</md-checkbox>
 
-        <md-field>
-            <label>Цех</label>
-            <md-select v-model="motorcycle.workshop_id" name="workshop_id">
-                <md-option v-for="workshop in workshops" :value="workshop.id">{{ workshop.workshop_name }}</md-option>
-            </md-select>
-        </md-field>
+        <div class="select-custom">
+            <p class="label">Цех:</p>
+            <select v-model="motorcycle.workshop_id" title="Цех">
+                <option v-for="workshop in workshops"
+                        :value="workshop.id">
+                    {{ workshop.workshop_name }}
+                </option>
+            </select>
+        </div>
 
         <md-button class="md-raised md-accent">Назад</md-button>
         <md-button class="md-raised md-primary" @click="updateMotorcycle()">Зберегти</md-button>

@@ -64,7 +64,7 @@
             <span class="md-helper-text"></span>
         </md-field>
 
-        <md-checkbox v-model="lorry.make_now" value="1">Виготовляється зараз?</md-checkbox>
+        <md-checkbox v-model="lorry.make_now">Виготовляється зараз?</md-checkbox>
 
         <md-field>
             <label>Цех</label>
@@ -92,6 +92,8 @@
         },
         methods: {
             createLorry() {
+                if (this.lorry.make_now) this.lorry.make_now = 1;
+                else this.lorry.make_now = 0;
                 axios.post('/lorry', this.lorry).then(response => {
                     this.lorries.push(response.data.lorry);
                     this.added = true;

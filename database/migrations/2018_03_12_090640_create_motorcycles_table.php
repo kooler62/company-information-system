@@ -22,7 +22,7 @@ class CreateMotorcyclesTable extends Migration
             $table->date('production_year');
             //з коляскою
             $table->boolean('stroller');
-            $table->boolean('make_now')->nullable();
+            $table->boolean('make_now');
             $table->integer('workshop_id');
             $table->timestamps();
         });
