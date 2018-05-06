@@ -17,10 +17,14 @@ class TransportController extends Controller
         $lorry = new Lorry();
         $motorcycle = new Motorcycle();
 
+        $dates = [$request['dateStart'], $request['dateEnd']];
+
         $cars = $car
             ->whereIn('workshop_id', $request['workshops'])
             ->where('make_now', $request->input('makeNow'))
-            ->get([
+            ->when(isset($request['dateStart']), function($q) use($dates) {
+                return $q->whereBetween('production_year', $dates);
+            })->get([
                 'brand',
                 'engine',
                 'color',
@@ -31,7 +35,9 @@ class TransportController extends Controller
         $buses = $bus
             ->whereIn('workshop_id', $request['workshops'])
             ->where('make_now', $request->input('makeNow'))
-            ->get([
+            ->when(isset($request['dateStart']), function($q) use($dates) {
+                return $q->whereBetween('production_year', $dates);
+            })->get([
                 'brand',
                 'engine',
                 'color',
@@ -42,7 +48,9 @@ class TransportController extends Controller
         $motorcycles = $motorcycle
             ->whereIn('workshop_id', $request['workshops'])
             ->where('make_now', $request->input('makeNow'))
-            ->get([
+            ->when(isset($request['dateStart']), function($q) use($dates) {
+                return $q->whereBetween('production_year', $dates);
+            })->get([
                 'brand',
                 'engine',
                 'color',
@@ -53,7 +61,9 @@ class TransportController extends Controller
         $lorries = $lorry
             ->whereIn('workshop_id', $request['workshops'])
             ->where('make_now', $request->input('makeNow'))
-            ->get([
+            ->when(isset($request['dateStart']), function($q) use($dates) {
+                return $q->whereBetween('production_year', $dates);
+            })->get([
                 'brand',
                 'engine',
                 'color',
@@ -65,7 +75,7 @@ class TransportController extends Controller
             'cars' => $cars,
             'buses' => $buses,
             'motorcycles' => $motorcycles,
-            'lorries' => $lorries,
+            'lorries' => $lorries
         ]);
     }
 }

@@ -29,9 +29,9 @@
                 <md-datepicker v-model="dateEnd"></md-datepicker>
 
                 <md-checkbox v-model="makeNow"
-                             @change="getTransport"
-                             title="Виготовляється зараз">
+                             @change="getTransport">
                     Вир. зараз
+                    <md-tooltip md-delay="300">Транспорт, який виготовляється зараз</md-tooltip>
                 </md-checkbox>
 
                 <md-button class="md-raised md-accent">

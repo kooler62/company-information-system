@@ -46899,6 +46899,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -47122,7 +47124,13 @@ var render = function() {
                               }
                             }
                           },
-                          [_c("md-icon", [_vm._v("mode_edit")])],
+                          [
+                            _c("md-icon", [_vm._v("mode_edit")]),
+                            _vm._v(" "),
+                            _c("md-tooltip", { attrs: { "md-delay": "300" } }, [
+                              _vm._v("Редагувати")
+                            ])
+                          ],
                           1
                         ),
                         _vm._v(" "),
@@ -47136,7 +47144,13 @@ var render = function() {
                               }
                             }
                           },
-                          [_c("md-icon", [_vm._v("remove")])],
+                          [
+                            _c("md-icon", [_vm._v("remove")]),
+                            _vm._v(" "),
+                            _c("md-tooltip", { attrs: { "md-delay": "300" } }, [
+                              _vm._v("Видалити")
+                            ])
+                          ],
                           1
                         )
                       ],
@@ -48784,60 +48798,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'CardExpansion'
@@ -48889,34 +48849,8 @@ var render = function() {
                       ])
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "md-card-expand-trigger",
-                    [
-                      _c(
-                        "md-button",
-                        { staticClass: "md-icon-button" },
-                        [_c("md-icon", [_vm._v("keyboard_arrow_down")])],
-                        1
-                      )
-                    ],
-                    1
                   )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "md-card-expand-content",
-                [
-                  _c("md-card-content", [
-                    _vm._v(
-                      "\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.\n                "
-                    )
-                  ])
-                ],
-                1
+                ]
               )
             ],
             1
@@ -48959,104 +48893,8 @@ var render = function() {
                       ])
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "md-card-expand-trigger",
-                    [
-                      _c(
-                        "md-button",
-                        { staticClass: "md-icon-button" },
-                        [_c("md-icon", [_vm._v("keyboard_arrow_down")])],
-                        1
-                      )
-                    ],
-                    1
                   )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "md-card-expand-content",
-                [
-                  _c("md-card-content", [
-                    _vm._v(
-                      "\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.\n                "
-                    )
-                  ])
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-card",
-        [
-          _c("md-card-media", [
-            _c("img", {
-              attrs: { src: "/assets/examples/card-image-1.jpg", alt: "People" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("md-card-header", [
-            _c("div", { staticClass: "md-title" }, [_vm._v("ПІБ")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "md-subhead" }, [_vm._v("Посада")])
-          ]),
-          _vm._v(" "),
-          _c(
-            "md-card-expand",
-            [
-              _c(
-                "md-card-actions",
-                { attrs: { "md-alignment": "space-between" } },
-                [
-                  _c(
-                    "div",
-                    [
-                      _c("md-button", { staticClass: "md-accent" }, [
-                        _vm._v("Видалити")
-                      ]),
-                      _vm._v(" "),
-                      _c("md-button", { staticClass: "md-primary" }, [
-                        _vm._v("Редагувати")
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "md-card-expand-trigger",
-                    [
-                      _c(
-                        "md-button",
-                        { staticClass: "md-icon-button" },
-                        [_c("md-icon", [_vm._v("keyboard_arrow_down")])],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "md-card-expand-content",
-                [
-                  _c("md-card-content", [
-                    _vm._v(
-                      "\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.\n                "
-                    )
-                  ])
-                ],
-                1
+                ]
               )
             ],
             1
@@ -53828,7 +53666,6 @@ var render = function() {
               _c(
                 "md-checkbox",
                 {
-                  attrs: { title: "Виготовляється зараз" },
                   on: { change: _vm.getTransport },
                   model: {
                     value: _vm.makeNow,
@@ -53838,7 +53675,13 @@ var render = function() {
                     expression: "makeNow"
                   }
                 },
-                [_vm._v("\n                Вир. зараз\n            ")]
+                [
+                  _vm._v("\n                Вир. зараз\n                "),
+                  _c("md-tooltip", { attrs: { "md-delay": "300" } }, [
+                    _vm._v("Транспорт, який виготовляється зараз")
+                  ])
+                ],
+                1
               ),
               _vm._v(" "),
               _c("md-button", { staticClass: "md-raised md-accent" }, [

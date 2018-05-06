@@ -49,10 +49,12 @@
                     <md-button class="md-icon-button md-raised md-primary"
                                @click="edit(item.id)">
                         <md-icon>mode_edit</md-icon>
+                        <md-tooltip md-delay="300">Редагувати</md-tooltip>
                     </md-button>
                     <md-button class="md-icon-button md-raised md-accent"
                                @click="deleteCar(item)">
                         <md-icon>remove</md-icon>
+                        <md-tooltip md-delay="300">Видалити</md-tooltip>
                     </md-button>
                 </md-table-cell>
             </md-table-row>
