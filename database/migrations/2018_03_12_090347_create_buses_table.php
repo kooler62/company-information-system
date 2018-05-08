@@ -19,7 +19,7 @@ class CreateBusesTable extends Migration
             $table->string('engine');
             $table->string('color');
             $table->string('transmission');
-            $table->date('production_year');
+            $table->date('production_year')->nullable();
             $table->integer('man_capacity');
             $table->boolean('make_now');
             $table->integer('workshop_id');

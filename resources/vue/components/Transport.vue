@@ -2,7 +2,7 @@
     <div class="category-tabs">
         <md-tabs>
             <md-tab id="tab-test" md-label="Випробування">
-
+                <transport-test></transport-test>
             </md-tab>
             <md-tab id="tab-transport" md-label="Виробництво">
                 <transport-production></transport-production>

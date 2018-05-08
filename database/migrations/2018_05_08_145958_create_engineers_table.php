@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocksmithsTable extends Migration
+class CreateEngineersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,20 @@ class CreateLocksmithsTable extends Migration
      */
     public function up()
     {
-        //Слюсарі
-        Schema::create('locksmiths', function (Blueprint $table) {
+        Schema::create('engineers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('middle_name');
+            $table->string('phone_number');
             $table->integer('personal_number');
             $table->string('home_address');
+            //категорія
+            $table->string('category');
+            //посада
+            $table->string('position');
             $table->date('employment_date');
+            $table->integer('workshop_id');
             $table->timestamps();
         });
     }
@@ -33,6 +38,6 @@ class CreateLocksmithsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locksmiths');
+        Schema::dropIfExists('engineers');
     }
 }

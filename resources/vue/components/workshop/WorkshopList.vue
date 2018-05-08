@@ -25,6 +25,8 @@
                 <md-table-head>№</md-table-head>
                 <md-table-head>Назва</md-table-head>
                 <md-table-head>Кількість автомобілів</md-table-head>
+                <md-table-head>Інформація</md-table-head>
+                <md-table-head>Дії</md-table-head>
             </md-table-row>
 
             <md-table-row v-for="(workshop, index) in workshops">
@@ -32,12 +34,30 @@
                 <md-table-cell>{{ workshop.workshop_name }}</md-table-cell>
                 <md-table-cell>3</md-table-cell>
                 <md-table-cell>
-                <md-button class="md-icon-button md-raised md-primary" @click="edit(workshop.id)">
-                    <md-icon>mode_edit</md-icon>
-                </md-button>
-                <md-button class="md-icon-button md-raised md-accent" @click="deleteWorkshop(workshop)">
-                    <md-icon>remove</md-icon>
-                </md-button>
+                    <md-button class="md-raised md-primary">
+                        <span>
+                            <md-icon>list</md-icon>
+                        </span>
+                        Склад бригад
+                    </md-button>
+                    <md-button class="md-raised md-primary">
+                        <span>
+                            <md-icon>list</md-icon>
+                        </span>
+                        Список майстрів
+                    </md-button>
+                </md-table-cell>
+                <md-table-cell>
+                    <md-button class="md-icon-button md-raised md-primary" @click="edit(workshop.id)">
+                        <span>
+                            <md-icon>mode_edit</md-icon>
+                        </span>
+                    </md-button>
+                    <md-button class="md-icon-button md-raised md-accent" @click="deleteWorkshop(workshop)">
+                        <span>
+                            <md-icon>remove</md-icon>
+                        </span>
+                    </md-button>
                 </md-table-cell>
             </md-table-row>
         </md-table>

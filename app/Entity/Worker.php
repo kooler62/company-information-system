@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Technologists extends Model
+class Worker extends Model
 {
     //
 }

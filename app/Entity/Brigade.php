@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Locksmiths extends Model
+class Brigade extends Model
 {
     //
 }

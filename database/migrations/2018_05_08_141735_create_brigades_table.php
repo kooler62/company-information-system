@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTechnologistsTable extends Migration
+class CreateBrigadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateTechnologistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('technologists', function (Blueprint $table) {
+        Schema::create('brigades', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('middle_name');
-            $table->integer('personal_number');
-            $table->string('home_address');
-            $table->date('employment_date');
+            $table->string('brigade_name');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreateTechnologistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('technologists');
+        Schema::dropIfExists('brigades');
     }
 }

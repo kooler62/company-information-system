@@ -19,7 +19,7 @@ class CreateMotorcyclesTable extends Migration
             $table->string('engine');
             $table->string('color');
             $table->string('transmission');
-            $table->date('production_year');
+            $table->date('production_year')->nullable();
             //з коляскою
             $table->boolean('stroller');
             $table->boolean('make_now');

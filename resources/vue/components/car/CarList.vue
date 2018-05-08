@@ -8,6 +8,14 @@
             <car-edit :carId="carId"></car-edit>
         </md-dialog>
 
+        <md-snackbar md-position="center"
+                     :md-duration="5000"
+                     :md-active.sync="showSnackbar"
+                     md-persistent>
+            <span>Успішно видалено</span>
+            <md-button class="md-primary" @click="showSnackbar = false">Ок</md-button>
+        </md-snackbar>
+
         <md-table class="table" v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
             <md-table-toolbar>
 
@@ -83,6 +91,7 @@
             search: null,
             carAdd: false,
             carEdit: false,
+            showSnackbar: false,
             carId: '',
         }),
         created () {
@@ -103,6 +112,7 @@
                 axios.delete('/car/' + car.id).then(response => {
                     this.fetchCars();
                 });
+                this.showSnackbar = true;
             },
             edit(id) {
                 this.carId = id;

@@ -13,7 +13,6 @@ Vue.component('bus-list',        require('./components/bus/BusList'));
 Vue.component('motorcycle-list', require('./components/motorcycle/MotorcycleList'));
 Vue.component('lorry-list',      require('./components/lorry/LorryList'));
 Vue.component('workshop-list',   require('./components/workshop/WorkshopList'));
-Vue.component('engineers-list',  require('./components/engineers/EngineersList'));
 Vue.component('car-add',         require('./components/car/CarAdd'));
 Vue.component('car-edit',        require('./components/car/CarEdit'));
 Vue.component('bus-add',         require('./components/bus/BusAdd'));
@@ -24,21 +23,26 @@ Vue.component('lorry-add',       require('./components/lorry/LorryAdd'));
 Vue.component('lorry-edit',      require('./components/lorry/LorryEdit'));
 Vue.component('workshop-add',    require('./components/workshop/WorkshopAdd'));
 Vue.component('workshop-edit',   require('./components/workshop/WorkshopEdit'));
+Vue.component('transport-test',  require('./components/TransportTest'));
 Vue.component('transport-production',   require('./components/TransportProduction'));
 
 let AppLayout         = require('./components/App.vue');
 let Transport         = require('./components/Transport.vue');
-let Staff             = require('./components/EngineeringStaff.vue');
+let Engineers         = require('./components/Engineers');
+let Workers           = require('./components/Workers');
+let TestLabs          = require('./components/TestLabs');
 
 Vue.use(VueMaterial);
 Vue.use(VueRouter, VueAxios, axios);
 
 const routes = [
     { name: 'Transport',      path: '/app/transport',       component: Transport },
-    { name: 'Staff',          path: '/app/staff',           component: Staff },
+    { name: 'Engineers',      path: '/app/engineers',       component: Engineers },
+    { name: 'Workers',        path: '/app/workers',         component: Workers },
+    { name: 'TestLabs',       path: '/app/test-labs',       component: TestLabs },
 ];
 
-const router = new VueRouter({ mode: 'history', routes: routes});
+const router = new VueRouter({ mode: 'history', routes: routes });
 
 new Vue(
     Vue.util.extend(

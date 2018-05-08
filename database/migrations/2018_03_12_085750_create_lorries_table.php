@@ -19,7 +19,7 @@ class CreateLorriesTable extends Migration
             $table->string('engine');
             $table->string('color');
             $table->string('transmission');
-            $table->date('production_year');
+            $table->date('production_year')->nullable();
             //колесна база
             $table->string('wheel');
             //самоскид

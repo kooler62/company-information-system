@@ -30,3 +30,5 @@ Route::resource('/motorcycle', 'MotorcycleController');
 Route::resource('/lorry', 'LorryController');
 
 Route::resource('/workshop', 'WorkshopController');
+
+Route::resource('/engineer', 'EngineerController');
