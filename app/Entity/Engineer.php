@@ -13,7 +13,10 @@ class Engineer extends Model
         'phone_number',
         'personal_number',
         'home_address',
+        'category',
+        'position',
         'employment_date',
+        'workshop_id'
     ];
 
     public function workshop()

@@ -8,11 +8,23 @@
             <md-button class="md-primary" @click="showSnackbar = false">Ок</md-button>
         </md-snackbar>
 
+        <md-dialog :md-active.sync="engineerAdd"
+                   class="form-dialog md-scrollbar">
+            <engineer-add></engineer-add>
+        </md-dialog>
+
+        <md-dialog :md-active.sync="engineerEdit"
+                   class="md-dialog md-scrollbar">
+            <engineer-edit :engineerId="engineerId"></engineer-edit>
+        </md-dialog>
+
         <md-table style="margin-bottom: 5px;">
             <md-table-toolbar>
                 <md-field>
                     <label>Цех</label>
-                    <md-select>
+                    <md-select v-model="selectedWorkshops"
+                               @md-closed="fetchEngineers"
+                               multiple>
                         <md-option value="0">Всі</md-option>
                         <md-option v-for="workshop in workshops"
                                    :value="workshop.id">
@@ -23,18 +35,21 @@
 
                 <md-field>
                     <label>Категорія</label>
-                    <md-select>
+                    <md-select v-model="selectedCategories"
+                               @md-closed="fetchEngineers"
+                               multiple>
                         <md-option value="0">Всі</md-option>
-                        <md-option value="1">Інженери</md-option>
-                        <md-option value="1">Технологи</md-option>
-                        <md-option value="1">Техніки</md-option>
+                        <md-option value="Інженер">Інженери</md-option>
+                        <md-option value="Технолог">Технологи</md-option>
+                        <md-option value="Технік">Техніки</md-option>
                     </md-select>
                 </md-field>
 
-                <md-button class="md-raised md-primary">
-                <span>
-                    <md-icon>add</md-icon>
-                </span>
+                <md-button class="md-raised md-primary"
+                           @click="engineerAdd = true">
+                    <span>
+                        <md-icon>add</md-icon>
+                    </span>
                     Додати інженера
                 </md-button>
                 <md-button class="md-raised md-primary"
@@ -64,8 +79,14 @@
             </md-card-header>
 
             <md-card-actions>
-                <md-button>Редагувати</md-button>
-                <md-button @click="deleteEngineer(engineer)">Видалити</md-button>
+                <md-button class="md-primary"
+                           @click="edit(engineer.id)">
+                    Редагувати
+                </md-button>
+                <md-button class="md-accent"
+                           @click="deleteEngineer(engineer)">
+                    Видалити
+                </md-button>
             </md-card-actions>
         </md-card>
 
@@ -81,6 +102,11 @@
             engineers: [],
             engineer: {},
             showSnackbar: false,
+            engineerAdd: false,
+            engineerEdit: false,
+            engineerId: '',
+            selectedWorkshops: [],
+            selectedCategories: [],
         }),
         created() {
             this.fetchEngineers();
@@ -88,7 +114,12 @@
         },
         methods: {
             fetchEngineers() {
-                axios.get('/engineer').then((response) => {
+                axios.get('/engineer', {
+                    params: {
+                        workshops: this.selectedWorkshops,
+                        categories: this.selectedCategories
+                    }
+                }).then(response => {
                     this.engineers = response.data.engineers;
                 })
             },
@@ -100,10 +131,13 @@
             deleteEngineer(engineer) {
                 axios.delete('/engineer/' + engineer.id).then(response => {
                     this.fetchEngineers();
-
                 });
                 this.showSnackbar = true;
             },
+            edit(id) {
+                this.engineerId = id;
+                this.engineerEdit = true;
+            }
         }
     }
 </script>
@@ -122,5 +156,13 @@
 
     .md-title {
         font-size: 19px;
+    }
+
+    .form-dialog {
+        padding: 30px;
+        z-index: 100;
+        width: 1100px;
+        max-height: 600px;
+        overflow: auto;
     }
 </style>

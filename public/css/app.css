@@ -10,7 +10,9 @@
 .car-add,
 .car-edit,
 .ws-add,
-.ws-edit {
+.ws-edit,
+.engineer-add,
+.engineer-edit {
   width: 1000px;
   margin: 0 auto;
 }
