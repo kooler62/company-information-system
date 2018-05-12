@@ -46913,6 +46913,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -46937,7 +46972,7 @@ var searchByName = function searchByName(items, term) {
             search: null,
             carAdd: false,
             carEdit: false,
-            showSnackbar: false,
+            showSnackBar: false,
             carId: ''
         };
     },
@@ -46959,11 +46994,8 @@ var searchByName = function searchByName(items, term) {
             });
         },
         deleteCar: function deleteCar(car) {
-            var _this2 = this;
-
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/car/' + car.id).then(function (response) {
-                _this2.fetchCars();
-            });
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/car/' + car.id);
+            this.fetchCars();
             this.showSnackbar = true;
         },
         edit: function edit(id) {
@@ -47038,7 +47070,7 @@ var render = function() {
               staticClass: "md-primary",
               on: {
                 click: function($event) {
-                  _vm.showSnackbar = false
+                  _vm.showSnackBar = false
                 }
               }
             },
@@ -47076,13 +47108,25 @@ var render = function() {
                           "md-numeric": ""
                         }
                       },
-                      [_vm._v(_vm._s(item.id))]
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(item.id) +
+                            "\n            "
+                        )
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
                       "md-table-cell",
                       { attrs: { "md-label": "Марка", "md-sort-by": "brand" } },
-                      [_vm._v(_vm._s(item.brand))]
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(item.brand) +
+                            "\n            "
+                        )
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
@@ -47093,7 +47137,13 @@ var render = function() {
                           "md-sort-by": "body_type"
                         }
                       },
-                      [_vm._v(_vm._s(item.body_type))]
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(item.body_type) +
+                            "\n            "
+                        )
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
@@ -47101,13 +47151,25 @@ var render = function() {
                       {
                         attrs: { "md-label": "Двигун", "md-sort-by": "engine" }
                       },
-                      [_vm._v(_vm._s(item.engine))]
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(item.engine) +
+                            "\n            "
+                        )
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
                       "md-table-cell",
                       { attrs: { "md-label": "Колір", "md-sort-by": "color" } },
-                      [_vm._v(_vm._s(item.color))]
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(item.color) +
+                            "\n            "
+                        )
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
@@ -47118,7 +47180,13 @@ var render = function() {
                           "md-sort-by": "transmission"
                         }
                       },
-                      [_vm._v(_vm._s(item.transmission))]
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(item.transmission) +
+                            "\n            "
+                        )
+                      ]
                     ),
                     _vm._v(" "),
                     item.make_now === 0
@@ -47130,7 +47198,13 @@ var render = function() {
                               "md-sort-by": "production_year"
                             }
                           },
-                          [_vm._v(_vm._s(item.production_year))]
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(item.production_year) +
+                                "\n            "
+                            )
+                          ]
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -47143,7 +47217,7 @@ var render = function() {
                               "md-sort-by": "production_year"
                             }
                           },
-                          [_vm._v("Вигот.")]
+                          [_vm._v("\n                Вигот.\n            ")]
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -47155,7 +47229,13 @@ var render = function() {
                           "md-sort-by": "workshop_name"
                         }
                       },
-                      [_vm._v(_vm._s(item.workshop_name))]
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(item.workshop_name) +
+                            "\n            "
+                        )
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
@@ -49151,7 +49231,7 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" }, [_vm._v("dd.mm.yyyy")])
+          _c("span", { staticClass: "md-helper-text" }, [_vm._v("yyyy-mm-dd")])
         ],
         1
       ),
@@ -49432,12 +49512,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     created: function created() {
-        this.fetchCars();
+        this.fetchCar();
         this.fetchWorkshops();
     },
 
     methods: {
-        fetchCars: function fetchCars() {
+        fetchCar: function fetchCar() {
             var _this = this;
 
             var uri = '/car/' + this.carId;
@@ -49445,21 +49525,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.car = response.data;
             });
         },
-
         updateCar: function updateCar() {
-            var _this2 = this;
-
             var uri = '/car/' + this.carId;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put(uri, this.car).then(function (response) {
-                _this2.$router.push({ name: 'Transport' });
-            });
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put(uri, this.car);
             this.edited = true;
         },
         fetchWorkshops: function fetchWorkshops() {
-            var _this3 = this;
+            var _this2 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/workshop').then(function (response) {
-                _this3.workshops = response.data.workshops;
+                _this2.workshops = response.data.workshops;
             });
         }
     }
@@ -49650,7 +49725,7 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" }, [_vm._v("dd.mm.yyyy")])
+          _c("span", { staticClass: "md-helper-text" }, [_vm._v("yyyy-mm-dd")])
         ],
         1
       ),
@@ -50852,6 +50927,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.motorcycle.make_now) this.motorcycle.make_now = 1;else this.motorcycle.make_now = 0;
             if (this.motorcycle.stroller) this.motorcycle.stroller = 1;else this.motorcycle.stroller = 0;
+
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/motorcycle', this.motorcycle).then(function (response) {
                 _this.motorcycles.push(response.data.motorcycle);
                 _this.added = true;
@@ -51295,18 +51371,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         updateMotorcycle: function updateMotorcycle() {
-            var _this2 = this;
-
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/motorcycle/' + this.motorcycleId, this.motorcycle).then(function (response) {
-                _this2.$router.push({ name: 'Transport' });
-                _this2.edited = true;
-            });
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/motorcycle/' + this.motorcycleId, this.motorcycle);
+            this.edited = true;
         },
         fetchWorkshops: function fetchWorkshops() {
-            var _this3 = this;
+            var _this2 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/workshop').then(function (response) {
-                _this3.workshops = response.data.workshops;
+                _this2.workshops = response.data.workshops;
             });
         }
     }
@@ -52295,18 +52367,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         updateLorry: function updateLorry() {
-            var _this2 = this;
-
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/lorry/' + this.lorryId, this.lorry).then(function (response) {
-                _this2.$router.push({ name: 'Transport' });
-            });
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/lorry/' + this.lorryId, this.lorry);
             this.edited = true;
         },
         fetchWorkshops: function fetchWorkshops() {
-            var _this3 = this;
+            var _this2 = this;
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/workshop').then(function (response) {
-                _this3.workshops = response.data.workshops;
+                _this2.workshops = response.data.workshops;
             });
         }
     }
@@ -53339,13 +53407,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
-			workshops: []
+			workshops: [],
+			engineers: [],
+			engineer: {},
+			added: false
 		};
 	},
 	created: function created() {
@@ -53356,8 +53442,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		fetchWorkshops: function fetchWorkshops() {
 			var _this = this;
 
-			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('workshop').then(function (response) {
-				_this.workshops = response.workshops;
+			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/workshop', this.workshop).then(function (response) {
+				_this.workshops = response.data.workshops;
+			});
+		},
+		createEngineer: function createEngineer() {
+			var _this2 = this;
+
+			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/engineer', this.engineer).then(function (response) {
+				_this2.engineers.push(response.data.engineer);
+				_this2.added = true;
 			});
 		}
 	}
@@ -53375,12 +53469,37 @@ var render = function() {
     "div",
     { staticClass: "engineer-add" },
     [
+      _c("md-dialog-alert", {
+        staticClass: "dialog-alert",
+        attrs: {
+          "md-active": _vm.added,
+          "md-title": "Додано!",
+          "md-content": "Ваші дані успішно внесено до бази даних"
+        },
+        on: {
+          "update:mdActive": function($event) {
+            _vm.added = $event
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("span", { staticClass: "md-display-1" }, [_vm._v("Додати інженера")]),
+      _vm._v(" "),
       _c(
         "md-field",
         [
           _c("label", [_vm._v("Прізвище")]),
           _vm._v(" "),
-          _c("md-input", { attrs: { name: "last-name" } })
+          _c("md-input", {
+            attrs: { name: "last-name" },
+            model: {
+              value: _vm.engineer.last_name,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "last_name", $$v)
+              },
+              expression: "engineer.last_name"
+            }
+          })
         ],
         1
       ),
@@ -53390,7 +53509,16 @@ var render = function() {
         [
           _c("label", [_vm._v("Ім'я")]),
           _vm._v(" "),
-          _c("md-input", { attrs: { name: "first-name" } })
+          _c("md-input", {
+            attrs: { name: "first-name" },
+            model: {
+              value: _vm.engineer.first_name,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "first_name", $$v)
+              },
+              expression: "engineer.first_name"
+            }
+          })
         ],
         1
       ),
@@ -53400,7 +53528,16 @@ var render = function() {
         [
           _c("label", [_vm._v("По батькові")]),
           _vm._v(" "),
-          _c("md-input", { attrs: { name: "middle-name" } })
+          _c("md-input", {
+            attrs: { name: "middle-name" },
+            model: {
+              value: _vm.engineer.middle_name,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "middle_name", $$v)
+              },
+              expression: "engineer.middle_name"
+            }
+          })
         ],
         1
       ),
@@ -53410,7 +53547,16 @@ var render = function() {
         [
           _c("label", [_vm._v("Моб. телефон")]),
           _vm._v(" "),
-          _c("md-input", { attrs: { name: "phone-number" } })
+          _c("md-input", {
+            attrs: { name: "phone-number" },
+            model: {
+              value: _vm.engineer.phone_number,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "phone_number", $$v)
+              },
+              expression: "engineer.phone_number"
+            }
+          })
         ],
         1
       ),
@@ -53420,7 +53566,16 @@ var render = function() {
         [
           _c("label", [_vm._v("Персональний номер")]),
           _vm._v(" "),
-          _c("md-input", { attrs: { name: "personal-number" } })
+          _c("md-input", {
+            attrs: { name: "personal-number" },
+            model: {
+              value: _vm.engineer.personal_number,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "personal_number", $$v)
+              },
+              expression: "engineer.personal_number"
+            }
+          })
         ],
         1
       ),
@@ -53430,7 +53585,16 @@ var render = function() {
         [
           _c("label", [_vm._v("Домашня адреса")]),
           _vm._v(" "),
-          _c("md-input", { attrs: { name: "home-adress" } })
+          _c("md-input", {
+            attrs: { name: "home-adress" },
+            model: {
+              value: _vm.engineer.home_address,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "home_address", $$v)
+              },
+              expression: "engineer.home_address"
+            }
+          })
         ],
         1
       ),
@@ -53442,12 +53606,27 @@ var render = function() {
           _vm._v(" "),
           _c(
             "md-select",
+            {
+              model: {
+                value: _vm.engineer.category,
+                callback: function($$v) {
+                  _vm.$set(_vm.engineer, "category", $$v)
+                },
+                expression: "engineer.category"
+              }
+            },
             [
-              _c("md-option", [_vm._v("Інженер")]),
+              _c("md-option", { attrs: { value: "Інженер" } }, [
+                _vm._v("Інженер")
+              ]),
               _vm._v(" "),
-              _c("md-option", [_vm._v("Технолог")]),
+              _c("md-option", { attrs: { value: "Технолог" } }, [
+                _vm._v("Технолог")
+              ]),
               _vm._v(" "),
-              _c("md-option", [_vm._v("Технік")])
+              _c("md-option", { attrs: { value: "Технік" } }, [
+                _vm._v("Технік")
+              ])
             ],
             1
           )
@@ -53455,15 +53634,65 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("md-datepicker"),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Дата прийняття на роботу")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.engineer.employment_date,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "employment_date", $$v)
+              },
+              expression: "engineer.employment_date"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" }, [_vm._v("yyyy-mm-dd")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Цех")]),
+          _vm._v(" "),
+          _c(
+            "md-select",
+            {
+              attrs: { name: "workshop_id" },
+              model: {
+                value: _vm.engineer.workshop_id,
+                callback: function($$v) {
+                  _vm.$set(_vm.engineer, "workshop_id", $$v)
+                },
+                expression: "engineer.workshop_id"
+              }
+            },
+            _vm._l(_vm.workshops, function(workshop) {
+              return _c("md-option", { attrs: { value: workshop.id } }, [
+                _vm._v(_vm._s(workshop.workshop_name))
+              ])
+            })
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("md-button", { staticClass: "md-raised md-accent" }, [
         _vm._v("Назад")
       ]),
       _vm._v(" "),
-      _c("md-button", { staticClass: "md-raised md-primary" }, [
-        _vm._v("Додати")
-      ])
+      _c(
+        "md-button",
+        {
+          staticClass: "md-raised md-primary",
+          on: { click: _vm.createEngineer }
+        },
+        [_vm._v("Додати")]
+      )
     ],
     1
   )
@@ -53483,15 +53712,19 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(145)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(144)
 /* template */
 var __vue_template__ = __webpack_require__(123)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -53533,7 +53766,274 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "engineer-edit" })
+  return _c(
+    "div",
+    { staticClass: "engineer-edit" },
+    [
+      _c("md-dialog-alert", {
+        staticClass: "dialog-alert",
+        attrs: {
+          "md-active": _vm.added,
+          "md-title": "Додано!",
+          "md-content": "Ваші дані успішно оновлено"
+        },
+        on: {
+          "update:mdActive": function($event) {
+            _vm.added = $event
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("span", { staticClass: "md-display-1" }, [_vm._v("Редагування")]),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Прізвище")]),
+          _vm._v(" "),
+          _c("md-input", {
+            attrs: { name: "last-name" },
+            model: {
+              value: _vm.engineer.last_name,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "last_name", $$v)
+              },
+              expression: "engineer.last_name"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Ім'я")]),
+          _vm._v(" "),
+          _c("md-input", {
+            attrs: { name: "first-name" },
+            model: {
+              value: _vm.engineer.first_name,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "first_name", $$v)
+              },
+              expression: "engineer.first_name"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("По батькові")]),
+          _vm._v(" "),
+          _c("md-input", {
+            attrs: { name: "middle-name" },
+            model: {
+              value: _vm.engineer.middle_name,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "middle_name", $$v)
+              },
+              expression: "engineer.middle_name"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Моб. телефон")]),
+          _vm._v(" "),
+          _c("md-input", {
+            attrs: { name: "phone-number" },
+            model: {
+              value: _vm.engineer.phone_number,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "phone_number", $$v)
+              },
+              expression: "engineer.phone_number"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Персональний номер")]),
+          _vm._v(" "),
+          _c("md-input", {
+            attrs: { name: "personal-number" },
+            model: {
+              value: _vm.engineer.personal_number,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "personal_number", $$v)
+              },
+              expression: "engineer.personal_number"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Домашня адреса")]),
+          _vm._v(" "),
+          _c("md-input", {
+            attrs: { name: "home-adress" },
+            model: {
+              value: _vm.engineer.home_address,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "home_address", $$v)
+              },
+              expression: "engineer.home_address"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Категорія")]),
+          _vm._v(" "),
+          _c(
+            "md-select",
+            {
+              model: {
+                value: _vm.engineer.category,
+                callback: function($$v) {
+                  _vm.$set(_vm.engineer, "category", $$v)
+                },
+                expression: "engineer.category"
+              }
+            },
+            [
+              _c("md-option", { attrs: { value: "Інженер" } }, [
+                _vm._v("Інженер")
+              ]),
+              _vm._v(" "),
+              _c("md-option", { attrs: { value: "Технолог" } }, [
+                _vm._v("Технолог")
+              ]),
+              _vm._v(" "),
+              _c("md-option", { attrs: { value: "Технік" } }, [
+                _vm._v("Технік")
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Посада")]),
+          _vm._v(" "),
+          _c(
+            "md-select",
+            {
+              model: {
+                value: _vm.engineer.position,
+                callback: function($$v) {
+                  _vm.$set(_vm.engineer, "position", $$v)
+                },
+                expression: "engineer.position"
+              }
+            },
+            [
+              _c("md-option", { attrs: { value: "" } }, [_vm._v("Не вказано")]),
+              _vm._v(" "),
+              _c("md-option", { attrs: { value: "Майстер" } }, [
+                _vm._v("Майстер")
+              ]),
+              _vm._v(" "),
+              _c("md-option", { attrs: { value: "Начальник ділянки" } }, [
+                _vm._v("Начальник ділянки")
+              ]),
+              _vm._v(" "),
+              _c("md-option", { attrs: { value: "Начальник цеху" } }, [
+                _vm._v("Начальник цеху")
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Дата прийняття на роботу")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.engineer.employment_date,
+              callback: function($$v) {
+                _vm.$set(_vm.engineer, "employment_date", $$v)
+              },
+              expression: "engineer.employment_date"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" }, [_vm._v("yyyy-mm-dd")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Цех")]),
+          _vm._v(" "),
+          _c(
+            "md-select",
+            {
+              attrs: { name: "workshop_id" },
+              model: {
+                value: _vm.engineer.workshop_id,
+                callback: function($$v) {
+                  _vm.$set(_vm.engineer, "workshop_id", $$v)
+                },
+                expression: "engineer.workshop_id"
+              }
+            },
+            _vm._l(_vm.workshops, function(workshop) {
+              return _c("md-option", { attrs: { value: workshop.id } }, [
+                _vm._v(_vm._s(workshop.workshop_name))
+              ])
+            })
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("md-button", { staticClass: "md-raised md-accent" }, [
+        _vm._v("Назад")
+      ]),
+      _vm._v(" "),
+      _c(
+        "md-button",
+        {
+          staticClass: "md-raised md-primary",
+          on: { click: _vm.updateEngineer }
+        },
+        [_vm._v("Зберегти")]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -54583,7 +55083,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             workshops: [],
             engineers: [],
             engineer: {},
-            showSnackbar: false,
+            showSnackBar: false,
             engineerAdd: false,
             engineerEdit: false,
             engineerId: '',
@@ -54617,12 +55117,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         deleteEngineer: function deleteEngineer(engineer) {
-            var _this3 = this;
-
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/engineer/' + engineer.id).then(function (response) {
-                _this3.fetchEngineers();
-            });
-            this.showSnackbar = true;
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/engineer/' + engineer.id);
+            this.fetchEngineers();
+            this.showSnackBar = true;
         },
         edit: function edit(id) {
             this.engineerId = id;
@@ -54648,12 +55145,12 @@ var render = function() {
           attrs: {
             "md-position": "center",
             "md-duration": 5000,
-            "md-active": _vm.showSnackbar,
+            "md-active": _vm.showSnackBar,
             "md-persistent": ""
           },
           on: {
             "update:mdActive": function($event) {
-              _vm.showSnackbar = $event
+              _vm.showSnackBar = $event
             }
           }
         },
@@ -54666,7 +55163,7 @@ var render = function() {
               staticClass: "md-primary",
               on: {
                 click: function($event) {
-                  _vm.showSnackbar = false
+                  _vm.showSnackBar = false
                 }
               }
             },
@@ -54694,7 +55191,7 @@ var render = function() {
       _c(
         "md-dialog",
         {
-          staticClass: "md-dialog md-scrollbar",
+          staticClass: "form-dialog md-scrollbar",
           attrs: { "md-active": _vm.engineerEdit },
           on: {
             "update:mdActive": function($event) {
@@ -54984,6 +55481,170 @@ module.exports = Component.exports
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 143 */,
+/* 144 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['engineerId'],
+	data: function data() {
+		return {
+			added: false,
+			workshops: [],
+			engineer: {}
+		};
+	},
+	created: function created() {
+		this.fetchWorkshops();
+		this.fetchEngineer();
+	},
+
+	methods: {
+		fetchEngineer: function fetchEngineer() {
+			var _this = this;
+
+			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/engineer/' + this.engineerId).then(function (response) {
+				_this.engineer = response.data;
+			});
+		},
+		updateEngineer: function updateEngineer() {
+			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/engineer/' + this.engineerId, this.engineer);
+			this.added = true;
+		},
+		fetchWorkshops: function fetchWorkshops() {
+			var _this2 = this;
+
+			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/workshop').then(function (response) {
+				_this2.workshops = response.data.workshops;
+			});
+		}
+	}
+});
+
+/***/ }),
+/* 145 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(146);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("bd8a0d24", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-111d5368\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EngineerEdit.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-111d5368\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EngineerEdit.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 146 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.md-select-menu {\n\tz-index: 200;\n}\n.dialog-alert {\n\tz-index: 999;\n}\n.md-datepicker-dialog {\n\ttop: 222px;\n\tz-index: 999;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

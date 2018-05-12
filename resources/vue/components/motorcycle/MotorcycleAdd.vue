@@ -76,6 +76,7 @@
                 else this.motorcycle.make_now = 0;
                 if (this.motorcycle.stroller) this.motorcycle.stroller = 1;
                 else this.motorcycle.stroller = 0;
+
                 axios.post('/motorcycle', this.motorcycle).then(response => {
                     this.motorcycles.push(response.data.motorcycle);
                     this.added = true;

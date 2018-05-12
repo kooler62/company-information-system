@@ -102,9 +102,7 @@
                 })
             },
             updateLorry() {
-                axios.put('/lorry/' + this.lorryId, this.lorry).then(response => {
-                    this.$router.push({name: 'Transport'});
-                });
+                axios.put('/lorry/' + this.lorryId, this.lorry);
                 this.edited = true;
             },
             fetchWorkshops() {

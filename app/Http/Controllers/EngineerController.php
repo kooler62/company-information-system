@@ -81,7 +81,7 @@ class EngineerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $engineer = Engineer::firstOrFail($id);
+        $engineer = Engineer::findOrFail($id);
         $engineer->update($request->all());
 
         return response()->json([

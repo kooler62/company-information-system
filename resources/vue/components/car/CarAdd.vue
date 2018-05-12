@@ -51,7 +51,7 @@
         <md-field>
             <label>Дата випуску</label>
             <md-input v-model="car.production_year" ></md-input>
-            <span class="md-helper-text">dd.mm.yyyy</span>
+            <span class="md-helper-text">yyyy-mm-dd</span>
         </md-field>
 
         <md-checkbox v-model="car.make_now">Виготовляється зараз?</md-checkbox>

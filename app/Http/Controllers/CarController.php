@@ -16,8 +16,6 @@ class CarController extends Controller
         $cars = Car::all();
 
         foreach ($cars as $car) {
-            $car['production_year'] = DateTime::createFromFormat('Y-m-d', $car['production_year'])
-                ->format('d-m-Y');
             $car['workshop_name'] = $car->workshop->workshop_name;
         }
 
@@ -38,8 +36,7 @@ class CarController extends Controller
             'engine' => $request->input('engine'),
             'color' => $request->input('color'),
             'transmission' => $request->input('transmission'),
-            'production_year' => DateTime::createFromFormat('d-m-Y',
-                $request->input('production_year'))->format('Y-m-d'),
+            'production_year' => $request->input('production_year'),
             'man_capacity' => $request->input('man_capacity'),
             'make_now' => $request->input('make_now'),
             'workshop_id' => $request->input('workshop_id'),
@@ -57,10 +54,7 @@ class CarController extends Controller
      */
     public function edit($id)
     {
-        $car = Car::findOrFail($id);
-        $car['production_year'] = DateTime::createFromFormat('Y-m-d',
-            $car['production_year'])->format('d-m-Y');
-        return $car;
+        return Car::findOrFail($id);
     }
 
     /**
@@ -69,10 +63,7 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        $car = Car::findOrFail($id);
-        $car['production_year'] = DateTime::createFromFormat('Y-m-d',
-            $car['production_year'])->format('d-m-Y');
-        return $car;
+        return Car::findOrFail($id);
     }
 
     /**
@@ -83,8 +74,6 @@ class CarController extends Controller
     public function update(Request $request, $id)
     {
         $car = Car::findOrFail($id);
-        $request['production_year'] = DateTime::createFromFormat('d-m-Y',
-            $request['production_year'])->format('Y-m-d');
         $car->update($request->all());
 
         return response()->json([

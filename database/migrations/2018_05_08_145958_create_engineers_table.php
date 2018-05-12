@@ -24,7 +24,7 @@ class CreateEngineersTable extends Migration
             //категорія
             $table->string('category');
             //посада
-            $table->string('position');
+            $table->string('position')->nullable();
             $table->date('employment_date');
             $table->integer('workshop_id');
             $table->timestamps();

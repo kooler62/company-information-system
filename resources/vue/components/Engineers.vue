@@ -2,10 +2,10 @@
     <div>
         <md-snackbar md-position="center"
                      :md-duration="5000"
-                     :md-active.sync="showSnackbar"
+                     :md-active.sync="showSnackBar"
                      md-persistent>
             <span>Успішно видалено</span>
-            <md-button class="md-primary" @click="showSnackbar = false">Ок</md-button>
+            <md-button class="md-primary" @click="showSnackBar = false">Ок</md-button>
         </md-snackbar>
 
         <md-dialog :md-active.sync="engineerAdd"
@@ -14,7 +14,7 @@
         </md-dialog>
 
         <md-dialog :md-active.sync="engineerEdit"
-                   class="md-dialog md-scrollbar">
+                   class="form-dialog md-scrollbar">
             <engineer-edit :engineerId="engineerId"></engineer-edit>
         </md-dialog>
 
@@ -101,7 +101,7 @@
             workshops: [],
             engineers: [],
             engineer: {},
-            showSnackbar: false,
+            showSnackBar: false,
             engineerAdd: false,
             engineerEdit: false,
             engineerId: '',
@@ -129,10 +129,9 @@
                 })
             },
             deleteEngineer(engineer) {
-                axios.delete('/engineer/' + engineer.id).then(response => {
-                    this.fetchEngineers();
-                });
-                this.showSnackbar = true;
+                axios.delete('/engineer/' + engineer.id);
+                this.fetchEngineers();
+                this.showSnackBar = true;
             },
             edit(id) {
                 this.engineerId = id;

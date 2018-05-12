@@ -82,10 +82,8 @@
                 })
             },
             updateMotorcycle() {
-                axios.put('/motorcycle/' + this.motorcycleId, this.motorcycle).then(response => {
-                    this.$router.push({name: 'Transport'});
-                    this.edited = true;
-                });
+                axios.put('/motorcycle/' + this.motorcycleId, this.motorcycle);
+                this.edited = true;
             },
             fetchWorkshops() {
                 axios.get('/workshop').then(response => {

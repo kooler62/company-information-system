@@ -51,7 +51,7 @@
         <md-field>
             <label>Дата випуску</label>
             <md-input v-model="car.production_year" ></md-input>
-            <span class="md-helper-text">dd.mm.yyyy</span>
+            <span class="md-helper-text">yyyy-mm-dd</span>
         </md-field>
 
         <md-checkbox v-model="car.make_now">Виготовляється зараз?</md-checkbox>
@@ -91,21 +91,19 @@
             edited: false,
         }),
         created() {
-            this.fetchCars();
+            this.fetchCar();
             this.fetchWorkshops();
         },
         methods: {
-            fetchCars() {
+            fetchCar() {
                 let uri = '/car/' + this.carId;
-                axios.get(uri).then((response) => {
+                axios.get(uri).then(response => {
                     this.car = response.data;
                 });
             },
-            updateCar: function() {
+            updateCar() {
                 let uri = '/car/' + this.carId;
-                axios.put(uri, this.car).then((response) => {
-                    this.$router.push({name: 'Transport'});
-                });
+                axios.put(uri, this.car);
                 this.edited = true;
             },
             fetchWorkshops() {
