@@ -1,16 +1,29 @@
 <template>
     <div>
-        <md-dialog :md-active.sync="carAdd" class="form-dialog md-scrollbar">
+        <md-dialog :md-active.sync="carAdd"
+                   class="form-dialog md-scrollbar">
             <car-add></car-add>
         </md-dialog>
 
-        <md-dialog :md-active.sync="carEdit" class="form-dialog md-scrollbar">
+        <md-dialog :md-active.sync="carEdit"
+                   class="form-dialog md-scrollbar">
             <car-edit :carId="carId"></car-edit>
+        </md-dialog>
+
+        <md-dialog :md-active.sync="showTestLabs"
+                   class="form-dialog md-scrollbar">
+            <product-test-labs-list :productType="productType
+" :productId="productId">
+            </product-test-labs-list>
+
+            <md-dialog-actions>
+                <md-button class="md-primary" @click="showTestLabs = false">Закрити</md-button>
+            </md-dialog-actions>
         </md-dialog>
 
         <md-snackbar md-position="center"
                      :md-duration="5000"
-                     :md-active.sync="showSnackbar"
+                     :md-active.sync="showSnackBar"
                      md-persistent>
             <span>Успішно видалено</span>
             <md-button class="md-primary" @click="showSnackBar = false">Ок</md-button>
@@ -90,15 +103,23 @@
 
                 <md-table-cell md-label="Дії">
                     <md-button class="md-icon-button md-raised md-primary"
+                               @click="show(item.id)">
+                        <md-icon>view_list</md-icon>
+                        <md-tooltip md-delay="200">Список лабораторій які приймають участь у випробуванні</md-tooltip>
+                    </md-button>
+
+                    <md-button class="md-icon-button md-raised md-primary"
                                @click="edit(item.id)">
                         <md-icon>mode_edit</md-icon>
-                        <md-tooltip md-delay="300">Редагувати</md-tooltip>
+                        <md-tooltip md-delay="200">Редагувати</md-tooltip>
                     </md-button>
+
                     <md-button class="md-icon-button md-raised md-accent"
                                @click="deleteCar(item)">
                         <md-icon>remove</md-icon>
-                        <md-tooltip md-delay="300">Видалити</md-tooltip>
+                        <md-tooltip md-delay="200">Видалити</md-tooltip>
                     </md-button>
+
                 </md-table-cell>
             </md-table-row>
         </md-table>
@@ -127,7 +148,10 @@
             carAdd: false,
             carEdit: false,
             showSnackBar: false,
+            showTestLabs: false,
             carId: '',
+            productType: 'car',
+            productId: null
         }),
         created () {
             this.fetchCars();
@@ -151,6 +175,10 @@
             edit(id) {
                 this.carId = id;
                 this.carEdit = true;
+            },
+            show(id) {
+                this.productId = id;
+                this.showTestLabs = true;
             }
         },
     }

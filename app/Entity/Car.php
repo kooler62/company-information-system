@@ -30,4 +30,14 @@ class Car extends Model
     {
         return $this->belongsTo(Workshop::class);
     }
+
+    public function testLabs()
+    {
+        return $this->belongsToMany(
+            TestLab::class,
+            'cars_test_labs',
+            'car_id',
+            'test_lab_id'
+        );
+    }
 }

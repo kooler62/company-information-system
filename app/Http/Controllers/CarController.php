@@ -97,4 +97,18 @@ class CarController extends Controller
             'message' => 'Успішно видалено'
         ]);
     }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getTestLabs($id)
+    {
+        $car = Car::findOrFail($id);
+        $testLabs = $car->testLabs;
+
+        return response()->json([
+            'testLabs' => $testLabs
+        ]);
+    }
 }

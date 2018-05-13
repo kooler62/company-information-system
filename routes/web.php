@@ -32,3 +32,7 @@ Route::resource('/lorry', 'LorryController');
 Route::resource('/workshop', 'WorkshopController');
 
 Route::resource('/engineer', 'EngineerController');
+
+Route::resource('/test-labs', 'TestLabsController');
+
+Route::get('/car/{id}/workshops', 'CarController@getTestLabs');

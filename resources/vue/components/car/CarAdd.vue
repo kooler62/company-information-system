@@ -63,6 +63,13 @@
             </md-select>
         </md-field>
 
+        <md-field>
+            <label>Іспитові лабораторії</label>
+            <md-select multiple>
+                <md-option v-for="testLab in testLabs" :value="testLab.id">{{ testLab.name }}</md-option>
+            </md-select>
+        </md-field>
+
         <div class="buttons">
             <md-button class="md-raised md-accent">
                 <span><md-icon>arrow_back</md-icon></span>
@@ -82,10 +89,12 @@
             cars: [],
             workshops: [],
             car: {},
-            added: false
+            added: false,
+            testLabs: []
         }),
         created() {
             this.fetchWorkshops();
+            this.fetchTestLabs();
         },
         methods: {
             fetchWorkshops() {
@@ -105,6 +114,11 @@
                     console.log(error.message);
                 })
             },
+            fetchTestLabs() {
+                axios.get('/test-labs').then(response => {
+                    this.testLabs = response.data.testLabs;
+                })
+            }
         }
     }
 </script>

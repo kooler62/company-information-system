@@ -26,7 +26,8 @@ Vue.component('workshop-edit',   require('./components/workshop/WorkshopEdit'));
 Vue.component('transport-test',  require('./components/TransportTest'));
 Vue.component('engineer-add',    require('./components/engineers/EngineerAdd'));
 Vue.component('engineer-edit',   require('./components/engineers/EngineerEdit'));
-Vue.component('transport-production',   require('./components/TransportProduction'));
+Vue.component('product-test-labs-list',   require('./components/test-labs/ProductTestLabList'));
+Vue.component('transport-production',     require('./components/TransportProduction'));
 
 let AppLayout         = require('./components/App.vue');
 let Transport         = require('./components/Transport.vue');

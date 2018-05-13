@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Engineers;
 use Illuminate\Database\Eloquent\Model;
 
 class Workshop extends Model
@@ -16,16 +15,16 @@ class Workshop extends Model
 
     public function engineers()
     {
-        return $this->hasMany(Engineers::class);
+        return $this->hasMany(Engineer::class);
     }
 
     public function testLabs()
     {
         return $this->belongsToMany(
-            TestLabs::class,
+            TestLab::class,
             'workshop_test_labs',
-            'test_lab_id',
-            'workshop_id'
+            'workshop_id',
+            'test_lab_id'
         );
     }
 }

@@ -134,7 +134,7 @@
             },
             getTransport() {
                 this.cars = this.buses = [];
-                axios.get('/transport/', {
+                axios.get('/transport', {
                     params: {
                         workshops: this.selectedWorkshops,
                         makeNow: this.makeNow ? 1 : 0,
