@@ -4,16 +4,20 @@
             <md-table-toolbar>
                 <md-field>
                     <label>Тип виробу</label>
-                    <md-select>
-
+                    <md-select v-model="selectedType">
+                        <md-option>Автомобілі</md-option>
+                        <md-option>Автобуси</md-option>
+                        <md-option>Мотоцикли</md-option>
+                        <md-option>Вантажівки</md-option>
                     </md-select>
                 </md-field>
 
-
                 <md-field>
                     <label>Іспитова лабораторія</label>
-                    <md-select>
-
+                    <md-select v-model="selectedTestLabs">
+                        <md-option v-for="testLab in testLabs" :value="testLab.id">
+                            {{testLab.name}}
+                        </md-option>
                     </md-select>
                 </md-field>
 
@@ -27,7 +31,7 @@
                 </md-button>
                 <md-button class="md-raised md-primary">
                     <span><md-icon>done</md-icon></span>
-                    Показати
+                    Застосувати
                 </md-button>
             </md-table-toolbar>
         </md-table>
@@ -40,7 +44,20 @@
         data: () => ({
             dateStart: null,
             dateEnd: null,
-        })
+            selectedType: null,
+            selectedTestLabs: [],
+            testLabs: [],
+        }),
+        created() {
+            this.fetchTestLabs();
+        },
+        methods: {
+            fetchTestLabs() {
+                axios.get('/test-labs').then(response => {
+                    this.testLabs = response.data.testLabs;
+                })
+            }
+        }
     }
 
 </script>

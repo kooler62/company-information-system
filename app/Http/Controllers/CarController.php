@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Entity\Car;
-use DateTime;
 use Illuminate\Http\Request;
 
 class CarController extends Controller

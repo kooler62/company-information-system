@@ -21,11 +21,11 @@ class CreateWorkersTable extends Migration
             $table->string('phone_number');
             $table->integer('personal_number');
             $table->string('home_address');
-            //категорія
             $table->string('category');
             $table->string('is_brigadier');
             $table->date('employment_date');
             $table->integer('brigade_id');
+            $table->integer('workshop_id');
             $table->timestamps();
         });
     }

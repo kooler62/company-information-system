@@ -23,9 +23,7 @@
                 <md-field>
                     <label>Цех</label>
                     <md-select v-model="selectedWorkshops"
-                               @md-closed="fetchEngineers"
                                multiple>
-                        <md-option value="0">Всі</md-option>
                         <md-option v-for="workshop in workshops"
                                    :value="workshop.id">
                             {{ workshop.workshop_name }}
@@ -36,9 +34,7 @@
                 <md-field>
                     <label>Категорія</label>
                     <md-select v-model="selectedCategories"
-                               @md-closed="fetchEngineers"
                                multiple>
-                        <md-option value="0">Всі</md-option>
                         <md-option value="Інженер">Інженери</md-option>
                         <md-option value="Технолог">Технологи</md-option>
                         <md-option value="Технік">Техніки</md-option>
@@ -46,18 +42,19 @@
                 </md-field>
 
                 <md-button class="md-raised md-primary"
+                           @click="fetchEngineers">
+                <span>
+                    <md-icon>done</md-icon>
+                </span>
+                    Застосувати
+                </md-button>
+
+                <md-button class="md-raised md-primary"
                            @click="engineerAdd = true">
                     <span>
                         <md-icon>add</md-icon>
                     </span>
                     Додати інженера
-                </md-button>
-                <md-button class="md-raised md-primary"
-                           @click="fetchEngineers">
-                <span>
-                    <md-icon>refresh</md-icon>
-                </span>
-                    Оновити
                 </md-button>
             </md-table-toolbar>
         </md-table>
@@ -69,7 +66,7 @@
                         {{ engineer.first_name }}
                         {{ engineer.last_name }}
                     </div>
-                    <div class="md-subhead">{{ engineer.category }}</div>
+                    <div class="md-subhead">{{ engineer.workshop_name }}, {{ engineer.category }}</div>
                     <div class="md-subhead">{{ engineer.position }}</div>
                 </md-card-header-text>
 

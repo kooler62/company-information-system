@@ -35,4 +35,8 @@ Route::resource('/engineer', 'EngineerController');
 
 Route::resource('/test-labs', 'TestLabsController');
 
+Route::resource('/worker', 'WorkerController');
+
+Route::resource('/brigade', 'BrigadeController');
+
 Route::get('/car/{id}/workshops', 'CarController@getTestLabs');

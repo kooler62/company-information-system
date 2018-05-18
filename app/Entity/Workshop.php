@@ -18,6 +18,11 @@ class Workshop extends Model
         return $this->hasMany(Engineer::class);
     }
 
+    public function workers()
+    {
+        return $this->hasMany(Worker::class);
+    }
+
     public function testLabs()
     {
         return $this->belongsToMany(

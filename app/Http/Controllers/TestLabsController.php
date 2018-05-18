@@ -15,5 +15,4 @@ class TestLabsController extends Controller
             'testLabs' => $testLabs
         ]);
     }
-
 }

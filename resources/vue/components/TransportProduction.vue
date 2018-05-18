@@ -5,7 +5,6 @@
                 <md-field>
                     <label>Цех</label>
                     <md-select v-model="selectedWorkshops"
-                               @md-closed="getTransport"
                                multiple>
                         <md-option v-for="workshop in workshops"
                                    :value="workshop.id">
@@ -28,8 +27,7 @@
                 <md-datepicker v-model="dateStart"></md-datepicker>
                 <md-datepicker v-model="dateEnd"></md-datepicker>
 
-                <md-checkbox v-model="makeNow"
-                             @change="getTransport">
+                <md-checkbox v-model="makeNow">
                     Вир. зараз
                     <md-tooltip md-delay="300">Транспорт, який виготовляється зараз</md-tooltip>
                 </md-checkbox>
@@ -41,7 +39,7 @@
                 <md-button class="md-raised md-primary"
                            @click="getTransport">
                     <span><md-icon>done</md-icon></span>
-                    Показати
+                    Застосувати
                 </md-button>
             </md-table-toolbar>
 
@@ -154,7 +152,7 @@
 
 <style scoped>
     .md-field {
-        width: 200px;
+        width: 180px;
         margin-right: 10px;
     }
 </style>

@@ -13,8 +13,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(WorkshopTableSeeder::class);
         $this->call(TestLabTableSeeder::class);
+        $this->call(BrigadeTableSeeder::class);
         $this->call(CarTableSeeder::class);
         $this->call(EngineerTableSeeder::class);
         $this->call(CarTestLabTableSeeder::class);
+        $this->call(WorkerTableSeeder::class);
     }
 }

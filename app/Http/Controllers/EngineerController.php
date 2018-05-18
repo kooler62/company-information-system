@@ -18,6 +18,7 @@ class EngineerController extends Controller
         } else {
             $engineer = new Engineer();
             $engineers = $engineer
+                ->join('workshops', 'engineers.workshop_id', '=', 'workshops.id')
                 ->when(isset($request['workshops']), function($q) use($request) {
                     $q->whereIn('workshop_id', $request['workshops']);
                 })
