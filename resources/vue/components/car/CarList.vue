@@ -170,7 +170,7 @@
             deleteCar(car) {
                 axios.delete('/car/' + car.id);
                 this.fetchCars();
-                this.showSnackbar = true;
+                this.showSnackBar = true;
             },
             edit(id) {
                 this.carId = id;

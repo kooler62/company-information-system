@@ -22,16 +22,6 @@ class BrigadeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -39,29 +29,36 @@ class BrigadeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $brigade = Brigade::create([
+            'brigade_name' => $request->input('brigade_name')
+        ]);
+
+        return response()->json([
+            'brigade' => $brigade,
+            'message' => 'Успішно додано'
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
      */
     public function show($id)
     {
-        //
+        return Brigade::findOrFail($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
      */
     public function edit($id)
     {
-        //
+        return Brigade::findOrFail($id);
     }
 
     /**
@@ -73,17 +70,23 @@ class BrigadeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $brigade = Brigade::findOrFail($id);
+        $brigade->update($request->all());
+
+        return response()->json([
+            'Успішно змінено'
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     * @return void
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        //
+        Brigade::findOrFail($id)->delete();
     }
 }

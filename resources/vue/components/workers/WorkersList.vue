@@ -10,19 +10,16 @@
 
         <md-dialog :md-active.sync="workerAdd"
                    class="form-dialog md-scrollbar">
-
+            <worker-add></worker-add>
         </md-dialog>
 
         <md-dialog :md-active.sync="workerEdit"
                    class="form-dialog md-scrollbar">
-            <engineer-edit :engineerId="workerId"></engineer-edit>
+            <worker-edit :workerId="workerId"></worker-edit>
         </md-dialog>
 
         <md-table v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
             <md-table-toolbar>
-                <div class="md-toolbar-section-start">
-                    <h1 class="md-title">Робітники</h1>
-                </div>
 
                 <md-field>
                     <label>Цех</label>
@@ -72,7 +69,7 @@
                 </md-button>
 
                 <md-field md-clearable class="md-toolbar-section-end" style="margin-left: 20px;">
-                    <md-input placeholder="Пошук по імені..." v-model="search" @input="searchOnTable" />
+                    <md-input placeholder="Пошук по прізвищу..." v-model="search" @input="searchOnTable" />
                 </md-field>
             </md-table-toolbar>
 
@@ -84,10 +81,15 @@
             <md-table-row slot="md-table-row" slot-scope="{ item }">
                 <md-table-cell md-label="Прізвище" md-sort-by="last_name">{{ item.last_name }}</md-table-cell>
                 <md-table-cell md-label="Ім'я" md-sort-by="first_name">{{ item.first_name }}</md-table-cell>
+                <md-table-cell md-label="Дата пр. на роботу" md-sort-by="employment_date">{{ item.employment_date }}</md-table-cell>
 
                 <md-table-cell md-label="Категорія" md-sort-by="last_name">{{ item.category }}</md-table-cell>
                 <md-table-cell md-label="Цех" md-sort-by="last_name">{{ item.workshop_name }}</md-table-cell>
                 <md-table-cell md-label="Бригада" md-sort-by="last_name">sd</md-table-cell>
+
+                <md-table-cell md-label="Фото">
+                    <img class="md-avatar" src="/assets/examples/avatar-2.jpg" alt="Avatar">
+                </md-table-cell>
 
                 <md-table-cell md-label="Дії">
                     <md-button class="md-icon-button md-raised md-primary"
@@ -120,7 +122,6 @@
         if (term) {
             return items.filter(item => toLower(item.last_name).includes(toLower(term)))
         }
-
         return items
     };
 
@@ -167,7 +168,7 @@
             deleteWorker(worker) {
                 axios.delete('/worker/' + worker.id);
                 this.fetchWorkers();
-                this.showSnackbar = true;
+                this.showSnackBar = true;
             },
             edit(id) {
                 this.workerId = id;
