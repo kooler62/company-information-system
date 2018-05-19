@@ -13,7 +13,7 @@ class CreateBrigadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('brigade', function (Blueprint $table) {
+        Schema::create('brigades', function (Blueprint $table) {
             $table->increments('id');
             $table->string('brigade_name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateBrigadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brigade');
+        Schema::dropIfExists('brigades');
     }
 }

@@ -33,13 +33,13 @@ Vue.component('brigade-add',     require('./components/brigade/BrigadeAdd'));
 Vue.component('brigade-edit',    require('./components/brigade/BrigadeEdit'));
 Vue.component('product-test-labs-list',   require('./components/test-labs/ProductTestLabList'));
 Vue.component('transport-production',     require('./components/TransportProduction'));
-Vue.component('worker-list',              require('./components/workers/WorkersList'));
+Vue.component('worker-list',              require('./components/workers/WorkerList'));
 
 let AppLayout         = require('./components/App.vue');
 let Transport         = require('./components/Transport.vue');
 let Engineers         = require('./components/Engineers');
 let Workers           = require('./components/Workers');
-let TestLabs          = require('./components/TestLabs');
+let TestLabs          = require('./components/TestLab');
 
 Vue.use(VueMaterial);
 Vue.use(VueRouter, VueAxios, axios);

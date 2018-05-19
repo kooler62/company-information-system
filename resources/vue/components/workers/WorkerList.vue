@@ -68,6 +68,12 @@
                     Додати робітника
                 </md-button>
 
+                <md-button class=" md-raised md-primary md-icon-button"
+                           @click="fetchWorkers"
+                           style="margin-left: 10px;">
+                    <md-icon>refresh</md-icon>
+                </md-button>
+
                 <md-field md-clearable class="md-toolbar-section-end" style="margin-left: 20px;">
                     <md-input placeholder="Пошук по прізвищу..." v-model="search" @input="searchOnTable" />
                 </md-field>
@@ -85,7 +91,7 @@
 
                 <md-table-cell md-label="Категорія" md-sort-by="last_name">{{ item.category }}</md-table-cell>
                 <md-table-cell md-label="Цех" md-sort-by="last_name">{{ item.workshop_name }}</md-table-cell>
-                <md-table-cell md-label="Бригада" md-sort-by="last_name">sd</md-table-cell>
+                <md-table-cell md-label="Бригада" md-sort-by="last_name">{{item.brigade_name}}</md-table-cell>
 
                 <md-table-cell md-label="Фото">
                     <img class="md-avatar" src="/assets/examples/avatar-2.jpg" alt="Avatar">
@@ -99,7 +105,7 @@
                     </md-button>
 
                     <md-button class="md-icon-button md-raised md-accent"
-                               @click="deleteWorker(item)">
+                               @click="deleteWorker(item.id)">
                         <md-icon>remove</md-icon>
                         <md-tooltip md-delay="200">Видалити</md-tooltip>
                     </md-button>
@@ -155,7 +161,6 @@
                     this.workers = response.data.workers;
                     this.searched= response.data.workers;
                 });
-
             },
             fetchBrigades() {
                 axios.get('/brigade').then(response => {
@@ -165,9 +170,10 @@
             searchOnTable () {
                 this.searched = searchByName(this.workers, this.search)
             },
-            deleteWorker(worker) {
-                axios.delete('/worker/' + worker.id);
-                this.fetchWorkers();
+            deleteWorker(id) {
+                axios.delete('/worker/' + id).then(response => {
+                    this.fetchWorkers();
+                });
                 this.showSnackBar = true;
             },
             edit(id) {

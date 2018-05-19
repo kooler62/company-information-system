@@ -12,7 +12,8 @@
 .ws-add,
 .ws-edit,
 .engineer-add,
-.engineer-edit {
+.engineer-edit,
+.brigade-add {
   width: 1000px;
   margin: 0 auto;
 }

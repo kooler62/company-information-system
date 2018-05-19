@@ -12358,7 +12358,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(164);
+module.exports = __webpack_require__(170);
 
 
 /***/ }),
@@ -12404,19 +12404,19 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('transport-test', __webpac
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('engineer-add', __webpack_require__(120));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('engineer-edit', __webpack_require__(125));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('worker-add', __webpack_require__(130));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('worker-edit', __webpack_require__(131));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('brigade-list', __webpack_require__(132));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('brigade-add', __webpack_require__(133));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('brigade-edit', __webpack_require__(134));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('product-test-labs-list', __webpack_require__(135));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('transport-production', __webpack_require__(140));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('worker-list', __webpack_require__(145));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('worker-edit', __webpack_require__(133));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('brigade-list', __webpack_require__(134));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('brigade-add', __webpack_require__(137));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('brigade-edit', __webpack_require__(138));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('product-test-labs-list', __webpack_require__(139));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('transport-production', __webpack_require__(144));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('worker-list', __webpack_require__(149));
 
-var AppLayout = __webpack_require__(150);
-var Transport = __webpack_require__(154);
-var Engineers = __webpack_require__(156);
-var Workers = __webpack_require__(161);
-var TestLabs = __webpack_require__(163);
+var AppLayout = __webpack_require__(154);
+var Transport = __webpack_require__(158);
+var Engineers = __webpack_require__(160);
+var Workers = __webpack_require__(165);
+var TestLabs = __webpack_require__(167);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_material___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(VueRouter, VueAxios, __WEBPACK_IMPORTED_MODULE_3_axios__);
@@ -54574,15 +54574,20 @@ if (false) {
 /* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(172)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(131)
 /* template */
-var __vue_template__ = null
+var __vue_template__ = __webpack_require__(132)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -54597,22 +54602,496 @@ var Component = normalizeComponent(
 )
 Component.options.__file = "resources\\vue\\components\\workers\\WorkerAdd.vue"
 
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5d7cdb1e", Component.options)
+  } else {
+    hotAPI.reload("data-v-5d7cdb1e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
 module.exports = Component.exports
 
 
 /***/ }),
 /* 131 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            added: false,
+            form: {
+                is_brigadier: 0
+            },
+            brigades: [],
+            workshops: []
+        };
+    },
+    created: function created() {
+        this.fetchBrigades();
+        this.fetchWorkshops();
+    },
+
+    methods: {
+        fetchBrigades: function fetchBrigades() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/brigade').then(function (response) {
+                _this.brigades = response.data.brigades;
+            });
+        },
+        fetchWorkshops: function fetchWorkshops() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/workshop').then(function (response) {
+                _this2.workshops = response.data.workshops;
+            });
+        },
+        addWorker: function addWorker() {
+            var _this3 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/worker', this.form).then(function (response) {
+                _this3.added = true;
+                _this3.fetchWorkers();
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "worker-add" },
+    [
+      _c("md-dialog-alert", {
+        staticClass: "dialog-alert",
+        attrs: {
+          "md-active": _vm.added,
+          "md-title": "Додано!",
+          "md-content": "Ваші дані успішно внесено до бази даних"
+        },
+        on: {
+          "update:mdActive": function($event) {
+            _vm.added = $event
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("span", { staticClass: "md-display-1" }, [_vm._v("Додати робітника")]),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Прізвище")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.last_name,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "last_name", $$v)
+              },
+              expression: "form.last_name"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Ім'я")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.first_name,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "first_name", $$v)
+              },
+              expression: "form.first_name"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("По батькові")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.middle_name,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "middle_name", $$v)
+              },
+              expression: "form.middle_name"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Номер телефону")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.phone_number,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "phone_number", $$v)
+              },
+              expression: "form.phone_number"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Персональний номер")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.personal_number,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "personal_number", $$v)
+              },
+              expression: "form.personal_number"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Дом. адреса")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.home_address,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "home_address", $$v)
+              },
+              expression: "form.home_address"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Категорія")]),
+          _vm._v(" "),
+          _c(
+            "md-select",
+            {
+              model: {
+                value: _vm.form.category,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "category", $$v)
+                },
+                expression: "form.category"
+              }
+            },
+            [
+              _c("md-option", { attrs: { value: "Збирач" } }, [
+                _vm._v("Збирач")
+              ]),
+              _vm._v(" "),
+              _c("md-option", { attrs: { value: "Токар" } }, [_vm._v("Токар")]),
+              _vm._v(" "),
+              _c("md-option", { attrs: { value: "Слюсар" } }, [
+                _vm._v("Слюсар")
+              ]),
+              _vm._v(" "),
+              _c("md-option", { attrs: { value: "Зварник" } }, [
+                _vm._v("Зварник")
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Дата прийняття на роботу")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.employment_date,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "employment_date", $$v)
+              },
+              expression: "form.employment_date"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" }, [_vm._v("yyyy-mm-dd")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Бригада")]),
+          _vm._v(" "),
+          _c(
+            "md-select",
+            {
+              model: {
+                value: _vm.form.brigade_id,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "brigade_id", $$v)
+                },
+                expression: "form.brigade_id"
+              }
+            },
+            _vm._l(_vm.brigades, function(brigade) {
+              return _c("md-option", { attrs: { value: brigade.id } }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(brigade.brigade_name) +
+                    "\n            "
+                )
+              ])
+            })
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Цех")]),
+          _vm._v(" "),
+          _c(
+            "md-select",
+            {
+              model: {
+                value: _vm.form.workshop_id,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "workshop_id", $$v)
+                },
+                expression: "form.workshop_id"
+              }
+            },
+            _vm._l(_vm.workshops, function(workshop) {
+              return _c("md-option", { attrs: { value: workshop.id } }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(workshop.workshop_name) +
+                    "\n            "
+                )
+              ])
+            })
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "buttons" },
+        [
+          _c("md-button", { staticClass: "md-raised md-accent" }, [
+            _c("span", [_c("md-icon", [_vm._v("arrow_back")])], 1),
+            _vm._v("\n            Назад\n        ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "md-button",
+            {
+              staticClass: "md-raised md-primary",
+              on: {
+                click: function($event) {
+                  _vm.addWorker()
+                }
+              }
+            },
+            [
+              _c("span", [_c("md-icon", [_vm._v("done")])], 1),
+              _vm._v("\n            Додати\n        ")
+            ]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5d7cdb1e", module.exports)
+  }
+}
+
+/***/ }),
+/* 133 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(174)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(176)
 /* template */
-var __vue_template__ = null
+var __vue_template__ = __webpack_require__(177)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -54627,23 +55106,43 @@ var Component = normalizeComponent(
 )
 Component.options.__file = "resources\\vue\\components\\workers\\WorkerEdit.vue"
 
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-02b762ea", Component.options)
+  } else {
+    hotAPI.reload("data-v-02b762ea", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
 module.exports = Component.exports
 
 
 /***/ }),
-/* 132 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(180)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(166)
+var __vue_script__ = __webpack_require__(135)
 /* template */
-var __vue_template__ = __webpack_require__(167)
+var __vue_template__ = __webpack_require__(136)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -54678,14 +55177,334 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 133 */
+/* 135 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            brigades: [],
+            showSnackBar: false,
+            brigadeAdd: null,
+            brigadeEdit: null,
+            brigadeId: null
+        };
+    },
+    created: function created() {
+        this.fetchBrigades();
+    },
+
+    methods: {
+        fetchBrigades: function fetchBrigades() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/brigade').then(function (response) {
+                _this.brigades = response.data.brigades;
+            });
+        },
+        deleteBrigade: function deleteBrigade(brigade) {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/brigade/' + brigade.id).then(function (response) {
+                _this2.fetchBrigades();
+            });
+            this.showSnackBar = true;
+        },
+        edit: function edit(id) {
+            this.brigadeId = id;
+            this.brigadeEdit = true;
+        }
+    }
+});
+
+/***/ }),
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "md-snackbar",
+        {
+          attrs: {
+            "md-position": "center",
+            "md-duration": 5000,
+            "md-active": _vm.showSnackBar,
+            "md-persistent": ""
+          },
+          on: {
+            "update:mdActive": function($event) {
+              _vm.showSnackBar = $event
+            }
+          }
+        },
+        [
+          _c("span", [_vm._v("Успішно видалено")]),
+          _vm._v(" "),
+          _c(
+            "md-button",
+            {
+              staticClass: "md-primary",
+              on: {
+                click: function($event) {
+                  _vm.showSnackBar = false
+                }
+              }
+            },
+            [_vm._v("Ок")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-dialog",
+        {
+          staticClass: "form-dialog md-scrollbar",
+          attrs: { "md-active": _vm.brigadeAdd },
+          on: {
+            "update:mdActive": function($event) {
+              _vm.brigadeAdd = $event
+            }
+          }
+        },
+        [_c("brigade-add")],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-dialog",
+        {
+          staticClass: "form-dialog md-scrollbar",
+          attrs: { "md-active": _vm.brigadeEdit },
+          on: {
+            "update:mdActive": function($event) {
+              _vm.brigadeEdit = $event
+            }
+          }
+        },
+        [_c("brigade-edit", { attrs: { brigadeId: _vm.brigadeId } })],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-table",
+        { staticClass: "table", attrs: { "md-card": "" } },
+        [
+          _c(
+            "md-table-toolbar",
+            [
+              _c("h1", { staticClass: "md-title" }, [_vm._v("Бригади")]),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-raised md-primary",
+                  on: {
+                    click: function($event) {
+                      _vm.brigadeAdd = true
+                    }
+                  }
+                },
+                [
+                  _c("span", [_c("md-icon", [_vm._v("add")])], 1),
+                  _vm._v("\n                Додати бригаду\n            ")
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-raised md-primary",
+                  on: {
+                    click: function($event) {
+                      _vm.fetchBrigades()
+                    }
+                  }
+                },
+                [
+                  _c("span", [_c("md-icon", [_vm._v("refresh")])], 1),
+                  _vm._v("\n                Оновити\n            ")
+                ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-table-row",
+            [
+              _c("md-table-head", { attrs: { "md-numeric": "" } }, [
+                _vm._v("№")
+              ]),
+              _vm._v(" "),
+              _c("md-table-head", [_vm._v("Назва")]),
+              _vm._v(" "),
+              _c("md-table-head", [_vm._v("Дії")])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.brigades, function(brigade, index) {
+            return _c(
+              "md-table-row",
+              [
+                _c("md-table-cell", { attrs: { "md-numeric": "" } }, [
+                  _vm._v(_vm._s(index + 1))
+                ]),
+                _vm._v(" "),
+                _c("md-table-cell", [_vm._v(_vm._s(brigade.brigade_name))]),
+                _vm._v(" "),
+                _c(
+                  "md-table-cell",
+                  [
+                    _c(
+                      "md-button",
+                      {
+                        staticClass: "md-icon-button md-raised md-primary",
+                        on: {
+                          click: function($event) {
+                            _vm.edit(brigade.id)
+                          }
+                        }
+                      },
+                      [
+                        _c("md-icon", [_vm._v("mode_edit")]),
+                        _vm._v(" "),
+                        _c("md-tooltip", { attrs: { "md-delay": "200" } }, [
+                          _vm._v("Редагувати")
+                        ])
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "md-button",
+                      {
+                        staticClass: "md-icon-button md-raised md-accent",
+                        on: {
+                          click: function($event) {
+                            _vm.deleteBrigade(brigade)
+                          }
+                        }
+                      },
+                      [
+                        _c("md-icon", [_vm._v("remove")]),
+                        _vm._v(" "),
+                        _c("md-tooltip", { attrs: { "md-delay": "200" } }, [
+                          _vm._v("Видалити")
+                        ])
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-44f5fa1f", module.exports)
+  }
+}
+
+/***/ }),
+/* 137 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(178)
 /* template */
-var __vue_template__ = null
+var __vue_template__ = __webpack_require__(179)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54704,18 +55523,35 @@ var Component = normalizeComponent(
 )
 Component.options.__file = "resources\\vue\\components\\brigade\\BrigadeAdd.vue"
 
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6887fbb0", Component.options)
+  } else {
+    hotAPI.reload("data-v-6887fbb0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
 module.exports = Component.exports
 
 
 /***/ }),
-/* 134 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(182)
 /* template */
-var __vue_template__ = null
+var __vue_template__ = __webpack_require__(183)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54734,23 +55570,39 @@ var Component = normalizeComponent(
 )
 Component.options.__file = "resources\\vue\\components\\brigade\\BrigadeEdit.vue"
 
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-543e218b", Component.options)
+  } else {
+    hotAPI.reload("data-v-543e218b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
 module.exports = Component.exports
 
 
 /***/ }),
-/* 135 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(136)
+  __webpack_require__(140)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(138)
+var __vue_script__ = __webpack_require__(142)
 /* template */
-var __vue_template__ = __webpack_require__(139)
+var __vue_template__ = __webpack_require__(143)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54789,13 +55641,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 136 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(137);
+var content = __webpack_require__(141);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54815,7 +55667,7 @@ if(false) {
 }
 
 /***/ }),
-/* 137 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -54829,7 +55681,7 @@ exports.push([module.i, "\n.md-card[data-v-120a2140] {\n  width: 320px;\n  margi
 
 
 /***/ }),
-/* 138 */
+/* 142 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54877,7 +55729,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 139 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54923,19 +55775,19 @@ if (false) {
 }
 
 /***/ }),
-/* 140 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(141)
+  __webpack_require__(145)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(143)
+var __vue_script__ = __webpack_require__(147)
 /* template */
-var __vue_template__ = __webpack_require__(144)
+var __vue_template__ = __webpack_require__(148)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54974,13 +55826,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 141 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(142);
+var content = __webpack_require__(146);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -55000,7 +55852,7 @@ if(false) {
 }
 
 /***/ }),
-/* 142 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -55014,7 +55866,7 @@ exports.push([module.i, "\n.md-field[data-v-e505a1d2] {\n    width: 180px;\n    
 
 
 /***/ }),
-/* 143 */
+/* 147 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55180,7 +56032,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 144 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55484,25 +56336,25 @@ if (false) {
 }
 
 /***/ }),
-/* 145 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(146)
+  __webpack_require__(150)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(148)
+var __vue_script__ = __webpack_require__(152)
 /* template */
-var __vue_template__ = __webpack_require__(149)
+var __vue_template__ = __webpack_require__(153)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-3d6997a1"
+var __vue_scopeId__ = "data-v-19218904"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -55513,7 +56365,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\vue\\components\\workers\\WorkersList.vue"
+Component.options.__file = "resources\\vue\\components\\workers\\WorkerList.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -55522,9 +56374,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d6997a1", Component.options)
+    hotAPI.createRecord("data-v-19218904", Component.options)
   } else {
-    hotAPI.reload("data-v-3d6997a1", Component.options)
+    hotAPI.reload("data-v-19218904", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -55535,23 +56387,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 146 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(147);
+var content = __webpack_require__(151);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("a33b96ee", content, false, {});
+var update = __webpack_require__(3)("0a92ae43", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d6997a1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkersList.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3d6997a1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkersList.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-19218904\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkerList.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-19218904\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkerList.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -55561,7 +56413,7 @@ if(false) {
 }
 
 /***/ }),
-/* 147 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -55569,19 +56421,25 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.md-field[data-v-3d6997a1] {\n    width: 180px;\n    margin-right: 10px;\n}\n.md-title[data-v-3d6997a1] {\n    font-size: 19px;\n}\n.form-dialog[data-v-3d6997a1] {\n    padding: 30px;\n    z-index: 100;\n    width: 1100px;\n    max-height: 600px;\n    overflow: auto;\n}\n", ""]);
+exports.push([module.i, "\n.md-field[data-v-19218904] {\n    width: 180px;\n    margin-right: 10px;\n}\n.md-title[data-v-19218904] {\n    font-size: 19px;\n}\n.form-dialog[data-v-19218904] {\n    padding: 30px;\n    z-index: 100;\n    width: 1100px;\n    max-height: 600px;\n    overflow: auto;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 148 */
+/* 152 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -55759,9 +56617,12 @@ var searchByName = function searchByName(items, term) {
         searchOnTable: function searchOnTable() {
             this.searched = searchByName(this.workers, this.search);
         },
-        deleteWorker: function deleteWorker(worker) {
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/worker/' + worker.id);
-            this.fetchWorkers();
+        deleteWorker: function deleteWorker(id) {
+            var _this4 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/worker/' + id).then(function (response) {
+                _this4.fetchWorkers();
+            });
             this.showSnackBar = true;
         },
         edit: function edit(id) {
@@ -55772,7 +56633,7 @@ var searchByName = function searchByName(items, term) {
 });
 
 /***/ }),
-/* 149 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55924,7 +56785,7 @@ var render = function() {
                           "md-sort-by": "last_name"
                         }
                       },
-                      [_vm._v("sd")]
+                      [_vm._v(_vm._s(item.brigade_name))]
                     ),
                     _vm._v(" "),
                     _c("md-table-cell", { attrs: { "md-label": "Фото" } }, [
@@ -55967,7 +56828,7 @@ var render = function() {
                             staticClass: "md-icon-button md-raised md-accent",
                             on: {
                               click: function($event) {
-                                _vm.deleteWorker(item)
+                                _vm.deleteWorker(item.id)
                               }
                             }
                           },
@@ -56119,6 +56980,17 @@ var render = function() {
               ),
               _vm._v(" "),
               _c(
+                "md-button",
+                {
+                  staticClass: " md-raised md-primary md-icon-button",
+                  staticStyle: { "margin-left": "10px" },
+                  on: { click: _vm.fetchWorkers }
+                },
+                [_c("md-icon", [_vm._v("refresh")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
                 "md-field",
                 {
                   staticClass: "md-toolbar-section-end",
@@ -56166,24 +57038,24 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3d6997a1", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-19218904", module.exports)
   }
 }
 
 /***/ }),
-/* 150 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(151)
+  __webpack_require__(155)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(153)
+var __vue_template__ = __webpack_require__(157)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56222,13 +57094,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 151 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(152);
+var content = __webpack_require__(156);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -56248,7 +57120,7 @@ if(false) {
 }
 
 /***/ }),
-/* 152 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -56262,7 +57134,7 @@ exports.push([module.i, "\n.content {\n    padding: 10px 16px;\n}\n.md-title {\n
 
 
 /***/ }),
-/* 153 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -56314,7 +57186,7 @@ if (false) {
 }
 
 /***/ }),
-/* 154 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -56322,7 +57194,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(155)
+var __vue_template__ = __webpack_require__(159)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56361,7 +57233,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 155 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -56441,19 +57313,19 @@ if (false) {
 }
 
 /***/ }),
-/* 156 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(157)
+  __webpack_require__(161)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(159)
+var __vue_script__ = __webpack_require__(163)
 /* template */
-var __vue_template__ = __webpack_require__(160)
+var __vue_template__ = __webpack_require__(164)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56492,13 +57364,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 157 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(158);
+var content = __webpack_require__(162);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -56518,7 +57390,7 @@ if(false) {
 }
 
 /***/ }),
-/* 158 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -56532,7 +57404,7 @@ exports.push([module.i, "\n.md-card[data-v-16a5d179] {\n    width: 320px;\n    m
 
 
 /***/ }),
-/* 159 */
+/* 163 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56686,7 +57558,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 160 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -56965,7 +57837,7 @@ if (false) {
 }
 
 /***/ }),
-/* 161 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -56973,7 +57845,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(162)
+var __vue_template__ = __webpack_require__(166)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -57012,7 +57884,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 162 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -57057,14 +57929,15 @@ if (false) {
 }
 
 /***/ }),
-/* 163 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(168)
 /* template */
-var __vue_template__ = null
+var __vue_template__ = __webpack_require__(169)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -57081,20 +57954,29 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\vue\\components\\TestLabs.vue"
+Component.options.__file = "resources\\vue\\components\\TestLab.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1edeacf0", Component.options)
+  } else {
+    hotAPI.reload("data-v-1edeacf0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
 
 module.exports = Component.exports
 
 
 /***/ }),
-/* 164 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 165 */,
-/* 166 */
+/* 168 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57169,27 +58051,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            brigades: [],
+            testLabs: [],
             showSnackBar: false,
-            brigadeAdd: null,
-            brigadeEdit: null,
-            brigadeId: null
+            testLabAdd: null,
+            testLabEdit: null,
+            testLabId: null
         };
     },
     created: function created() {
-        this.fetchBrigades();
+        this.fetchTestLabs();
     },
 
     methods: {
-        fetchBrigades: function fetchBrigades() {
+        fetchTestLabs: function fetchTestLabs() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/brigade').then(function (response) {
-                _this.brigades = response.data.brigades;
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/test-labs').then(function (response) {
+                _this.testLabs = response.data.testLabs;
             });
         },
-        deleteBrigade: function deleteBrigade(brigade) {
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/brigade/' + brigade.id);
+        deleteTestLab: function deleteTestLab(testLab) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/test-labs/' + testLab.id);
             this.fetchBrigades();
             this.showSnackBar = true;
         }
@@ -57197,7 +58079,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 167 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -57241,35 +58123,25 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c(
-        "md-dialog",
-        {
-          staticClass: "form-dialog md-scrollbar",
-          attrs: { "md-active": _vm.brigadeAdd },
-          on: {
-            "update:mdActive": function($event) {
-              _vm.brigadeAdd = $event
-            }
+      _c("md-dialog", {
+        staticClass: "form-dialog md-scrollbar",
+        attrs: { "md-active": _vm.testLabAdd },
+        on: {
+          "update:mdActive": function($event) {
+            _vm.testLabAdd = $event
           }
-        },
-        [_c("brigade-add")],
-        1
-      ),
+        }
+      }),
       _vm._v(" "),
-      _c(
-        "md-dialog",
-        {
-          staticClass: "form-dialog md-scrollbar",
-          attrs: { "md-active": _vm.brigadeEdit },
-          on: {
-            "update:mdActive": function($event) {
-              _vm.brigadeEdit = $event
-            }
+      _c("md-dialog", {
+        staticClass: "form-dialog md-scrollbar",
+        attrs: { "md-active": _vm.testLabEdit },
+        on: {
+          "update:mdActive": function($event) {
+            _vm.testLabEdit = $event
           }
-        },
-        [_c("brigade-edit", { attrs: { brigadeId: _vm.brigadeId } })],
-        1
-      ),
+        }
+      }),
       _vm._v(" "),
       _c(
         "md-table",
@@ -57278,39 +58150,19 @@ var render = function() {
           _c(
             "md-table-toolbar",
             [
-              _c("h1", { staticClass: "md-title" }, [_vm._v("Бригади")]),
+              _c("h1", { staticClass: "md-title" }, [
+                _vm._v("Іспитові лабораторії")
+              ]),
               _vm._v(" "),
-              _c(
-                "md-button",
-                {
-                  staticClass: "md-raised md-primary",
-                  on: {
-                    click: function($event) {
-                      _vm.brigadeAdd = true
-                    }
-                  }
-                },
-                [
-                  _c("span", [_c("md-icon", [_vm._v("add")])], 1),
-                  _vm._v("\n                Додати бригаду\n            ")
-                ]
-              ),
+              _c("md-button", { staticClass: "md-raised md-primary" }, [
+                _c("span", [_c("md-icon", [_vm._v("add")])], 1),
+                _vm._v("\n                Додати лабораторію\n            ")
+              ]),
               _vm._v(" "),
-              _c(
-                "md-button",
-                {
-                  staticClass: "md-raised md-primary",
-                  on: {
-                    click: function($event) {
-                      _vm.fetchBrigades()
-                    }
-                  }
-                },
-                [
-                  _c("span", [_c("md-icon", [_vm._v("refresh")])], 1),
-                  _vm._v("\n                Оновити\n            ")
-                ]
-              )
+              _c("md-button", { staticClass: "md-raised md-primary" }, [
+                _c("span", [_c("md-icon", [_vm._v("refresh")])], 1),
+                _vm._v("\n                Оновити\n            ")
+              ])
             ],
             1
           ),
@@ -57329,7 +58181,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _vm._l(_vm.brigades, function(brigade, index) {
+          _vm._l(_vm.testLabs, function(testLab, index) {
             return _c(
               "md-table-row",
               [
@@ -57337,7 +58189,7 @@ var render = function() {
                   _vm._v(_vm._s(index + 1))
                 ]),
                 _vm._v(" "),
-                _c("md-table-cell", [_vm._v(_vm._s(brigade.brigade_name))]),
+                _c("md-table-cell", [_vm._v(_vm._s(testLab.name))]),
                 _vm._v(" "),
                 _c(
                   "md-table-cell",
@@ -57357,14 +58209,7 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "md-button",
-                      {
-                        staticClass: "md-icon-button md-raised md-accent",
-                        on: {
-                          click: function($event) {
-                            _vm.deleteBrigade(brigade)
-                          }
-                        }
-                      },
+                      { staticClass: "md-icon-button md-raised md-accent" },
                       [
                         _c("md-icon", [_vm._v("remove")]),
                         _vm._v(" "),
@@ -57394,7 +58239,874 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-44f5fa1f", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1edeacf0", module.exports)
+  }
+}
+
+/***/ }),
+/* 170 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 171 */,
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(173);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("3011f5dc", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5d7cdb1e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkerAdd.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5d7cdb1e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkerAdd.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 173 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.md-select-menu {\n  z-index: 200;\n}\n.dialog-alert {\n  z-index: 999;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 174 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(175);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("3961d3ac", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-02b762ea\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkerEdit.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-02b762ea\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkerEdit.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 175 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.md-select-menu {\n  z-index: 200;\n}\n.dialog-alert {\n  z-index: 999;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 176 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['workerId'],
+    data: function data() {
+        return {
+            edited: false,
+            form: {
+                is_brigadier: 0
+            },
+            brigades: [],
+            workshops: []
+        };
+    },
+    created: function created() {
+        this.fetchBrigades();
+        this.fetchWorkshops();
+        this.fetchWorker();
+    },
+
+    methods: {
+        fetchBrigades: function fetchBrigades() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/brigade').then(function (response) {
+                _this.brigades = response.data.brigades;
+            });
+        },
+        fetchWorkshops: function fetchWorkshops() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/workshop').then(function (response) {
+                _this2.workshops = response.data.workshops;
+            });
+        },
+        fetchWorker: function fetchWorker() {
+            var _this3 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/worker/' + this.workerId).then(function (response) {
+                _this3.form = response.data;
+            });
+        },
+        updateWorker: function updateWorker() {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/worker/' + this.workerId, this.form);
+            this.edited = true;
+        }
+    }
+});
+
+/***/ }),
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "worker-add" },
+    [
+      _c("md-dialog-alert", {
+        staticClass: "dialog-alert",
+        attrs: {
+          "md-active": _vm.edited,
+          "md-title": "Додано!",
+          "md-content": "Ваші дані успішно оновлено"
+        },
+        on: {
+          "update:mdActive": function($event) {
+            _vm.edited = $event
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("span", { staticClass: "md-display-1" }, [_vm._v("Додати робітника")]),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Прізвище")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.last_name,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "last_name", $$v)
+              },
+              expression: "form.last_name"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Ім'я")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.first_name,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "first_name", $$v)
+              },
+              expression: "form.first_name"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("По батькові")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.middle_name,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "middle_name", $$v)
+              },
+              expression: "form.middle_name"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Номер телефону")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.phone_number,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "phone_number", $$v)
+              },
+              expression: "form.phone_number"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Персональний номер")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.personal_number,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "personal_number", $$v)
+              },
+              expression: "form.personal_number"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Дом. адреса")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.home_address,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "home_address", $$v)
+              },
+              expression: "form.home_address"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Категорія")]),
+          _vm._v(" "),
+          _c(
+            "md-select",
+            {
+              model: {
+                value: _vm.form.category,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "category", $$v)
+                },
+                expression: "form.category"
+              }
+            },
+            [
+              _c("md-option", { attrs: { value: "Збирач" } }, [
+                _vm._v("Збирач")
+              ]),
+              _vm._v(" "),
+              _c("md-option", { attrs: { value: "Токар" } }, [_vm._v("Токар")]),
+              _vm._v(" "),
+              _c("md-option", { attrs: { value: "Слюсар" } }, [
+                _vm._v("Слюсар")
+              ]),
+              _vm._v(" "),
+              _c("md-option", { attrs: { value: "Зварник" } }, [
+                _vm._v("Зварник")
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Дата прийняття на роботу")]),
+          _vm._v(" "),
+          _c("md-input", {
+            model: {
+              value: _vm.form.employment_date,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "employment_date", $$v)
+              },
+              expression: "form.employment_date"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "md-helper-text" }, [_vm._v("yyyy-mm-dd")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("md-field", [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.brigade_id,
+                expression: "form.brigade_id"
+              }
+            ],
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.form,
+                  "brigade_id",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          _vm._l(_vm.brigades, function(brigade) {
+            return _c("option", { domProps: { value: brigade.id } }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(brigade.brigade_name) +
+                  "\n            "
+              )
+            ])
+          })
+        )
+      ]),
+      _vm._v(" "),
+      _c("md-field", [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.workshop_id,
+                expression: "form.workshop_id"
+              }
+            ],
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.form,
+                  "workshop_id",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          _vm._l(_vm.workshops, function(workshop) {
+            return _c("option", { domProps: { value: workshop.id } }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(workshop.workshop_name) +
+                  "\n            "
+              )
+            ])
+          })
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "buttons" },
+        [
+          _c("md-button", { staticClass: "md-raised md-accent" }, [
+            _c("span", [_c("md-icon", [_vm._v("arrow_back")])], 1),
+            _vm._v("\n            Назад\n        ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "md-button",
+            {
+              staticClass: "md-raised md-primary",
+              on: {
+                click: function($event) {
+                  _vm.updateWorker()
+                }
+              }
+            },
+            [
+              _c("span", [_c("md-icon", [_vm._v("done")])], 1),
+              _vm._v("\n            Зберегти\n        ")
+            ]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-02b762ea", module.exports)
+  }
+}
+
+/***/ }),
+/* 178 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            added: false,
+            form: {}
+        };
+    },
+    methods: {
+        addBrigade: function addBrigade() {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/brigade', this.form);
+        }
+    }
+});
+
+/***/ }),
+/* 179 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "brigade-add" },
+    [
+      _c("md-dialog-alert", {
+        staticClass: "dialog-alert",
+        attrs: {
+          "md-active": _vm.added,
+          "md-title": "Додано!",
+          "md-content": "Ваші дані успішно внесено до бази даних"
+        },
+        on: {
+          "update:mdActive": function($event) {
+            _vm.added = $event
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("span", { staticClass: "md-display-1" }, [_vm._v("Додати бригаду")]),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Назва")]),
+          _vm._v(" "),
+          _c("md-input", {
+            attrs: { required: "" },
+            model: {
+              value: _vm.form.brigade_name,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "brigade_name", $$v)
+              },
+              expression: "form.brigade_name"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "buttons" },
+        [
+          _c(
+            "md-button",
+            {
+              staticClass: "md-raised md-primary",
+              on: { click: _vm.addBrigade }
+            },
+            [_vm._v("\n            Додати\n        ")]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6887fbb0", module.exports)
+  }
+}
+
+/***/ }),
+/* 180 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(181);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("43af3faa", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-44f5fa1f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BrigadeList.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-44f5fa1f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BrigadeList.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 181 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.form-dialog {\n    padding: 30px;\n    z-index: 100;\n    width: 1100px;\n    max-height: 600px;\n    overflow: auto;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 182 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['brigadeId'],
+    data: function data() {
+        return {
+            added: false,
+            form: {}
+        };
+    },
+    created: function created() {
+        this.fetchBrigade();
+    },
+
+    methods: {
+        fetchBrigade: function fetchBrigade() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/brigade/' + this.brigadeId).then(function (response) {
+                _this.form = response.data;
+            });
+        },
+        updateBrigade: function updateBrigade() {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/brigade/' + this.brigadeId, this.form);
+        }
+    }
+});
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "brigade-add" },
+    [
+      _c("md-dialog-alert", {
+        staticClass: "dialog-alert",
+        attrs: {
+          "md-active": _vm.added,
+          "md-title": "Додано!",
+          "md-content": "Ваші дані успішно внесено до бази даних"
+        },
+        on: {
+          "update:mdActive": function($event) {
+            _vm.added = $event
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("span", { staticClass: "md-display-1" }, [_vm._v("Додати бригаду")]),
+      _vm._v(" "),
+      _c(
+        "md-field",
+        [
+          _c("label", [_vm._v("Назва")]),
+          _vm._v(" "),
+          _c("md-input", {
+            attrs: { required: "" },
+            model: {
+              value: _vm.form.brigade_name,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "brigade_name", $$v)
+              },
+              expression: "form.brigade_name"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "buttons" },
+        [
+          _c(
+            "md-button",
+            {
+              staticClass: "md-raised md-primary",
+              on: { click: _vm.updateBrigade }
+            },
+            [_vm._v("\n            Зберегти\n        ")]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-543e218b", module.exports)
   }
 }
 

@@ -20,12 +20,12 @@ class Worker extends Model
         'workshop_id'
     ];
 
-    public function brigades()
+    public function brigade()
     {
         return $this->belongsTo(Brigade::class);
     }
 
-    public function workshops()
+    public function workshop()
     {
         return $this->belongsTo(Workshop::class);
     }

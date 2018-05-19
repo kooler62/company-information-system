@@ -14,24 +14,16 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        $worker = new Worker();
-        $workers = $worker
-            ->leftJoin('workshops', 'workers.workshop_id', '=', 'workshops.id')
-            ->get();
+        $workers = Worker::all();
+
+        foreach ($workers as $worker) {
+            $worker['workshop_name'] = $worker->workshop->workshop_name;
+            $worker['brigade_name'] = $worker->brigade->brigade_name;
+        }
 
         return response()->json([
             'workers' => $workers
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -42,7 +34,24 @@ class WorkerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $worker = Worker::create([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'middle_name' => $request->input('middle_name'),
+            'phone_number' => $request->input('phone_number'),
+            'personal_number' => $request->input('personal_number'),
+            'home_address' => $request->input('home_address'),
+            'category' => $request->input('category'),
+            'is_brigadier' => $request->input('is_brigadier'),
+            'employment_date' => $request->input('employment_date'),
+            'brigade_id' => $request->input('brigade_id'),
+            'workshop_id' => $request->input('workshop_id'),
+        ]);
+
+        return response()->json([
+            'worker' => $worker,
+            'message' => 'Успішно додано',
+        ]);
     }
 
     /**

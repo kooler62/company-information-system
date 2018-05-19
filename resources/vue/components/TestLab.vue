@@ -8,26 +8,26 @@
             <md-button class="md-primary" @click="showSnackBar = false">Ок</md-button>
         </md-snackbar>
 
-        <md-dialog :md-active.sync="brigadeAdd"
+        <md-dialog :md-active.sync="testLabAdd"
                    class="form-dialog md-scrollbar">
-            <brigade-add></brigade-add>
+
         </md-dialog>
 
-        <md-dialog :md-active.sync="brigadeEdit"
+        <md-dialog :md-active.sync="testLabEdit"
                    class="form-dialog md-scrollbar">
-            <brigade-edit :brigadeId="brigadeId"></brigade-edit>
+
         </md-dialog>
 
-        <md-table class="table" md-card>
+        <md-table md-card>
             <md-table-toolbar>
-                <h1 class="md-title">Бригади</h1>
+                <h1 class="md-title">Іспитові лабораторії</h1>
 
-                <md-button class="md-raised md-primary" @click="brigadeAdd= true">
+                <md-button class="md-raised md-primary" >
                     <span><md-icon>add</md-icon></span>
-                    Додати бригаду
+                    Додати лабораторію
                 </md-button>
 
-                <md-button class="md-raised md-primary" @click="fetchBrigades()">
+                <md-button class="md-raised md-primary" >
                     <span><md-icon>refresh</md-icon></span>
                     Оновити
                 </md-button>
@@ -39,17 +39,17 @@
                 <md-table-head>Дії</md-table-head>
             </md-table-row>
 
-            <md-table-row v-for="(brigade, index) in brigades">
+            <md-table-row v-for="(testLab, index) in testLabs">
                 <md-table-cell md-numeric>{{ index + 1 }}</md-table-cell>
-                <md-table-cell>{{ brigade.brigade_name }}</md-table-cell>
+                <md-table-cell>{{ testLab.name }}</md-table-cell>
 
                 <md-table-cell>
-                    <md-button class="md-icon-button md-raised md-primary" @click="edit(brigade.id)">
+                    <md-button class="md-icon-button md-raised md-primary">
                         <md-icon>mode_edit</md-icon>
                         <md-tooltip md-delay="200">Редагувати</md-tooltip>
                     </md-button>
 
-                    <md-button class="md-icon-button md-raised md-accent" @click="deleteBrigade(brigade)">
+                    <md-button class="md-icon-button md-raised md-accent">
                         <md-icon>remove</md-icon>
                         <md-tooltip md-delay="200">Видалити</md-tooltip>
                     </md-button>
@@ -65,42 +65,26 @@
 
     export default {
         data: () => ({
-            brigades: [],
+            testLabs: [],
             showSnackBar: false,
-            brigadeAdd: null,
-            brigadeEdit: null,
-            brigadeId: null
+            testLabAdd: null,
+            testLabEdit: null,
+            testLabId: null
         }),
         created() {
-            this.fetchBrigades();
+            this.fetchTestLabs();
         },
         methods: {
-            fetchBrigades() {
-                axios.get('/brigade').then(response => {
-                    this.brigades = response.data.brigades
+            fetchTestLabs() {
+                axios.get('/test-labs').then(response => {
+                    this.testLabs = response.data.testLabs
                 })
             },
-            deleteBrigade(brigade) {
-                axios.delete('/brigade/' + brigade.id).then(response => {
-                    this.fetchBrigades();
-                });
+            deleteTestLab(testLab) {
+                axios.delete('/test-labs/' + testLab.id);
+                this.fetchBrigades();
                 this.showSnackBar = true;
-            },
-            edit(id) {
-                this.brigadeId = id;
-                this.brigadeEdit = true;
             }
         }
     }
 </script>
-
-<style>
-    .form-dialog {
-        padding: 30px;
-        z-index: 100;
-        width: 1100px;
-        max-height: 600px;
-        overflow: auto;
-    }
-</style>
-
