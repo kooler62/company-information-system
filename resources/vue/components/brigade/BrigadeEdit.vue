@@ -2,11 +2,11 @@
     <div class="brigade-add">
         <md-dialog-alert
                 class="dialog-alert"
-                :md-active.sync="added"
+                :md-active.sync="edited"
                 md-title="Додано!"
-                md-content="Ваші дані успішно внесено до бази даних" />
+                md-content="Ваші дані успішно оновлено" />
 
-        <span class="md-display-1">Додати бригаду</span>
+        <span class="md-display-1">Редагування</span>
 
         <md-field>
             <label>Назва</label>
@@ -27,7 +27,7 @@
     export default {
         props: ['brigadeId'],
         data: () => ({
-            added: false,
+            edited: false,
             form: {}
         }),
         created() {
@@ -35,13 +35,20 @@
         },
         methods: {
             fetchBrigade() {
-                axios.get('/brigade/' + this.brigadeId).then(response => {
+                axios.get('/brigade/' + this.brigadeId).then((response) => {
                     this.form = response.data;
                 });
             },
             updateBrigade() {
-                axios.put('/brigade/' + this.brigadeId, this.form)
+                axios.put('/brigade/' + this.brigadeId, this.form);
+                this.edited = true;
             }
         }
     }
 </script>
+
+<style lang="scss">
+    .dialog-alert {
+        z-index: 999;
+    }
+</style>

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class TestLab extends Model
 {
+    protected $fillable = [
+        'name'
+    ];
+
     public function workshops()
     {
         return $this->belongsToMany(

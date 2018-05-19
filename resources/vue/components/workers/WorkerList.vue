@@ -53,6 +53,10 @@
                     </md-select>
                 </md-field>
 
+                <md-field md-clearable style="margin-left: 20px;">
+                    <md-input placeholder="Пошук по прізвищу..." v-model="search" @input="searchOnTable" />
+                </md-field>
+
                 <md-button class="md-raised md-primary">
                 <span>
                     <md-icon>done</md-icon>
@@ -73,10 +77,6 @@
                            style="margin-left: 10px;">
                     <md-icon>refresh</md-icon>
                 </md-button>
-
-                <md-field md-clearable class="md-toolbar-section-end" style="margin-left: 20px;">
-                    <md-input placeholder="Пошук по прізвищу..." v-model="search" @input="searchOnTable" />
-                </md-field>
             </md-table-toolbar>
 
             <md-table-empty-state
