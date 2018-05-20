@@ -21,4 +21,19 @@ class Bus extends Model
     {
         return $this->belongsTo(Workshop::class);
     }
+
+    public function testLabs()
+    {
+        return $this->belongsToMany(
+            TestLab::class,
+            'buses_test_labs',
+            'bus_id',
+            'test_lab_id'
+        );
+    }
+
+    public function setTestLabs($ids)
+    {
+        $this->testLabs()->sync($ids);
+    }
 }

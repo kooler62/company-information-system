@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entity\Lorry;
+use App\Entity\TestLab;
 use Illuminate\Http\Request;
 
 class LorryController extends Controller
@@ -42,6 +43,8 @@ class LorryController extends Controller
             'workshop_id' => $request->input('workshop_id'),
         ]);
 
+        $lorries->setTestLabs($request->input('test_labs'));
+
         return response()->json([
             'lorries' => $lorries,
             'message' => 'Успішно додано',
@@ -63,7 +66,17 @@ class LorryController extends Controller
      */
     public function show($id)
     {
-        return Lorry::findOrFail($id);
+        $lorry = Lorry::findOrFail($id);
+        $testLab = new TestLab();
+
+        $testLabs = $testLab->all();
+        $selectedTestLabs = $lorry->testLabs->pluck('id')->all();
+
+        return response()->json([
+            'lorry' => $lorry,
+            'testLabs' => $testLabs,
+            'selectedTestLabs' => $selectedTestLabs
+        ]);
     }
 
     /**
@@ -74,6 +87,7 @@ class LorryController extends Controller
     public function update(Request $request, $id)
     {
         $lorry = Lorry::findOrFail($id);
+        $lorry->setTestLabs($request->get('selectedTestLabs'));
         $lorry->update($request->all());
 
         return response()->json([

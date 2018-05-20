@@ -55,7 +55,7 @@
                     <md-table-cell>Цех</md-table-cell>
                 </md-table-row>
 
-                <md-table-row v-if="categories.indexOf('1') !== -1"
+                <md-table-row v-if="contains(categories, 1)"
                               v-for="(item, index) in cars">
                     <md-table-cell>{{ index + 1 }}</md-table-cell>
                     <md-table-cell>{{ item.brand }}</md-table-cell>
@@ -66,7 +66,7 @@
                     <md-table-cell>{{ item.workshop_id }}</md-table-cell>
                 </md-table-row>
 
-                <md-table-row v-if="categories.indexOf('3') !== -1"
+                <md-table-row v-if="contains(categories, 3)"
                               v-for="(item, index) in motorcycles">
                     <md-table-cell>{{ index + 1 }}</md-table-cell>
                     <md-table-cell>{{ item.brand }}</md-table-cell>
@@ -77,7 +77,7 @@
                     <md-table-cell>{{ item.workshop_id }}</md-table-cell>
                 </md-table-row>
 
-                <md-table-row v-if="categories.indexOf('4') !== -1"
+                <md-table-row v-if="contains(categories, 4)"
                               v-for="(item, index) in lorries">
                     <md-table-cell>{{ index + 1 }}</md-table-cell>
                     <md-table-cell>{{ item.brand }}</md-table-cell>
@@ -88,7 +88,7 @@
                     <md-table-cell>{{ item.workshop_id }}</md-table-cell>
                 </md-table-row>
 
-                <md-table-row v-if="categories.indexOf('2') !== -1"
+                <md-table-row v-if="contains(categories, 2)"
                               v-for="(item, index) in buses">
                     <md-table-cell>{{ index + 1 }}</md-table-cell>
                     <md-table-cell>{{ item.brand }}</md-table-cell>
@@ -146,6 +146,14 @@
                     this.lorries = response.data.lorries;
                 });
             },
+            contains(arr, elem) {
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i] == elem) {
+                        return true;
+                    }
+                }
+                return false;
+            }
         }
     }
 </script>

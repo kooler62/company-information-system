@@ -10,16 +10,27 @@ use Illuminate\Http\Request;
 
 class TransportController extends Controller
 {
+    private $car;
+    private $bus;
+    private $lorry;
+    private $motorcycle;
+
+    /**
+     * TransportController constructor.
+     */
+    public function __construct()
+    {
+        $this->car = new Car();
+        $this->bus = new Bus();
+        $this->lorry = new Lorry();
+        $this->motorcycle = new Motorcycle();
+    }
+
     public function index(Request $request)
     {
-        $car = new Car();
-        $bus = new Bus();
-        $lorry = new Lorry();
-        $motorcycle = new Motorcycle();
-
         $dates = [$request['dateStart'], $request['dateEnd']];
 
-        $cars = $car
+        $cars = $this->car
             ->whereIn('workshop_id', $request['workshops'])
             ->where('make_now', $request->input('makeNow'))
             ->when(isset($request['dateStart']), function($q) use($dates) {
@@ -32,7 +43,7 @@ class TransportController extends Controller
                 'workshop_id'
             ]);
 
-        $buses = $bus
+        $buses = $this->bus
             ->whereIn('workshop_id', $request['workshops'])
             ->where('make_now', $request->input('makeNow'))
             ->when(isset($request['dateStart']), function($q) use($dates) {
@@ -45,7 +56,7 @@ class TransportController extends Controller
                 'workshop_id'
             ]);
 
-        $motorcycles = $motorcycle
+        $motorcycles = $this->motorcycle
             ->whereIn('workshop_id', $request['workshops'])
             ->where('make_now', $request->input('makeNow'))
             ->when(isset($request['dateStart']), function($q) use($dates) {
@@ -58,7 +69,7 @@ class TransportController extends Controller
                 'workshop_id'
             ]);
 
-        $lorries = $lorry
+        $lorries = $this->lorry
             ->whereIn('workshop_id', $request['workshops'])
             ->where('make_now', $request->input('makeNow'))
             ->when(isset($request['dateStart']), function($q) use($dates) {
@@ -70,6 +81,34 @@ class TransportController extends Controller
                 'production_year',
                 'workshop_id'
             ]);
+
+        return response()->json([
+            'cars' => $cars,
+            'buses' => $buses,
+            'motorcycles' => $motorcycles,
+            'lorries' => $lorries
+        ]);
+    }
+
+    public function getTransportByTestLabs(Request $request)
+    {
+        $testLabsIds = $request['testLabs'];
+
+        $cars = Car::whereHas('testLabs', function ($q) use ($testLabsIds) {
+            $q->whereIn('car_id', $testLabsIds);
+        })->get();
+
+        $buses = Car::whereHas('testLabs', function ($q) use ($testLabsIds) {
+            $q->whereIn('car_id', $testLabsIds);
+        })->get();
+
+        $motorcycles = Car::whereHas('testLabs', function ($q) use ($testLabsIds) {
+            $q->whereIn('car_id', $testLabsIds);
+        })->get();
+
+        $lorries = Car::whereHas('testLabs', function ($q) use ($testLabsIds) {
+            $q->whereIn('car_id', $testLabsIds);
+        })->get();
 
         return response()->json([
             'cars' => $cars,

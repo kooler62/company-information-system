@@ -6,9 +6,6 @@
             <md-card-header-text>
                 <div class="md-title">{{ testLab.name }}</div>
             </md-card-header-text>
-            <md-card-actions>
-                <md-button>Видалити</md-button>
-            </md-card-actions>
         </md-card>
     </div>
 </template>
@@ -26,7 +23,7 @@
         },
         methods: {
             getTestLabs() {
-                axios.get(`/${this.productType}/${this.productId}/workshops`).then(response => {
+                axios.get(`/${this.productType}/${this.productId}/test-labs`).then(response => {
                     this.testLabs = response.data.testLabs;
                 })
             }

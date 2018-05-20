@@ -56,15 +56,21 @@
 
         <md-checkbox v-model="car.make_now">Виготовляється зараз?</md-checkbox>
 
-        <div class="select-custom">
-        <p class="label">Цех:</p>
+        <md-field>
             <select v-model="car.workshop_id" title="Цех">
                 <option v-for="workshop in workshops"
                         :value="workshop.id">
                     {{ workshop.workshop_name }}
                 </option>
             </select>
-        </div>
+        </md-field>
+
+        <md-field>
+            <label>Іспитові лабораторії</label>
+            <md-select v-model="car.selectedTestLabs" multiple>
+                <md-option v-for="testLab in testLabs" :value="testLab.id">{{ testLab.name }}</md-option>
+            </md-select>
+        </md-field>
 
         <div class="buttons">
             <md-button class="md-raised md-accent">
@@ -86,6 +92,7 @@
         props: ['carId'],
         data: () => ({
             workshops: [],
+            testLabs: [],
             workshop: {},
             car: {},
             edited: false,
@@ -93,12 +100,15 @@
         created() {
             this.fetchCar();
             this.fetchWorkshops();
+            this.fetchTestLabs();
         },
         methods: {
             fetchCar() {
                 let uri = '/car/' + this.carId;
                 axios.get(uri).then(response => {
-                    this.car = response.data;
+                    this.car = response.data.car;
+                    this.car.selectedTestLabs = response.data.selectedTestLabs;
+                    this.testLabs = response.data.testLabs;
                 });
             },
             updateCar() {
@@ -111,6 +121,11 @@
                     this.workshops = response.data.workshops;
                 })
             },
+            fetchTestLabs() {
+                axios.get('/test-labs').then(response => {
+                    this.testLabs = response.data.testLabs;
+                })
+            }
         }
     }
 </script>

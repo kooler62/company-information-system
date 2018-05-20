@@ -40,6 +40,7 @@ let Transport         = require('./components/Transport.vue');
 let Engineers         = require('./components/Engineers');
 let Workers           = require('./components/Workers');
 let TestLabs          = require('./components/TestLab');
+let About             = require('./components/About');
 
 Vue.use(VueMaterial);
 Vue.use(VueRouter, VueAxios, axios);
@@ -49,6 +50,7 @@ const routes = [
     { name: 'Engineers',      path: '/app/engineers',       component: Engineers },
     { name: 'Workers',        path: '/app/workers',         component: Workers },
     { name: 'TestLabs',       path: '/app/test-labs',       component: TestLabs },
+    { name: 'About',          path: '/app/about',           component: About },
 ];
 
 const router = new VueRouter({ mode: 'history', routes: routes });

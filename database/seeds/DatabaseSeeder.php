@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(EngineerTableSeeder::class);
         $this->call(CarTestLabTableSeeder::class);
         $this->call(WorkerTableSeeder::class);
+        $this->call(BusTableSeeder::class);
+        $this->call(LorryTableSeeder::class);
+        $this->call(MotorcycleTableSeeder::class);
     }
 }

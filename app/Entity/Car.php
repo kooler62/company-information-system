@@ -40,4 +40,9 @@ class Car extends Model
             'test_lab_id'
         );
     }
+
+    public function setTestLabs($ids)
+    {
+        $this->testLabs()->sync($ids);
+    }
 }

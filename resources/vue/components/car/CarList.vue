@@ -12,8 +12,7 @@
 
         <md-dialog :md-active.sync="showTestLabs"
                    class="form-dialog md-scrollbar">
-            <product-test-labs-list :productType="productType
-" :productId="productId">
+            <product-test-labs-list productType="car" :productId="productId">
             </product-test-labs-list>
 
             <md-dialog-actions>
@@ -150,7 +149,6 @@
             showSnackBar: false,
             showTestLabs: false,
             carId: '',
-            productType: 'car',
             productId: null
         }),
         created () {
@@ -168,8 +166,9 @@
                 });
             },
             deleteCar(car) {
-                axios.delete('/car/' + car.id);
-                this.fetchCars();
+                axios.delete('/car/' + car.id).then((response) => {
+                    this.fetchCars();
+                });
                 this.showSnackBar = true;
             },
             edit(id) {

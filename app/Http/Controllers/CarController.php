@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entity\Car;
+use App\Entity\TestLab;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -41,6 +42,8 @@ class CarController extends Controller
             'workshop_id' => $request->input('workshop_id'),
         ]);
 
+        $car->setTestLabs($request->input('test_labs'));
+
         return response()->json([
             'car' => $car,
             'message' => 'Успішно додано',
@@ -62,7 +65,17 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        return Car::findOrFail($id);
+        $car = Car::findOrFail($id);
+        $testLab = new TestLab();
+
+        $testLabs = $testLab->all();
+        $selectedTestLabs = $car->testLabs->pluck('id')->all();
+
+        return response()->json([
+            'car' => $car,
+            'testLabs' => $testLabs,
+            'selectedTestLabs' => $selectedTestLabs
+        ]);
     }
 
     /**
@@ -73,6 +86,7 @@ class CarController extends Controller
     public function update(Request $request, $id)
     {
         $car = Car::findOrFail($id);
+        $car->setTestLabs($request->get('selectedTestLabs'));
         $car->update($request->all());
 
         return response()->json([

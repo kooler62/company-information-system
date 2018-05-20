@@ -65,7 +65,7 @@
 
         <md-field>
             <label>Іспитові лабораторії</label>
-            <md-select multiple>
+            <md-select v-model="car.test_labs" multiple>
                 <md-option v-for="testLab in testLabs" :value="testLab.id">{{ testLab.name }}</md-option>
             </md-select>
         </md-field>

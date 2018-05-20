@@ -21,4 +21,19 @@ class Motorcycle extends Model
     {
         return $this->belongsTo(Workshop::class);
     }
+
+    public function testLabs()
+    {
+        return $this->belongsToMany(
+            TestLab::class,
+            'motorcycles_test_labs',
+            'motorcycle_id',
+            'test_lab_id'
+        );
+    }
+
+    public function setTestLabs($ids)
+    {
+        $this->testLabs()->sync($ids);
+    }
 }

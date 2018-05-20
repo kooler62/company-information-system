@@ -29,7 +29,7 @@
                 <md-table-head>Рік випуску</md-table-head>
                 <md-table-head>Колесна база</md-table-head>
                 <md-table-head>Самоскид</md-table-head>
-                <md-table-head>Вантажопідйомність</md-table-head>
+                <md-table-head>Вант. під.</md-table-head>
                 <md-table-head>Цех</md-table-head>
                 <md-table-head>Дії</md-table-head>
             </md-table-row>

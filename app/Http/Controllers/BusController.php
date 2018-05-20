@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entity\Bus;
+use App\Entity\TestLab;
 use Illuminate\Http\Request;
 
 class BusController extends Controller
@@ -40,6 +41,8 @@ class BusController extends Controller
             'workshop_id' => $request->input('workshop_id'),
         ]);
 
+        $bus->setTestLabs($request->input('test_labs'));
+
         return response()->json([
             'bus' => $bus,
             'message' => 'Успішно додано',
@@ -61,7 +64,17 @@ class BusController extends Controller
      */
     public function show($id)
     {
-        return Bus::findOrFail($id);
+        $bus = Bus::findOrFail($id);
+        $testLab = new TestLab();
+
+        $testLabs = $testLab->all();
+        $selectedTestLabs = $bus->testLabs->pluck('id')->all();
+
+        return response()->json([
+            'bus' => $bus,
+            'testLabs' => $testLabs,
+            'selectedTestLabs' => $selectedTestLabs
+        ]);
     }
 
     /**
@@ -72,6 +85,7 @@ class BusController extends Controller
     public function update(Request $request, $id)
     {
         $bus = Bus::findOrFail($id);
+        $bus->setTestLabs($request->get('selectedTestLabs'));
         $bus->update($request->all());
 
         return response()->json([
@@ -93,6 +107,16 @@ class BusController extends Controller
 
         return response()->json([
             'message' => 'Успішно видалено'
+        ]);
+    }
+
+    public function getTestLabs($id)
+    {
+        $bus = Bus::findOrFail($id);
+        $testLabs = $bus->testLabs;
+
+        return response()->json([
+            'testLabs' => $testLabs
         ]);
     }
 }

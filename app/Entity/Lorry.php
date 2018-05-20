@@ -23,4 +23,19 @@ class Lorry extends Model
     {
         return $this->belongsTo(Workshop::class);
     }
+
+    public function testLabs()
+    {
+        return $this->belongsToMany(
+            TestLab::class,
+            'lorries_test_labs',
+            'lorry_id',
+            'test_lab_id'
+        );
+    }
+
+    public function setTestLabs($ids)
+    {
+        $this->testLabs()->sync($ids);
+    }
 }

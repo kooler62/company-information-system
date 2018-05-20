@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entity\Motorcycle;
+use App\Entity\TestLab;
 use Illuminate\Http\Request;
 
 class MotorcycleController extends Controller
@@ -41,6 +42,8 @@ class MotorcycleController extends Controller
             'workshop_id' => $request->input('workshop_id'),
         ]);
 
+        $motorcycle->setTestLabs($request->input('test_labs'));
+
         return response()->json([
             'motorcycle' => $motorcycle,
             'message' => 'Успішно додано',
@@ -62,7 +65,17 @@ class MotorcycleController extends Controller
      */
     public function show($id)
     {
-        return Motorcycle::findOrFail($id);
+        $mororcycle = Motorcycle::findOrFail($id);
+        $testLab = new TestLab();
+
+        $testLabs = $testLab->all();
+        $selectedTestLabs = $mororcycle->testLabs->pluck('id')->all();
+
+        return response()->json([
+            'motorcycle' => $mororcycle,
+            'testLabs' => $testLabs,
+            'selectedTestLabs' => $selectedTestLabs
+        ]);
     }
 
     /**
@@ -73,6 +86,7 @@ class MotorcycleController extends Controller
     public function update(Request $request, $id)
     {
         $motorcycle = Motorcycle::findOrFail($id);
+        $motorcycle->setTestLabs($request->get('selectedTestLabs'));
         $motorcycle->update($request->all());
 
         return response()->json([
