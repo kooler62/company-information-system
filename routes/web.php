@@ -37,3 +37,6 @@ Route::get('/motorcycle/{id}/test-labs', 'MotorcycleController@getTestLabs');
 Route::get('/lorry/{id}/test-labs', 'LorryController@getTestLabs');
 
 Route::get('/transport/by-test-labs', 'TransportController@getTransportByTestLabs');
+
+Route::get('/workshop/{id}/masters', 'EngineerController@getMastersList');
+Route::get('/workshop/{id}/boss', 'EngineerController@getBossList');

@@ -126,8 +126,9 @@
                 })
             },
             deleteEngineer(engineer) {
-                axios.delete('/engineer/' + engineer.id);
-                this.fetchEngineers();
+                axios.delete('/engineer/' + engineer.id).then((response) => {
+                    this.fetchEngineers();
+                });
                 this.showSnackBar = true;
             },
             edit(id) {

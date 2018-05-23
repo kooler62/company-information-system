@@ -53,11 +53,6 @@
                 <md-table-cell>{{ bus.man_capacity }}</md-table-cell>
                 <md-table-cell>{{ bus.workshop_name }}</md-table-cell>
                 <md-table-cell>
-                    <md-button class="md-icon-button md-raised md-primary"
-                               @click="show(bus.id)">
-                        <md-icon>view_list</md-icon>
-                        <md-tooltip md-delay="200">Список лабораторій які приймають участь у випробуванні</md-tooltip>
-                    </md-button>
                     <md-button class="md-icon-button md-raised md-primary" @click="edit(bus.id)">
                         <md-icon >mode_edit</md-icon>
                     </md-button>

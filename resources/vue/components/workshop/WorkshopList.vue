@@ -8,6 +8,58 @@
             <workshop-edit :workshopId="workshopId"></workshop-edit>
         </md-dialog>
 
+        <md-dialog :md-active.sync="showMastersList" class="form-dialog md-scrollbar">
+            <md-card v-for="master in masters">
+                <md-card-header>
+                    <md-card-header-text>
+                        <div class="md-title">
+                            {{ master.first_name }}
+                            {{ master.last_name }}
+                        </div>
+                        <div class="md-subhead">{{ master.category }}</div>
+                        <div class="md-subhead">{{ master.position }}</div>
+                    </md-card-header-text>
+
+                    <md-card-media>
+                        <img src="/assets/examples/avatar-2.jpg" alt="Avatar">
+                    </md-card-media>
+                </md-card-header>
+            </md-card>
+
+            <md-dialog-actions>
+                <md-button class="md-primary"
+                           @click="showMastersList = false">
+                    Закрити
+                </md-button>
+            </md-dialog-actions>
+        </md-dialog>
+
+        <md-dialog :md-active.sync="showBossesList" class="form-dialog md-scrollbar">
+            <md-card v-for="boss in bosses">
+                <md-card-header>
+                    <md-card-header-text>
+                        <div class="md-title">
+                            {{ boss.first_name }}
+                            {{ boss.last_name }}
+                        </div>
+                        <div class="md-subhead">{{ boss.category }}</div>
+                        <div class="md-subhead">{{ boss.position }}</div>
+                    </md-card-header-text>
+
+                    <md-card-media>
+                        <img src="/assets/examples/avatar-2.jpg" alt="Avatar">
+                    </md-card-media>
+                </md-card-header>
+            </md-card>
+
+            <md-dialog-actions>
+                <md-button class="md-primary"
+                           @click="showBossesList = false">
+                    Закрити
+                </md-button>
+            </md-dialog-actions>
+        </md-dialog>
+
         <md-table class="table" md-card>
 
             <md-table-toolbar>
@@ -34,17 +86,19 @@
                 <md-table-cell>{{ workshop.workshop_name }}</md-table-cell>
                 <md-table-cell>3</md-table-cell>
                 <md-table-cell>
-                    <md-button class="md-raised md-primary">
-                        <span>
-                            <md-icon>list</md-icon>
-                        </span>
-                        Склад бригад
-                    </md-button>
-                    <md-button class="md-raised md-primary">
+                    <md-button class="md-primary"
+                               @click="fetchMastersList(workshop.id)">
                         <span>
                             <md-icon>list</md-icon>
                         </span>
                         Список майстрів
+                    </md-button>
+                    <md-button class="md-primary"
+                               @click="fetchBossList(workshop.id)">
+                        <span>
+                            <md-icon>list</md-icon>
+                        </span>
+                        Начальники
                     </md-button>
                 </md-table-cell>
                 <md-table-cell>
@@ -53,7 +107,8 @@
                             <md-icon>mode_edit</md-icon>
                         </span>
                     </md-button>
-                    <md-button class="md-icon-button md-raised md-accent" @click="deleteWorkshop(workshop)">
+                    <md-button class="md-icon-button md-raised md-accent"
+                               @click="deleteWorkshop(workshop)">
                         <span>
                             <md-icon>remove</md-icon>
                         </span>
@@ -72,7 +127,11 @@
             workshop: [],
             workshopAdd: false,
             workshopEdit: false,
-            workshopId: ''
+            workshopId: '',
+            showMastersList: false,
+            showBossesList: false,
+            masters: [],
+            bosses: []
         }),
         created() {
             this.fetchWorkshops();
@@ -92,7 +151,27 @@
             edit(id) {
                 this.workshopId = id;
                 this.workshopEdit = true;
+            },
+            fetchMastersList(id) {
+                axios.get(`/workshop/${id}/masters`).then((response) => {
+                    this.masters = response.data.masters;
+                });
+                this.showMastersList = true;
+            },
+            fetchBossList(id) {
+                axios.get(`/workshop/${id}/boss`).then((response) => {
+                    this.bosses = response.data.bosses;
+                });
+                this.showBossesList = true;
             }
         }
     }
 </script>
+
+<style scoped>
+    .md-dialog .md-card {
+        width: 320px;
+        margin: 4px;
+        display: inline-block;
+    }
+</style>

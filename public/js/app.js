@@ -47648,11 +47648,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47867,28 +47862,6 @@ var render = function() {
                 _c(
                   "md-table-cell",
                   [
-                    _c(
-                      "md-button",
-                      {
-                        staticClass: "md-icon-button md-raised md-primary",
-                        on: {
-                          click: function($event) {
-                            _vm.show(bus.id)
-                          }
-                        }
-                      },
-                      [
-                        _c("md-icon", [_vm._v("view_list")]),
-                        _vm._v(" "),
-                        _c("md-tooltip", { attrs: { "md-delay": "200" } }, [
-                          _vm._v(
-                            "Список лабораторій які приймають участь у випробуванні"
-                          )
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
                     _c(
                       "md-button",
                       {
@@ -48668,17 +48641,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(194)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(63)
 /* template */
-var __vue_template__ = __webpack_require__(64)
+var __vue_template__ = __webpack_require__(196)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-2f14ab62"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -48784,6 +48761,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48793,7 +48825,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             workshop: [],
             workshopAdd: false,
             workshopEdit: false,
-            workshopId: ''
+            workshopId: '',
+            showMastersList: false,
+            showBossesList: false,
+            masters: [],
+            bosses: []
         };
     },
     created: function created() {
@@ -48819,193 +48855,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         edit: function edit(id) {
             this.workshopId = id;
             this.workshopEdit = true;
+        },
+        fetchMastersList: function fetchMastersList(id) {
+            var _this3 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/workshop/' + id + '/masters').then(function (response) {
+                _this3.masters = response.data.masters;
+            });
+            this.showMastersList = true;
+        },
+        fetchBossList: function fetchBossList(id) {
+            var _this4 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/workshop/' + id + '/boss').then(function (response) {
+                _this4.bosses = response.data.bosses;
+            });
+            this.showBossesList = true;
         }
     }
 });
 
 /***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "workshops" },
-    [
-      _c(
-        "md-dialog",
-        {
-          staticClass: "form-dialog md-scrollbar",
-          attrs: { "md-active": _vm.workshopAdd },
-          on: {
-            "update:mdActive": function($event) {
-              _vm.workshopAdd = $event
-            }
-          }
-        },
-        [_c("workshop-add")],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-dialog",
-        {
-          staticClass: "form-dialog md-scrollbar",
-          attrs: { "md-active": _vm.workshopEdit },
-          on: {
-            "update:mdActive": function($event) {
-              _vm.workshopEdit = $event
-            }
-          }
-        },
-        [_c("workshop-edit", { attrs: { workshopId: _vm.workshopId } })],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-table",
-        { staticClass: "table", attrs: { "md-card": "" } },
-        [
-          _c(
-            "md-table-toolbar",
-            [
-              _c(
-                "md-button",
-                {
-                  staticClass: "md-raised md-primary",
-                  on: {
-                    click: function($event) {
-                      _vm.workshopAdd = true
-                    }
-                  }
-                },
-                [
-                  _c("span", [_c("md-icon", [_vm._v("add")])], 1),
-                  _vm._v("\n                Додати цех\n            ")
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "md-button",
-                {
-                  staticClass: "md-raised md-primary",
-                  on: {
-                    click: function($event) {
-                      _vm.fetchWorkshops()
-                    }
-                  }
-                },
-                [
-                  _c("span", [_c("md-icon", [_vm._v("refresh")])], 1),
-                  _vm._v("\n                Оновити\n            ")
-                ]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "md-table-row",
-            [
-              _c("md-table-head", [_vm._v("№")]),
-              _vm._v(" "),
-              _c("md-table-head", [_vm._v("Назва")]),
-              _vm._v(" "),
-              _c("md-table-head", [_vm._v("Кількість автомобілів")]),
-              _vm._v(" "),
-              _c("md-table-head", [_vm._v("Інформація")]),
-              _vm._v(" "),
-              _c("md-table-head", [_vm._v("Дії")])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._l(_vm.workshops, function(workshop, index) {
-            return _c(
-              "md-table-row",
-              [
-                _c("md-table-cell", [_vm._v(_vm._s(index + 1))]),
-                _vm._v(" "),
-                _c("md-table-cell", [_vm._v(_vm._s(workshop.workshop_name))]),
-                _vm._v(" "),
-                _c("md-table-cell", [_vm._v("3")]),
-                _vm._v(" "),
-                _c(
-                  "md-table-cell",
-                  [
-                    _c("md-button", { staticClass: "md-raised md-primary" }, [
-                      _c("span", [_c("md-icon", [_vm._v("list")])], 1),
-                      _vm._v(
-                        "\n                    Склад бригад\n                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("md-button", { staticClass: "md-raised md-primary" }, [
-                      _c("span", [_c("md-icon", [_vm._v("list")])], 1),
-                      _vm._v(
-                        "\n                    Список майстрів\n                "
-                      )
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-table-cell",
-                  [
-                    _c(
-                      "md-button",
-                      {
-                        staticClass: "md-icon-button md-raised md-primary",
-                        on: {
-                          click: function($event) {
-                            _vm.edit(workshop.id)
-                          }
-                        }
-                      },
-                      [_c("span", [_c("md-icon", [_vm._v("mode_edit")])], 1)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "md-button",
-                      {
-                        staticClass: "md-icon-button md-raised md-accent",
-                        on: {
-                          click: function($event) {
-                            _vm.deleteWorkshop(workshop)
-                          }
-                        }
-                      },
-                      [_c("span", [_c("md-icon", [_vm._v("remove")])], 1)]
-                    )
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          })
-        ],
-        2
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2f14ab62", module.exports)
-  }
-}
-
-/***/ }),
+/* 64 */,
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49982,48 +49853,34 @@ var render = function() {
         [_vm._v("Виготовляється зараз?")]
       ),
       _vm._v(" "),
-      _c("md-field", [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
+      _c(
+        "md-field",
+        [
+          _c(
+            "md-select",
+            {
+              attrs: { title: "Цех" },
+              model: {
                 value: _vm.car.workshop_id,
+                callback: function($$v) {
+                  _vm.$set(_vm.car, "workshop_id", $$v)
+                },
                 expression: "car.workshop_id"
               }
-            ],
-            attrs: { title: "Цех" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.$set(
-                  _vm.car,
-                  "workshop_id",
-                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+            },
+            _vm._l(_vm.workshops, function(workshop) {
+              return _c("md-option", { attrs: { value: workshop.id } }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(workshop.workshop_name) +
+                    "\n            "
                 )
-              }
-            }
-          },
-          _vm._l(_vm.workshops, function(workshop) {
-            return _c("option", { domProps: { value: workshop.id } }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(workshop.workshop_name) +
-                  "\n            "
-              )
-            ])
-          })
-        )
-      ]),
+              ])
+            })
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "md-field",
@@ -50192,13 +50049,6 @@ exports.push([module.i, "\n.md-select-menu {\n  z-index: 200;\n}\n.dialog-alert 
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -50516,33 +50366,6 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Іспитові лабораторії")]),
-          _vm._v(" "),
-          _c(
-            "md-select",
-            {
-              attrs: { multiple: "" },
-              model: {
-                value: _vm.bus.test_labs,
-                callback: function($$v) {
-                  _vm.$set(_vm.bus, "test_labs", $$v)
-                },
-                expression: "bus.test_labs"
-              }
-            },
-            _vm._l(_vm.testLabs, function(testLab) {
-              return _c("md-option", { attrs: { value: testLab.id } }, [
-                _vm._v(_vm._s(testLab.name))
-              ])
-            })
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
       _c("md-button", { staticClass: "md-raised md-accent" }, [
         _vm._v("Назад")
       ]),
@@ -50672,7 +50495,6 @@ exports.push([module.i, "\n.md-select-menu {\n  z-index: 200;\n}\n.dialog-alert 
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-//
 //
 //
 //
@@ -50970,50 +50792,34 @@ var render = function() {
         [_vm._v("Виготовляється зараз?")]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "select-custom" }, [
-        _c("p", { staticClass: "label" }, [_vm._v("Цех:")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
+      _c(
+        "md-field",
+        [
+          _c(
+            "md-select",
+            {
+              attrs: { title: "Цех" },
+              model: {
                 value: _vm.bus.workshop_id,
+                callback: function($$v) {
+                  _vm.$set(_vm.bus, "workshop_id", $$v)
+                },
                 expression: "bus.workshop_id"
               }
-            ],
-            attrs: { title: "Цех" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.$set(
-                  _vm.bus,
-                  "workshop_id",
-                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+            },
+            _vm._l(_vm.workshops, function(workshop) {
+              return _c("md-option", { attrs: { value: workshop.id } }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(workshop.workshop_name) +
+                    "\n            "
                 )
-              }
-            }
-          },
-          _vm._l(_vm.workshops, function(workshop) {
-            return _c("option", { domProps: { value: workshop.id } }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(workshop.workshop_name) +
-                  "\n            "
-              )
-            ])
-          })
-        )
-      ]),
+              ])
+            })
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("md-button", { staticClass: "md-raised md-accent" }, [
         _vm._v("Назад")
@@ -51642,7 +51448,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -51864,50 +51669,34 @@ var render = function() {
         [_vm._v("Виготовляється зараз?")]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "select-custom" }, [
-        _c("p", { staticClass: "label" }, [_vm._v("Цех:")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
+      _c(
+        "md-field",
+        [
+          _c(
+            "md-select",
+            {
+              attrs: { title: "Цех" },
+              model: {
                 value: _vm.motorcycle.workshop_id,
+                callback: function($$v) {
+                  _vm.$set(_vm.motorcycle, "workshop_id", $$v)
+                },
                 expression: "motorcycle.workshop_id"
               }
-            ],
-            attrs: { title: "Цех" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.$set(
-                  _vm.motorcycle,
-                  "workshop_id",
-                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+            },
+            _vm._l(_vm.workshops, function(workshop) {
+              return _c("md-option", { attrs: { value: workshop.id } }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(workshop.workshop_name) +
+                    "\n            "
                 )
-              }
-            }
-          },
-          _vm._l(_vm.workshops, function(workshop) {
-            return _c("option", { domProps: { value: workshop.id } }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(workshop.workshop_name) +
-                  "\n            "
-              )
-            ])
-          })
-        )
-      ]),
+              ])
+            })
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("md-button", { staticClass: "md-raised md-accent" }, [
         _vm._v("Назад")
@@ -52638,7 +52427,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -52921,50 +52709,34 @@ var render = function() {
         [_vm._v("Виготовляється зараз?")]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "select-custom" }, [
-        _c("p", { staticClass: "label" }, [_vm._v("Цех:")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
+      _c(
+        "md-field",
+        [
+          _c(
+            "md-select",
+            {
+              attrs: { title: "Цех" },
+              model: {
                 value: _vm.lorry.workshop_id,
+                callback: function($$v) {
+                  _vm.$set(_vm.lorry, "workshop_id", $$v)
+                },
                 expression: "lorry.workshop_id"
               }
-            ],
-            attrs: { title: "Цех" },
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.$set(
-                  _vm.lorry,
-                  "workshop_id",
-                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+            },
+            _vm._l(_vm.workshops, function(workshop) {
+              return _c("md-option", { attrs: { value: workshop.id } }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(workshop.workshop_name) +
+                    "\n            "
                 )
-              }
-            }
-          },
-          _vm._l(_vm.workshops, function(workshop) {
-            return _c("option", { domProps: { value: workshop.id } }, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(workshop.workshop_name) +
-                  "\n            "
-              )
-            ])
-          })
-        )
-      ]),
+              ])
+            })
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("md-button", { staticClass: "md-raised md-accent" }, [
         _vm._v("Назад")
@@ -58731,8 +58503,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         deleteEngineer: function deleteEngineer(engineer) {
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/engineer/' + engineer.id);
-            this.fetchEngineers();
+            var _this3 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/engineer/' + engineer.id).then(function (response) {
+                _this3.fetchEngineers();
+            });
             this.showSnackBar = true;
         },
         edit: function edit(id) {
@@ -59841,6 +59616,407 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(195);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("7c372ec9", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2f14ab62\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkshopList.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2f14ab62\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./WorkshopList.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 195 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.md-dialog .md-card[data-v-2f14ab62] {\n    width: 320px;\n    margin: 4px;\n    display: inline-block;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "workshops" },
+    [
+      _c(
+        "md-dialog",
+        {
+          staticClass: "form-dialog md-scrollbar",
+          attrs: { "md-active": _vm.workshopAdd },
+          on: {
+            "update:mdActive": function($event) {
+              _vm.workshopAdd = $event
+            }
+          }
+        },
+        [_c("workshop-add")],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-dialog",
+        {
+          staticClass: "form-dialog md-scrollbar",
+          attrs: { "md-active": _vm.workshopEdit },
+          on: {
+            "update:mdActive": function($event) {
+              _vm.workshopEdit = $event
+            }
+          }
+        },
+        [_c("workshop-edit", { attrs: { workshopId: _vm.workshopId } })],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-dialog",
+        {
+          staticClass: "form-dialog md-scrollbar",
+          attrs: { "md-active": _vm.showMastersList },
+          on: {
+            "update:mdActive": function($event) {
+              _vm.showMastersList = $event
+            }
+          }
+        },
+        [
+          _vm._l(_vm.masters, function(master) {
+            return _c(
+              "md-card",
+              [
+                _c(
+                  "md-card-header",
+                  [
+                    _c("md-card-header-text", [
+                      _c("div", { staticClass: "md-title" }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(master.first_name) +
+                            "\n                        " +
+                            _vm._s(master.last_name) +
+                            "\n                    "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "md-subhead" }, [
+                        _vm._v(_vm._s(master.category))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "md-subhead" }, [
+                        _vm._v(_vm._s(master.position))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("md-card-media", [
+                      _c("img", {
+                        attrs: {
+                          src: "/assets/examples/avatar-2.jpg",
+                          alt: "Avatar"
+                        }
+                      })
+                    ])
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          }),
+          _vm._v(" "),
+          _c(
+            "md-dialog-actions",
+            [
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-primary",
+                  on: {
+                    click: function($event) {
+                      _vm.showMastersList = false
+                    }
+                  }
+                },
+                [_vm._v("\n                Закрити\n            ")]
+              )
+            ],
+            1
+          )
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "md-dialog",
+        {
+          staticClass: "form-dialog md-scrollbar",
+          attrs: { "md-active": _vm.showBossesList },
+          on: {
+            "update:mdActive": function($event) {
+              _vm.showBossesList = $event
+            }
+          }
+        },
+        [
+          _vm._l(_vm.bosses, function(boss) {
+            return _c(
+              "md-card",
+              [
+                _c(
+                  "md-card-header",
+                  [
+                    _c("md-card-header-text", [
+                      _c("div", { staticClass: "md-title" }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(boss.first_name) +
+                            "\n                        " +
+                            _vm._s(boss.last_name) +
+                            "\n                    "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "md-subhead" }, [
+                        _vm._v(_vm._s(boss.category))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "md-subhead" }, [
+                        _vm._v(_vm._s(boss.position))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("md-card-media", [
+                      _c("img", {
+                        attrs: {
+                          src: "/assets/examples/avatar-2.jpg",
+                          alt: "Avatar"
+                        }
+                      })
+                    ])
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          }),
+          _vm._v(" "),
+          _c(
+            "md-dialog-actions",
+            [
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-primary",
+                  on: {
+                    click: function($event) {
+                      _vm.showBossesList = false
+                    }
+                  }
+                },
+                [_vm._v("\n                Закрити\n            ")]
+              )
+            ],
+            1
+          )
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "md-table",
+        { staticClass: "table", attrs: { "md-card": "" } },
+        [
+          _c(
+            "md-table-toolbar",
+            [
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-raised md-primary",
+                  on: {
+                    click: function($event) {
+                      _vm.workshopAdd = true
+                    }
+                  }
+                },
+                [
+                  _c("span", [_c("md-icon", [_vm._v("add")])], 1),
+                  _vm._v("\n                Додати цех\n            ")
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-raised md-primary",
+                  on: {
+                    click: function($event) {
+                      _vm.fetchWorkshops()
+                    }
+                  }
+                },
+                [
+                  _c("span", [_c("md-icon", [_vm._v("refresh")])], 1),
+                  _vm._v("\n                Оновити\n            ")
+                ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-table-row",
+            [
+              _c("md-table-head", [_vm._v("№")]),
+              _vm._v(" "),
+              _c("md-table-head", [_vm._v("Назва")]),
+              _vm._v(" "),
+              _c("md-table-head", [_vm._v("Кількість автомобілів")]),
+              _vm._v(" "),
+              _c("md-table-head", [_vm._v("Інформація")]),
+              _vm._v(" "),
+              _c("md-table-head", [_vm._v("Дії")])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.workshops, function(workshop, index) {
+            return _c(
+              "md-table-row",
+              [
+                _c("md-table-cell", [_vm._v(_vm._s(index + 1))]),
+                _vm._v(" "),
+                _c("md-table-cell", [_vm._v(_vm._s(workshop.workshop_name))]),
+                _vm._v(" "),
+                _c("md-table-cell", [_vm._v("3")]),
+                _vm._v(" "),
+                _c(
+                  "md-table-cell",
+                  [
+                    _c(
+                      "md-button",
+                      {
+                        staticClass: "md-primary",
+                        on: {
+                          click: function($event) {
+                            _vm.fetchMastersList(workshop.id)
+                          }
+                        }
+                      },
+                      [
+                        _c("span", [_c("md-icon", [_vm._v("list")])], 1),
+                        _vm._v(
+                          "\n                    Список майстрів\n                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "md-button",
+                      {
+                        staticClass: "md-primary",
+                        on: {
+                          click: function($event) {
+                            _vm.fetchBossList(workshop.id)
+                          }
+                        }
+                      },
+                      [
+                        _c("span", [_c("md-icon", [_vm._v("list")])], 1),
+                        _vm._v(
+                          "\n                    Начальники\n                "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "md-table-cell",
+                  [
+                    _c(
+                      "md-button",
+                      {
+                        staticClass: "md-icon-button md-raised md-primary",
+                        on: {
+                          click: function($event) {
+                            _vm.edit(workshop.id)
+                          }
+                        }
+                      },
+                      [_c("span", [_c("md-icon", [_vm._v("mode_edit")])], 1)]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "md-button",
+                      {
+                        staticClass: "md-icon-button md-raised md-accent",
+                        on: {
+                          click: function($event) {
+                            _vm.deleteWorkshop(workshop)
+                          }
+                        }
+                      },
+                      [_c("span", [_c("md-icon", [_vm._v("remove")])], 1)]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2f14ab62", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

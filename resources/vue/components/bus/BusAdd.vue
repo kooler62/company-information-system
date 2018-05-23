@@ -58,13 +58,6 @@
             </md-select>
         </md-field>
 
-        <md-field>
-            <label>Іспитові лабораторії</label>
-            <md-select v-model="bus.test_labs" multiple>
-                <md-option v-for="testLab in testLabs" :value="testLab.id">{{ testLab.name }}</md-option>
-            </md-select>
-        </md-field>
-
         <md-button class="md-raised md-accent">Назад</md-button>
         <md-button class="md-raised md-primary" @click="createBus()">Додати</md-button>
 

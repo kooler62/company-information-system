@@ -57,12 +57,12 @@
         <md-checkbox v-model="car.make_now">Виготовляється зараз?</md-checkbox>
 
         <md-field>
-            <select v-model="car.workshop_id" title="Цех">
-                <option v-for="workshop in workshops"
+            <md-select v-model="car.workshop_id" title="Цех">
+                <md-option v-for="workshop in workshops"
                         :value="workshop.id">
                     {{ workshop.workshop_name }}
-                </option>
-            </select>
+                </md-option>
+            </md-select>
         </md-field>
 
         <md-field>

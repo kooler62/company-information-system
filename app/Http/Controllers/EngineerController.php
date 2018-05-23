@@ -33,6 +33,40 @@ class EngineerController extends Controller
     }
 
     /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getMastersList($id)
+    {
+        $engineer = new Engineer();
+        $masters = $engineer
+            ->where('workshop_id', '=', $id)
+            ->where('position', '=', 'Майстер')
+            ->get();
+
+        return response()->json([
+            'masters' => $masters
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getBossList($id)
+    {
+        $engineer = new Engineer();
+        $bosses = $engineer
+            ->where('workshop_id', '=', $id)
+            ->whereIn('position', ['Начальник ділянки', 'Начальник цеху'])
+            ->get();
+
+        return response()->json([
+            'bosses' => $bosses
+        ]);
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -92,12 +126,10 @@ class EngineerController extends Controller
 
     /**
      * @param $id
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        try {
-            Engineer::findOrFail($id)->delete();
-        } catch (\Exception $e) {
-        }
+        Engineer::findOrFail($id)->delete();
     }
 }
