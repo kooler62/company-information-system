@@ -12,9 +12,24 @@ class WorkerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $workers = Worker::all();
+        $workshops = $request['workshops'];
+        $categories = $request['categories'];
+        $brigade = $request['brigade'];
+
+        $worker = new Worker();
+
+        $workers = $worker
+            ->when(isset($workshops), function ($q) use ($workshops) {
+                return $q->whereIn('workshop_id', $workshops);
+            })
+            ->when(isset($categories), function ($q) use ($categories) {
+                return $q->whereIn('category', $categories);
+            })
+            ->when(isset($brigade), function ($q) use ($brigade) {
+                return $q->where('brigade_id', $brigade);
+            })->get();
 
         foreach ($workers as $worker) {
             $worker['workshop_name'] = $worker->workshop->workshop_name;

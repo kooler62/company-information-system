@@ -45,7 +45,7 @@
 
                 <md-field>
                     <label>Бригада</label>
-                    <md-select>
+                    <md-select v-model="selectedBrigade">
                         <md-option v-for="brigade in brigades"
                                    :value="brigade.id">
                             {{brigade.brigade_name}}
@@ -57,7 +57,7 @@
                     <md-input placeholder="Пошук по прізвищу..." v-model="search" @input="searchOnTable" />
                 </md-field>
 
-                <md-button class="md-raised md-primary">
+                <md-button class="md-raised md-primary" @click="fetchWorkers">
                 <span>
                     <md-icon>done</md-icon>
                 </span>
@@ -144,6 +144,7 @@
             workerId: null,
             search: null,
             searched: [],
+            selectedBrigade: null
         }),
         created() {
             this.fetchWorkshops();
@@ -157,7 +158,13 @@
                 })
             },
             fetchWorkers() {
-                axios.get('/worker').then(response => {
+                axios.get('/worker', {
+                    params: {
+                        workshops: this.selectedWorkshops,
+                        categories: this.selectedCategories,
+                        brigade: this.selectedBrigade
+                    }
+                }).then(response => {
                     this.workers = response.data.workers;
                     this.searched= response.data.workers;
                 });

@@ -57729,7 +57729,8 @@ var searchByName = function searchByName(items, term) {
             workerEdit: false,
             workerId: null,
             search: null,
-            searched: []
+            searched: [],
+            selectedBrigade: null
         };
     },
     created: function created() {
@@ -57749,7 +57750,13 @@ var searchByName = function searchByName(items, term) {
         fetchWorkers: function fetchWorkers() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/worker').then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/worker', {
+                params: {
+                    workshops: this.selectedWorkshops,
+                    categories: this.selectedCategories,
+                    brigade: this.selectedBrigade
+                }
+            }).then(function (response) {
                 _this2.workers = response.data.workers;
                 _this2.searched = response.data.workers;
             });
@@ -58091,6 +58098,15 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "md-select",
+                    {
+                      model: {
+                        value: _vm.selectedBrigade,
+                        callback: function($$v) {
+                          _vm.selectedBrigade = $$v
+                        },
+                        expression: "selectedBrigade"
+                      }
+                    },
                     _vm._l(_vm.brigades, function(brigade) {
                       return _c("md-option", { attrs: { value: brigade.id } }, [
                         _vm._v(
@@ -58127,10 +58143,17 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("md-button", { staticClass: "md-raised md-primary" }, [
-                _c("span", [_c("md-icon", [_vm._v("done")])], 1),
-                _vm._v("\n                Застосувати\n            ")
-              ]),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-raised md-primary",
+                  on: { click: _vm.fetchWorkers }
+                },
+                [
+                  _c("span", [_c("md-icon", [_vm._v("done")])], 1),
+                  _vm._v("\n                Застосувати\n            ")
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "md-button",
