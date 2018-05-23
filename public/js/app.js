@@ -53634,6 +53634,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53810,9 +53816,29 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("md-table-row")
+              _vm._l(_vm.cars, function(car, index) {
+                return _c(
+                  "md-table-row",
+                  [
+                    _c("md-table-cell", [_vm._v(_vm._s(index + 1))]),
+                    _vm._v(" "),
+                    _c("md-table-cell", [_vm._v(_vm._s(car.brand))]),
+                    _vm._v(" "),
+                    _c("md-table-cell", [_vm._v(_vm._s(car.engine))]),
+                    _vm._v(" "),
+                    _c("md-table-cell", [_vm._v(_vm._s(car.color))]),
+                    _vm._v(" "),
+                    _c("md-table-cell", [_vm._v(_vm._s(car.production_year))]),
+                    _vm._v(" "),
+                    _c("md-table-cell", [_vm._v(_vm._s(car.category))]),
+                    _vm._v(" "),
+                    _c("md-table-cell", [_vm._v(_vm._s(car.workshop_name))])
+                  ],
+                  1
+                )
+              })
             ],
-            1
+            2
           )
         ],
         1
@@ -58036,19 +58062,19 @@ var render = function() {
                       }
                     },
                     [
-                      _c("md-option", { attrs: { value: "Збирачі" } }, [
+                      _c("md-option", { attrs: { value: "Збирач" } }, [
                         _vm._v("Збирачі")
                       ]),
                       _vm._v(" "),
-                      _c("md-option", { attrs: { value: "Токарі" } }, [
+                      _c("md-option", { attrs: { value: "Токар" } }, [
                         _vm._v("Токарі")
                       ]),
                       _vm._v(" "),
-                      _c("md-option", { attrs: { value: "Слюсарі" } }, [
+                      _c("md-option", { attrs: { value: "Слюсар" } }, [
                         _vm._v("Слюсарі")
                       ]),
                       _vm._v(" "),
-                      _c("md-option", { attrs: { value: "Зварники" } }, [
+                      _c("md-option", { attrs: { value: "Зварник" } }, [
                         _vm._v("Зварники")
                       ])
                     ],

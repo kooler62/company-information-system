@@ -43,7 +43,7 @@
                 </md-table-row>
 
                 <md-table-row v-for="(car, index) in cars">
-                    <md-table-cell>{{ index }}</md-table-cell>
+                    <md-table-cell>{{ index + 1 }}</md-table-cell>
                     <md-table-cell>{{ car.brand }}</md-table-cell>
                     <md-table-cell>{{ car.engine }}</md-table-cell>
                     <md-table-cell>{{ car.color }}</md-table-cell>
