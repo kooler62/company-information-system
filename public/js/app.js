@@ -47663,7 +47663,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             busAdd: false,
             busEdit: false,
             busId: '',
-            showTestLabs: false
+            showTestLabs: false,
+            productId: null
         };
     },
     created: function created() {

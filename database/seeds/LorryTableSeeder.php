@@ -19,7 +19,7 @@ class LorryTableSeeder extends Seeder
             'production_year' => '2017-02-04',
             'wheel' => '3x6',
             'dump_truck' => 'Назад',
-            'carrying' => '4 т',
+            'carrying' => '4000',
             'make_now' => '0',
             'workshop_id' => '1',
         ]);
@@ -31,7 +31,7 @@ class LorryTableSeeder extends Seeder
             'production_year' => '2007-02-04',
             'wheel' => '3x6',
             'dump_truck' => 'Назад',
-            'carrying' => '2 т',
+            'carrying' => '2000',
             'make_now' => '0',
             'workshop_id' => '2',
         ]);

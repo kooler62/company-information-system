@@ -80,6 +80,7 @@
             busEdit: false,
             busId: '',
             showTestLabs: false,
+            productId: null
         }),
         created() {
             this.fetchBuses();

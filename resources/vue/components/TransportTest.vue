@@ -42,8 +42,14 @@
                     <md-table-cell>Цех</md-table-cell>
                 </md-table-row>
 
-                <md-table-row>
-
+                <md-table-row v-for="(car, index) in cars">
+                    <md-table-cell>{{ index }}</md-table-cell>
+                    <md-table-cell>{{ car.brand }}</md-table-cell>
+                    <md-table-cell>{{ car.engine }}</md-table-cell>
+                    <md-table-cell>{{ car.color }}</md-table-cell>
+                    <md-table-cell>{{ car.production_year }}</md-table-cell>
+                    <md-table-cell>{{ car.category }}</md-table-cell>
+                    <md-table-cell>{{ car.workshop_name }}</md-table-cell>
                 </md-table-row>
             </md-table>
         </md-table>

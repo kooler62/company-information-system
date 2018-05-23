@@ -36,10 +36,10 @@
                     <label>Категорія</label>
                     <md-select v-model="selectedCategories"
                                multiple>
-                        <md-option value="Збирачі">Збирачі</md-option>
-                        <md-option value="Токарі">Токарі</md-option>
-                        <md-option value="Слюсарі">Слюсарі</md-option>
-                        <md-option value="Зварники">Зварники</md-option>
+                        <md-option value="Збирач">Збирачі</md-option>
+                        <md-option value="Токар">Токарі</md-option>
+                        <md-option value="Слюсар">Слюсарі</md-option>
+                        <md-option value="Зварник">Зварники</md-option>
                     </md-select>
                 </md-field>
 
