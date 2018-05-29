@@ -13,19 +13,22 @@ class EngineerController extends Controller
      */
     public function index(Request $request)
     {
-        if (!isset($request)) {
-            $engineers = Engineer::all();
-        } else {
-            $engineer = new Engineer();
-            $engineers = $engineer
-                ->join('workshops', 'engineers.workshop_id', '=', 'workshops.id')
-                ->when(isset($request['workshops']), function($q) use($request) {
-                    $q->whereIn('workshop_id', $request['workshops']);
-                })
-                ->when(isset($request['categories']), function ($q) use($request) {
-                    $q->whereIn('category', $request['categories']);
-                })->get();
-        }
+        $engineer = new Engineer();
+        $engineers = $engineer
+            ->join('workshops', 'engineers.workshop_id', '=', 'workshops.id')
+            ->when(isset($request['workshops']), function($q) use($request) {
+                $q->whereIn('workshop_id', $request['workshops']);
+            })
+            ->when(isset($request['categories']), function ($q) use($request) {
+                $q->whereIn('category', $request['categories']);
+            })->get([
+                'engineers.id',
+                'first_name',
+                'last_name',
+                'workshop_name',
+                'category',
+                'position'
+            ]);
 
         return response()->json([
             'engineers' => $engineers
