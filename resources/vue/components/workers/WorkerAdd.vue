@@ -8,33 +8,34 @@
 
         <span class="md-display-1">Додати робітника</span>
 
+        <form>
         <md-field>
             <label>Прізвище</label>
-            <md-input v-model="form.last_name"></md-input>
+            <md-input v-model="form.last_name" required></md-input>
             <span class="md-helper-text"></span>
         </md-field>
 
         <md-field>
             <label>Ім'я</label>
-            <md-input v-model="form.first_name"></md-input>
+            <md-input v-model="form.first_name" required></md-input>
             <span class="md-helper-text"></span>
         </md-field>
 
         <md-field>
             <label>По батькові</label>
-            <md-input v-model="form.middle_name"></md-input>
+            <md-input v-model="form.middle_name" required></md-input>
             <span class="md-helper-text"></span>
         </md-field>
 
         <md-field>
             <label>Номер телефону</label>
-            <md-input v-model="form.phone_number"></md-input>
+            <md-input v-model="form.phone_number" required pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"></md-input>
             <span class="md-helper-text"></span>
         </md-field>
 
         <md-field>
             <label>Персональний номер</label>
-            <md-input v-model="form.personal_number"></md-input>
+            <md-input type="number" v-model="form.personal_number" required></md-input>
             <span class="md-helper-text"></span>
         </md-field>
 
@@ -56,7 +57,7 @@
 
         <md-field>
             <label>Дата прийняття на роботу</label>
-            <md-input v-model="form.employment_date"></md-input>
+            <md-input v-model="form.employment_date" required pattern="^\d{4}-\d{2}-\d{2}$"></md-input>
             <span class="md-helper-text">yyyy-mm-dd</span>
         </md-field>
 
@@ -83,11 +84,13 @@
                 <span><md-icon>arrow_back</md-icon></span>
                 Назад
             </md-button>
-            <md-button class="md-raised md-primary" @click="addWorker()">
+            <md-button class="md-raised md-primary" type="submit" @click="addWorker()">
                 <span><md-icon>done</md-icon></span>
                 Додати
             </md-button>
         </div>
+
+        </form>
 
     </div>
 </template>

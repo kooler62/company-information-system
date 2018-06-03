@@ -8,15 +8,17 @@
 
         <span class="md-display-1">Додати автомобіль</span>
 
+        <form>
+
         <md-field>
             <label>Марка автомобіля</label>
-            <md-input v-model="car.brand"></md-input>
+            <md-input v-model="car.brand" required></md-input>
             <span class="md-helper-text"></span>
         </md-field>
 
         <md-field>
             <label>Кузов</label>
-            <md-select v-model="car.body_type" name="body-type">
+            <md-select v-model="car.body_type" required name="body-type">
                 <md-option value="Седан">Седан</md-option>
                 <md-option value="Позашляховик">Позашляховик</md-option>
                 <md-option value="Кроссовер">Кроссовер</md-option>
@@ -27,19 +29,19 @@
 
         <md-field>
             <label>Двигун</label>
-            <md-input v-model="car.engine"></md-input>
+            <md-input v-model="car.engine" required></md-input>
             <span class="md-helper-text"></span>
         </md-field>
 
         <md-field>
             <label>Колір</label>
-            <md-input v-model="car.color"></md-input>
+            <md-input v-model="car.color" required></md-input>
             <span class="md-helper-text"></span>
         </md-field>
 
         <md-field>
             <label>Коробка передач</label>
-            <md-select v-model="car.transmission" name="transmission">
+            <md-select v-model="car.transmission" name="transmission" required>
                 <md-option value="Механіка">Механіка</md-option>
                 <md-option value="Автомат">Автомат</md-option>
                 <md-option value="Типтронік">Типтронік</md-option>
@@ -50,7 +52,7 @@
 
         <md-field>
             <label>Дата випуску</label>
-            <md-input v-model="car.production_year" ></md-input>
+            <md-input v-model="car.production_year" required pattern="^\d{4}-\d{2}-\d{2}$"></md-input>
             <span class="md-helper-text">yyyy-mm-dd</span>
         </md-field>
 
@@ -58,7 +60,7 @@
 
         <md-field>
             <label>Цех</label>
-            <md-select v-model="car.workshop_id" name="workshop_id">
+            <md-select v-model="car.workshop_id" name="workshop_id" required>
                 <md-option v-for="workshop in workshops" :value="workshop.id">{{ workshop.workshop_name }}</md-option>
             </md-select>
         </md-field>
@@ -75,11 +77,13 @@
                 <span><md-icon>arrow_back</md-icon></span>
                 Назад
             </md-button>
-            <md-button class="md-raised md-primary" @click="createCar()">
+            <md-button class="md-raised md-primary" type="submit" @click="createCar()">
                 <span><md-icon>done</md-icon></span>
                 Додати
             </md-button>
         </div>
+
+        </form>
     </div>
 </template>
 <script>

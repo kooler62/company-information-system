@@ -49456,6 +49456,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -49535,260 +49539,277 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c(
-        "md-field",
+        "form",
         [
-          _c("label", [_vm._v("Марка автомобіля")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.car.brand,
-              callback: function($$v) {
-                _vm.$set(_vm.car, "brand", $$v)
-              },
-              expression: "car.brand"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Кузов")]),
-          _vm._v(" "),
           _c(
-            "md-select",
-            {
-              attrs: { name: "body-type" },
-              model: {
-                value: _vm.car.body_type,
-                callback: function($$v) {
-                  _vm.$set(_vm.car, "body_type", $$v)
-                },
-                expression: "car.body_type"
-              }
-            },
+            "md-field",
             [
-              _c("md-option", { attrs: { value: "Седан" } }, [_vm._v("Седан")]),
+              _c("label", [_vm._v("Марка автомобіля")]),
               _vm._v(" "),
-              _c("md-option", { attrs: { value: "Позашляховик" } }, [
-                _vm._v("Позашляховик")
-              ]),
-              _vm._v(" "),
-              _c("md-option", { attrs: { value: "Кроссовер" } }, [
-                _vm._v("Кроссовер")
-              ]),
-              _vm._v(" "),
-              _c("md-option", { attrs: { value: "Універсал" } }, [
-                _vm._v("Універсал")
-              ]),
-              _vm._v(" "),
-              _c("md-option", { attrs: { value: "Купе" } }, [_vm._v("Купе")])
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Двигун")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.car.engine,
-              callback: function($$v) {
-                _vm.$set(_vm.car, "engine", $$v)
-              },
-              expression: "car.engine"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Колір")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.car.color,
-              callback: function($$v) {
-                _vm.$set(_vm.car, "color", $$v)
-              },
-              expression: "car.color"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Коробка передач")]),
-          _vm._v(" "),
-          _c(
-            "md-select",
-            {
-              attrs: { name: "transmission" },
-              model: {
-                value: _vm.car.transmission,
-                callback: function($$v) {
-                  _vm.$set(_vm.car, "transmission", $$v)
-                },
-                expression: "car.transmission"
-              }
-            },
-            [
-              _c("md-option", { attrs: { value: "Механіка" } }, [
-                _vm._v("Механіка")
-              ]),
-              _vm._v(" "),
-              _c("md-option", { attrs: { value: "Автомат" } }, [
-                _vm._v("Автомат")
-              ]),
-              _vm._v(" "),
-              _c("md-option", { attrs: { value: "Типтронік" } }, [
-                _vm._v("Типтронік")
-              ]),
-              _vm._v(" "),
-              _c("md-option", { attrs: { value: "Адаптивна" } }, [
-                _vm._v("Адаптивна")
-              ]),
-              _vm._v(" "),
-              _c("md-option", { attrs: { value: "Варіатор" } }, [
-                _vm._v("Варіатор")
-              ])
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Дата випуску")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.car.production_year,
-              callback: function($$v) {
-                _vm.$set(_vm.car, "production_year", $$v)
-              },
-              expression: "car.production_year"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" }, [_vm._v("yyyy-mm-dd")])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-checkbox",
-        {
-          model: {
-            value: _vm.car.make_now,
-            callback: function($$v) {
-              _vm.$set(_vm.car, "make_now", $$v)
-            },
-            expression: "car.make_now"
-          }
-        },
-        [_vm._v("Виготовляється зараз?")]
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Цех")]),
-          _vm._v(" "),
-          _c(
-            "md-select",
-            {
-              attrs: { name: "workshop_id" },
-              model: {
-                value: _vm.car.workshop_id,
-                callback: function($$v) {
-                  _vm.$set(_vm.car, "workshop_id", $$v)
-                },
-                expression: "car.workshop_id"
-              }
-            },
-            _vm._l(_vm.workshops, function(workshop) {
-              return _c("md-option", { attrs: { value: workshop.id } }, [
-                _vm._v(_vm._s(workshop.workshop_name))
-              ])
-            })
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Іспитові лабораторії")]),
-          _vm._v(" "),
-          _c(
-            "md-select",
-            {
-              attrs: { multiple: "" },
-              model: {
-                value: _vm.car.test_labs,
-                callback: function($$v) {
-                  _vm.$set(_vm.car, "test_labs", $$v)
-                },
-                expression: "car.test_labs"
-              }
-            },
-            _vm._l(_vm.testLabs, function(testLab) {
-              return _c("md-option", { attrs: { value: testLab.id } }, [
-                _vm._v(_vm._s(testLab.name))
-              ])
-            })
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "buttons" },
-        [
-          _c("md-button", { staticClass: "md-raised md-accent" }, [
-            _c("span", [_c("md-icon", [_vm._v("arrow_back")])], 1),
-            _vm._v("\n            Назад\n        ")
-          ]),
-          _vm._v(" "),
-          _c(
-            "md-button",
-            {
-              staticClass: "md-raised md-primary",
-              on: {
-                click: function($event) {
-                  _vm.createCar()
+              _c("md-input", {
+                attrs: { required: "" },
+                model: {
+                  value: _vm.car.brand,
+                  callback: function($$v) {
+                    _vm.$set(_vm.car, "brand", $$v)
+                  },
+                  expression: "car.brand"
                 }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-helper-text" })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Кузов")]),
+              _vm._v(" "),
+              _c(
+                "md-select",
+                {
+                  attrs: { required: "", name: "body-type" },
+                  model: {
+                    value: _vm.car.body_type,
+                    callback: function($$v) {
+                      _vm.$set(_vm.car, "body_type", $$v)
+                    },
+                    expression: "car.body_type"
+                  }
+                },
+                [
+                  _c("md-option", { attrs: { value: "Седан" } }, [
+                    _vm._v("Седан")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Позашляховик" } }, [
+                    _vm._v("Позашляховик")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Кроссовер" } }, [
+                    _vm._v("Кроссовер")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Універсал" } }, [
+                    _vm._v("Універсал")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Купе" } }, [
+                    _vm._v("Купе")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Двигун")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: { required: "" },
+                model: {
+                  value: _vm.car.engine,
+                  callback: function($$v) {
+                    _vm.$set(_vm.car, "engine", $$v)
+                  },
+                  expression: "car.engine"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-helper-text" })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Колір")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: { required: "" },
+                model: {
+                  value: _vm.car.color,
+                  callback: function($$v) {
+                    _vm.$set(_vm.car, "color", $$v)
+                  },
+                  expression: "car.color"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-helper-text" })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Коробка передач")]),
+              _vm._v(" "),
+              _c(
+                "md-select",
+                {
+                  attrs: { name: "transmission", required: "" },
+                  model: {
+                    value: _vm.car.transmission,
+                    callback: function($$v) {
+                      _vm.$set(_vm.car, "transmission", $$v)
+                    },
+                    expression: "car.transmission"
+                  }
+                },
+                [
+                  _c("md-option", { attrs: { value: "Механіка" } }, [
+                    _vm._v("Механіка")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Автомат" } }, [
+                    _vm._v("Автомат")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Типтронік" } }, [
+                    _vm._v("Типтронік")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Адаптивна" } }, [
+                    _vm._v("Адаптивна")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Варіатор" } }, [
+                    _vm._v("Варіатор")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Дата випуску")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: { required: "", pattern: "^\\d{4}-\\d{2}-\\d{2}$" },
+                model: {
+                  value: _vm.car.production_year,
+                  callback: function($$v) {
+                    _vm.$set(_vm.car, "production_year", $$v)
+                  },
+                  expression: "car.production_year"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-helper-text" }, [
+                _vm._v("yyyy-mm-dd")
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-checkbox",
+            {
+              model: {
+                value: _vm.car.make_now,
+                callback: function($$v) {
+                  _vm.$set(_vm.car, "make_now", $$v)
+                },
+                expression: "car.make_now"
               }
             },
+            [_vm._v("Виготовляється зараз?")]
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
             [
-              _c("span", [_c("md-icon", [_vm._v("done")])], 1),
-              _vm._v("\n            Додати\n        ")
-            ]
+              _c("label", [_vm._v("Цех")]),
+              _vm._v(" "),
+              _c(
+                "md-select",
+                {
+                  attrs: { name: "workshop_id", required: "" },
+                  model: {
+                    value: _vm.car.workshop_id,
+                    callback: function($$v) {
+                      _vm.$set(_vm.car, "workshop_id", $$v)
+                    },
+                    expression: "car.workshop_id"
+                  }
+                },
+                _vm._l(_vm.workshops, function(workshop) {
+                  return _c("md-option", { attrs: { value: workshop.id } }, [
+                    _vm._v(_vm._s(workshop.workshop_name))
+                  ])
+                })
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Іспитові лабораторії")]),
+              _vm._v(" "),
+              _c(
+                "md-select",
+                {
+                  attrs: { multiple: "" },
+                  model: {
+                    value: _vm.car.test_labs,
+                    callback: function($$v) {
+                      _vm.$set(_vm.car, "test_labs", $$v)
+                    },
+                    expression: "car.test_labs"
+                  }
+                },
+                _vm._l(_vm.testLabs, function(testLab) {
+                  return _c("md-option", { attrs: { value: testLab.id } }, [
+                    _vm._v(_vm._s(testLab.name))
+                  ])
+                })
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "buttons" },
+            [
+              _c("md-button", { staticClass: "md-raised md-accent" }, [
+                _c("span", [_c("md-icon", [_vm._v("arrow_back")])], 1),
+                _vm._v("\n            Назад\n        ")
+              ]),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-raised md-primary",
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function($event) {
+                      _vm.createCar()
+                    }
+                  }
+                },
+                [
+                  _c("span", [_c("md-icon", [_vm._v("done")])], 1),
+                  _vm._v("\n            Додати\n        ")
+                ]
+              )
+            ],
+            1
           )
         ],
         1
@@ -54192,6 +54213,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -54256,212 +54285,228 @@ var render = function() {
       _c("span", { staticClass: "md-display-1" }, [_vm._v("Додати інженера")]),
       _vm._v(" "),
       _c(
-        "md-field",
+        "form",
         [
-          _c("label", [_vm._v("Прізвище")]),
-          _vm._v(" "),
-          _c("md-input", {
-            attrs: { name: "last-name" },
-            model: {
-              value: _vm.engineer.last_name,
-              callback: function($$v) {
-                _vm.$set(_vm.engineer, "last_name", $$v)
-              },
-              expression: "engineer.last_name"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Ім'я")]),
-          _vm._v(" "),
-          _c("md-input", {
-            attrs: { name: "first-name" },
-            model: {
-              value: _vm.engineer.first_name,
-              callback: function($$v) {
-                _vm.$set(_vm.engineer, "first_name", $$v)
-              },
-              expression: "engineer.first_name"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("По батькові")]),
-          _vm._v(" "),
-          _c("md-input", {
-            attrs: { name: "middle-name" },
-            model: {
-              value: _vm.engineer.middle_name,
-              callback: function($$v) {
-                _vm.$set(_vm.engineer, "middle_name", $$v)
-              },
-              expression: "engineer.middle_name"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Моб. телефон")]),
-          _vm._v(" "),
-          _c("md-input", {
-            attrs: { name: "phone-number" },
-            model: {
-              value: _vm.engineer.phone_number,
-              callback: function($$v) {
-                _vm.$set(_vm.engineer, "phone_number", $$v)
-              },
-              expression: "engineer.phone_number"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Персональний номер")]),
-          _vm._v(" "),
-          _c("md-input", {
-            attrs: { name: "personal-number" },
-            model: {
-              value: _vm.engineer.personal_number,
-              callback: function($$v) {
-                _vm.$set(_vm.engineer, "personal_number", $$v)
-              },
-              expression: "engineer.personal_number"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Домашня адреса")]),
-          _vm._v(" "),
-          _c("md-input", {
-            attrs: { name: "home-adress" },
-            model: {
-              value: _vm.engineer.home_address,
-              callback: function($$v) {
-                _vm.$set(_vm.engineer, "home_address", $$v)
-              },
-              expression: "engineer.home_address"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Категорія")]),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Прізвище")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: { name: "last-name", required: "" },
+                model: {
+                  value: _vm.engineer.last_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.engineer, "last_name", $$v)
+                  },
+                  expression: "engineer.last_name"
+                }
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
           _c(
-            "md-select",
-            {
-              model: {
-                value: _vm.engineer.category,
-                callback: function($$v) {
-                  _vm.$set(_vm.engineer, "category", $$v)
-                },
-                expression: "engineer.category"
-              }
-            },
+            "md-field",
             [
-              _c("md-option", { attrs: { value: "Інженер" } }, [
-                _vm._v("Інженер")
-              ]),
+              _c("label", [_vm._v("Ім'я")]),
               _vm._v(" "),
-              _c("md-option", { attrs: { value: "Технолог" } }, [
-                _vm._v("Технолог")
-              ]),
+              _c("md-input", {
+                attrs: { name: "first-name", required: "" },
+                model: {
+                  value: _vm.engineer.first_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.engineer, "first_name", $$v)
+                  },
+                  expression: "engineer.first_name"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("По батькові")]),
               _vm._v(" "),
-              _c("md-option", { attrs: { value: "Технік" } }, [
-                _vm._v("Технік")
+              _c("md-input", {
+                attrs: { name: "middle-name", required: "" },
+                model: {
+                  value: _vm.engineer.middle_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.engineer, "middle_name", $$v)
+                  },
+                  expression: "engineer.middle_name"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Моб. телефон")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: {
+                  name: "phone-number",
+                  required: "",
+                  pattern:
+                    "^\\(?([0-9]{3})\\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
+                },
+                model: {
+                  value: _vm.engineer.phone_number,
+                  callback: function($$v) {
+                    _vm.$set(_vm.engineer, "phone_number", $$v)
+                  },
+                  expression: "engineer.phone_number"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Персональний номер")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: { name: "personal-number", type: "number" },
+                model: {
+                  value: _vm.engineer.personal_number,
+                  callback: function($$v) {
+                    _vm.$set(_vm.engineer, "personal_number", $$v)
+                  },
+                  expression: "engineer.personal_number"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Домашня адреса")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: { name: "home-adress" },
+                model: {
+                  value: _vm.engineer.home_address,
+                  callback: function($$v) {
+                    _vm.$set(_vm.engineer, "home_address", $$v)
+                  },
+                  expression: "engineer.home_address"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Категорія")]),
+              _vm._v(" "),
+              _c(
+                "md-select",
+                {
+                  attrs: { required: "" },
+                  model: {
+                    value: _vm.engineer.category,
+                    callback: function($$v) {
+                      _vm.$set(_vm.engineer, "category", $$v)
+                    },
+                    expression: "engineer.category"
+                  }
+                },
+                [
+                  _c("md-option", { attrs: { value: "Інженер" } }, [
+                    _vm._v("Інженер")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Технолог" } }, [
+                    _vm._v("Технолог")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Технік" } }, [
+                    _vm._v("Технік")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Дата прийняття на роботу")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: { required: "", pattern: "^\\d{4}-\\d{2}-\\d{2}$" },
+                model: {
+                  value: _vm.engineer.employment_date,
+                  callback: function($$v) {
+                    _vm.$set(_vm.engineer, "employment_date", $$v)
+                  },
+                  expression: "engineer.employment_date"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-helper-text" }, [
+                _vm._v("yyyy-mm-dd")
               ])
             ],
             1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Дата прийняття на роботу")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.engineer.employment_date,
-              callback: function($$v) {
-                _vm.$set(_vm.engineer, "employment_date", $$v)
-              },
-              expression: "engineer.employment_date"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" }, [_vm._v("yyyy-mm-dd")])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Цех")]),
+          ),
           _vm._v(" "),
           _c(
-            "md-select",
-            {
-              attrs: { name: "workshop_id" },
-              model: {
-                value: _vm.engineer.workshop_id,
-                callback: function($$v) {
-                  _vm.$set(_vm.engineer, "workshop_id", $$v)
+            "md-field",
+            [
+              _c("label", [_vm._v("Цех")]),
+              _vm._v(" "),
+              _c(
+                "md-select",
+                {
+                  attrs: { name: "workshop_id" },
+                  model: {
+                    value: _vm.engineer.workshop_id,
+                    callback: function($$v) {
+                      _vm.$set(_vm.engineer, "workshop_id", $$v)
+                    },
+                    expression: "engineer.workshop_id"
+                  }
                 },
-                expression: "engineer.workshop_id"
-              }
+                _vm._l(_vm.workshops, function(workshop) {
+                  return _c("md-option", { attrs: { value: workshop.id } }, [
+                    _vm._v(_vm._s(workshop.workshop_name))
+                  ])
+                })
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("md-button", { staticClass: "md-raised md-accent" }, [
+            _vm._v("Назад")
+          ]),
+          _vm._v(" "),
+          _c(
+            "md-button",
+            {
+              staticClass: "md-raised md-primary",
+              attrs: { type: "submit" },
+              on: { click: _vm.createEngineer }
             },
-            _vm._l(_vm.workshops, function(workshop) {
-              return _c("md-option", { attrs: { value: workshop.id } }, [
-                _vm._v(_vm._s(workshop.workshop_name))
-              ])
-            })
+            [_vm._v("Додати")]
           )
         ],
         1
-      ),
-      _vm._v(" "),
-      _c("md-button", { staticClass: "md-raised md-accent" }, [
-        _vm._v("Назад")
-      ]),
-      _vm._v(" "),
-      _c(
-        "md-button",
-        {
-          staticClass: "md-raised md-primary",
-          on: { click: _vm.createEngineer }
-        },
-        [_vm._v("Додати")]
       )
     ],
     1
@@ -55171,6 +55216,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -55245,265 +55293,286 @@ var render = function() {
       _c("span", { staticClass: "md-display-1" }, [_vm._v("Додати робітника")]),
       _vm._v(" "),
       _c(
-        "md-field",
+        "form",
         [
-          _c("label", [_vm._v("Прізвище")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.form.last_name,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "last_name", $$v)
-              },
-              expression: "form.last_name"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Ім'я")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.form.first_name,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "first_name", $$v)
-              },
-              expression: "form.first_name"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("По батькові")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.form.middle_name,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "middle_name", $$v)
-              },
-              expression: "form.middle_name"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Номер телефону")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.form.phone_number,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "phone_number", $$v)
-              },
-              expression: "form.phone_number"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Персональний номер")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.form.personal_number,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "personal_number", $$v)
-              },
-              expression: "form.personal_number"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Дом. адреса")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.form.home_address,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "home_address", $$v)
-              },
-              expression: "form.home_address"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Категорія")]),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Прізвище")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: { required: "" },
+                model: {
+                  value: _vm.form.last_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "last_name", $$v)
+                  },
+                  expression: "form.last_name"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-helper-text" })
+            ],
+            1
+          ),
           _vm._v(" "),
           _c(
-            "md-select",
-            {
-              model: {
-                value: _vm.form.category,
-                callback: function($$v) {
-                  _vm.$set(_vm.form, "category", $$v)
-                },
-                expression: "form.category"
-              }
-            },
+            "md-field",
             [
-              _c("md-option", { attrs: { value: "Збирач" } }, [
-                _vm._v("Збирач")
-              ]),
+              _c("label", [_vm._v("Ім'я")]),
               _vm._v(" "),
-              _c("md-option", { attrs: { value: "Токар" } }, [_vm._v("Токар")]),
+              _c("md-input", {
+                attrs: { required: "" },
+                model: {
+                  value: _vm.form.first_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "first_name", $$v)
+                  },
+                  expression: "form.first_name"
+                }
+              }),
               _vm._v(" "),
-              _c("md-option", { attrs: { value: "Слюсар" } }, [
-                _vm._v("Слюсар")
-              ]),
+              _c("span", { staticClass: "md-helper-text" })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("По батькові")]),
               _vm._v(" "),
-              _c("md-option", { attrs: { value: "Зварник" } }, [
-                _vm._v("Зварник")
+              _c("md-input", {
+                attrs: { required: "" },
+                model: {
+                  value: _vm.form.middle_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "middle_name", $$v)
+                  },
+                  expression: "form.middle_name"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-helper-text" })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Номер телефону")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: {
+                  required: "",
+                  pattern:
+                    "^\\(?([0-9]{3})\\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$"
+                },
+                model: {
+                  value: _vm.form.phone_number,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "phone_number", $$v)
+                  },
+                  expression: "form.phone_number"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-helper-text" })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Персональний номер")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: { type: "number", required: "" },
+                model: {
+                  value: _vm.form.personal_number,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "personal_number", $$v)
+                  },
+                  expression: "form.personal_number"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-helper-text" })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Дом. адреса")]),
+              _vm._v(" "),
+              _c("md-input", {
+                model: {
+                  value: _vm.form.home_address,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "home_address", $$v)
+                  },
+                  expression: "form.home_address"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-helper-text" })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Категорія")]),
+              _vm._v(" "),
+              _c(
+                "md-select",
+                {
+                  model: {
+                    value: _vm.form.category,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "category", $$v)
+                    },
+                    expression: "form.category"
+                  }
+                },
+                [
+                  _c("md-option", { attrs: { value: "Збирач" } }, [
+                    _vm._v("Збирач")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Токар" } }, [
+                    _vm._v("Токар")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Слюсар" } }, [
+                    _vm._v("Слюсар")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-option", { attrs: { value: "Зварник" } }, [
+                    _vm._v("Зварник")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Дата прийняття на роботу")]),
+              _vm._v(" "),
+              _c("md-input", {
+                attrs: { required: "", pattern: "^\\d{4}-\\d{2}-\\d{2}$" },
+                model: {
+                  value: _vm.form.employment_date,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "employment_date", $$v)
+                  },
+                  expression: "form.employment_date"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "md-helper-text" }, [
+                _vm._v("yyyy-mm-dd")
               ])
             ],
             1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Дата прийняття на роботу")]),
-          _vm._v(" "),
-          _c("md-input", {
-            model: {
-              value: _vm.form.employment_date,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "employment_date", $$v)
-              },
-              expression: "form.employment_date"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "md-helper-text" }, [_vm._v("yyyy-mm-dd")])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Бригада")]),
+          ),
           _vm._v(" "),
           _c(
-            "md-select",
-            {
-              model: {
-                value: _vm.form.brigade_id,
-                callback: function($$v) {
-                  _vm.$set(_vm.form, "brigade_id", $$v)
-                },
-                expression: "form.brigade_id"
-              }
-            },
-            _vm._l(_vm.brigades, function(brigade) {
-              return _c("md-option", { attrs: { value: brigade.id } }, [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(brigade.brigade_name) +
-                    "\n            "
-                )
-              ])
-            })
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "md-field",
-        [
-          _c("label", [_vm._v("Цех")]),
-          _vm._v(" "),
-          _c(
-            "md-select",
-            {
-              model: {
-                value: _vm.form.workshop_id,
-                callback: function($$v) {
-                  _vm.$set(_vm.form, "workshop_id", $$v)
-                },
-                expression: "form.workshop_id"
-              }
-            },
-            _vm._l(_vm.workshops, function(workshop) {
-              return _c("md-option", { attrs: { value: workshop.id } }, [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(workshop.workshop_name) +
-                    "\n            "
-                )
-              ])
-            })
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "buttons" },
-        [
-          _c("md-button", { staticClass: "md-raised md-accent" }, [
-            _c("span", [_c("md-icon", [_vm._v("arrow_back")])], 1),
-            _vm._v("\n            Назад\n        ")
-          ]),
-          _vm._v(" "),
-          _c(
-            "md-button",
-            {
-              staticClass: "md-raised md-primary",
-              on: {
-                click: function($event) {
-                  _vm.addWorker()
-                }
-              }
-            },
+            "md-field",
             [
-              _c("span", [_c("md-icon", [_vm._v("done")])], 1),
-              _vm._v("\n            Додати\n        ")
-            ]
+              _c("label", [_vm._v("Бригада")]),
+              _vm._v(" "),
+              _c(
+                "md-select",
+                {
+                  model: {
+                    value: _vm.form.brigade_id,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "brigade_id", $$v)
+                    },
+                    expression: "form.brigade_id"
+                  }
+                },
+                _vm._l(_vm.brigades, function(brigade) {
+                  return _c("md-option", { attrs: { value: brigade.id } }, [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(brigade.brigade_name) +
+                        "\n            "
+                    )
+                  ])
+                })
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "md-field",
+            [
+              _c("label", [_vm._v("Цех")]),
+              _vm._v(" "),
+              _c(
+                "md-select",
+                {
+                  model: {
+                    value: _vm.form.workshop_id,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "workshop_id", $$v)
+                    },
+                    expression: "form.workshop_id"
+                  }
+                },
+                _vm._l(_vm.workshops, function(workshop) {
+                  return _c("md-option", { attrs: { value: workshop.id } }, [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(workshop.workshop_name) +
+                        "\n            "
+                    )
+                  ])
+                })
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "buttons" },
+            [
+              _c("md-button", { staticClass: "md-raised md-accent" }, [
+                _c("span", [_c("md-icon", [_vm._v("arrow_back")])], 1),
+                _vm._v("\n            Назад\n        ")
+              ]),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-raised md-primary",
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function($event) {
+                      _vm.addWorker()
+                    }
+                  }
+                },
+                [
+                  _c("span", [_c("md-icon", [_vm._v("done")])], 1),
+                  _vm._v("\n            Додати\n        ")
+                ]
+              )
+            ],
+            1
           )
         ],
         1

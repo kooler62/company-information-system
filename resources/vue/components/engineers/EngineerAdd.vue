@@ -8,29 +8,35 @@
 
 		<span class="md-display-1">Додати інженера</span>
 
+		<form>
+
 		<md-field>
 			<label>Прізвище</label>
-				<md-input name="last-name" v-model="engineer.last_name"/>
+				<md-input name="last-name" v-model="engineer.last_name" required/>
 		</md-field>
 
 		<md-field>
 			<label>Ім'я</label>
-				<md-input name="first-name" v-model="engineer.first_name"/>
+				<md-input name="first-name" v-model="engineer.first_name" required/>
 		</md-field>
 
 		<md-field>
 			<label>По батькові</label>
-				<md-input name="middle-name" v-model="engineer.middle_name"/>
+				<md-input name="middle-name" v-model="engineer.middle_name" required/>
 		</md-field>
 
 		<md-field>
 			<label>Моб. телефон</label>
-				<md-input name="phone-number" v-model="engineer.phone_number"></md-input>
+				<md-input name="phone-number"
+						  v-model="engineer.phone_number"
+						  required
+						  pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$">
+				</md-input>
 		</md-field>
 
 		<md-field>
 			<label>Персональний номер</label>
-				<md-input name="personal-number" v-model="engineer.personal_number"></md-input>
+				<md-input name="personal-number" type="number" v-model="engineer.personal_number"></md-input>
 		</md-field>
 
 		<md-field>
@@ -40,7 +46,7 @@
 
 		<md-field>
 			<label>Категорія</label>
-				<md-select v-model="engineer.category">
+				<md-select v-model="engineer.category" required>
 					<md-option value="Інженер">Інженер</md-option>
 					<md-option value="Технолог">Технолог</md-option>
 					<md-option value="Технік">Технік</md-option>
@@ -49,7 +55,7 @@
 
 		<md-field>
 			<label>Дата прийняття на роботу</label>
-			<md-input v-model="engineer.employment_date" ></md-input>
+			<md-input v-model="engineer.employment_date" required pattern="^\d{4}-\d{2}-\d{2}$" ></md-input>
 			<span class="md-helper-text">yyyy-mm-dd</span>
 		</md-field>
 
@@ -61,7 +67,9 @@
 		</md-field>
 
 		<md-button class="md-raised md-accent">Назад</md-button>
-        <md-button class="md-raised md-primary" @click="createEngineer">Додати</md-button>
+        <md-button class="md-raised md-primary" type="submit" @click="createEngineer">Додати</md-button>
+
+		</form>
     </div>
 </template>
 
