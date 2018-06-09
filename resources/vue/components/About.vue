@@ -1,22 +1,80 @@
 <template>
+
+
     <div class="container">
+
         <h1>Використані технології:</h1>
-        <div style="margin-left: 150px;">
-            <a href="https://laravel.com/" target="_blank">
-                <img src="/assets/examples/laravel.png" alt="">
-            </a>
-            <a href="https://vuejs.org/" target="_blank">
-                <img src="/assets/examples/vue-js.png" alt="">
-            </a>
-            <div>
-                <a href="https://vuematerial.io/" target="_blank">
-                    <img src="/assets/examples/vue-material.png" alt=""><span>Vue Material</span>
-                </a>
-                <a href="https://www.mysql.com/" target="_blank">
-                    <img src="/assets/examples/mysql.png" alt="">
-                </a>
-            </div>
-        </div>
+
+        <md-card>
+            <md-card-media>
+                <img src="/assets/examples/php.png" alt="People">
+            </md-card-media>
+
+            <md-card-content>
+                PHP
+            </md-card-content>
+        </md-card>
+
+        <md-card>
+            <md-card-media>
+                <img src="/assets/examples/laravel.png" alt="People">
+            </md-card-media>
+
+            <md-card-content>
+                Laravel Framework
+            </md-card-content>
+        </md-card>
+
+        <md-card>
+            <md-card-media>
+                <img src="/assets/examples/vue-js.png" alt="People">
+            </md-card-media>
+
+            <md-card-content>
+                Vue.js
+            </md-card-content>
+        </md-card>
+
+        <md-card>
+            <md-card-media>
+                <img src="/assets/examples/vue-material.png" alt="People">
+            </md-card-media>
+
+            <md-card-content>
+                Vue Material
+            </md-card-content>
+        </md-card>
+
+        <md-card>
+            <md-card-media>
+                <img src="/assets/examples/mysql.png" alt="People">
+            </md-card-media>
+
+            <md-card-content>
+                MySql Database
+            </md-card-content>
+        </md-card>
+
+        <md-card>
+            <md-card-media>
+                <img src="/assets/examples/eloquent.png" alt="People">
+            </md-card-media>
+
+            <md-card-content>
+                Eloquent ORM
+            </md-card-content>
+        </md-card>
+
+        <md-card>
+            <md-card-media>
+                <img src="/assets/examples/front.png" alt="People">
+            </md-card-media>
+
+            <md-card-content>
+                HTML, CSS, JavaScript
+            </md-card-content>
+        </md-card>
+
     </div>
 </template>
 
@@ -41,4 +99,19 @@
     img, div {
         max-height: 200px;
     }
+    .md-card {
+        width: 320px;
+        margin: 4px;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .md-card img {
+        width: 320px;
+        height: 144px;
+    }
+
+    .container {
+        width: 1024px;
+    }
+
 </style>

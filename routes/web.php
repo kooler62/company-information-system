@@ -16,7 +16,7 @@ Route::any('{all}', function() {
 })->where(['all' => 'app/.*']);
 
 Route::get('/', function() {
-    return view('title');
+    return redirect('app/transport');
 });
 
 Route::get('/transport', 'TransportController@index');

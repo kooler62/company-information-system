@@ -12358,7 +12358,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(192);
+module.exports = __webpack_require__(194);
 
 
 /***/ }),
@@ -12418,11 +12418,12 @@ var Engineers = __webpack_require__(176);
 var Workers = __webpack_require__(181);
 var TestLabs = __webpack_require__(183);
 var About = __webpack_require__(188);
+var Title = __webpack_require__(192);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_material___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(VueRouter, VueAxios, __WEBPACK_IMPORTED_MODULE_3_axios__);
 
-var routes = [{ name: 'Transport', path: '/app/transport', component: Transport }, { name: 'Engineers', path: '/app/engineers', component: Engineers }, { name: 'Workers', path: '/app/workers', component: Workers }, { name: 'TestLabs', path: '/app/test-labs', component: TestLabs }, { name: 'About', path: '/app/about', component: About }];
+var routes = [{ name: 'Transport', path: '/app/transport', component: Transport }, { name: 'Engineers', path: '/app/engineers', component: Engineers }, { name: 'Workers', path: '/app/workers', component: Workers }, { name: 'TestLabs', path: '/app/test-labs', component: TestLabs }, { name: 'About', path: '/app/about', component: About }, { name: 'Title', path: '/app/title', component: Title }];
 
 var router = new VueRouter({ mode: 'history', routes: routes });
 
@@ -58575,17 +58576,37 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c(
-            "md-button",
-            {
-              staticClass: "md-icon-button md-primary",
-              attrs: { to: { name: "About" } }
-            },
+            "md-menu",
+            { attrs: { "md-direction": "bottom-start" } },
             [
-              _c("md-icon", [_vm._v("info")]),
+              _c("md-button", { attrs: { "md-menu-trigger": "" } }, [
+                _vm._v("Інше")
+              ]),
               _vm._v(" "),
-              _c("md-tooltip", { attrs: { "md-delay": "200" } }, [
-                _vm._v("Використані технології")
-              ])
+              _c(
+                "md-menu-content",
+                [
+                  _c("md-menu-item", { attrs: { to: { name: "About" } } }, [
+                    _vm._v("Використані технології")
+                  ]),
+                  _vm._v(" "),
+                  _c("md-menu-item", { attrs: { to: { name: "Title" } } }, [
+                    _vm._v("Титульна сторінка")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "md-menu-item",
+                    {
+                      attrs: {
+                        href: "/assets/Документація.pdf",
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v("Документація")]
+                  )
+                ],
+                1
+              )
             ],
             1
           )
@@ -60010,13 +60031,195 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-7833af22] {\n    text-align: center;\n}\ndiv span[data-v-7833af22] {\n    font-weight: bold;\n    font-size: 22px;\n    color: #636b6f;\n    margin-left: 10px;\n    margin-right: 50px;\n    text-align: center;\n}\na[data-v-7833af22]:hover {\n    text-decoration: none;\n}\nimg[data-v-7833af22], div[data-v-7833af22] {\n    max-height: 200px;\n}\n", ""]);
+exports.push([module.i, "\nh1[data-v-7833af22] {\n    text-align: center;\n}\ndiv span[data-v-7833af22] {\n    font-weight: bold;\n    font-size: 22px;\n    color: #636b6f;\n    margin-left: 10px;\n    margin-right: 50px;\n    text-align: center;\n}\na[data-v-7833af22]:hover {\n    text-decoration: none;\n}\nimg[data-v-7833af22], div[data-v-7833af22] {\n    max-height: 200px;\n}\n.md-card[data-v-7833af22] {\n    width: 320px;\n    margin: 4px;\n    display: inline-block;\n    vertical-align: top;\n}\n.md-card img[data-v-7833af22] {\n    width: 320px;\n    height: 144px;\n}\n.container[data-v-7833af22] {\n    width: 1024px;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 191 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("h1", [_vm._v("Використані технології:")]),
+      _vm._v(" "),
+      _c(
+        "md-card",
+        [
+          _c("md-card-media", [
+            _c("img", {
+              attrs: { src: "/assets/examples/php.png", alt: "People" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("md-card-content", [_vm._v("\n            PHP\n        ")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-card",
+        [
+          _c("md-card-media", [
+            _c("img", {
+              attrs: { src: "/assets/examples/laravel.png", alt: "People" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("md-card-content", [
+            _vm._v("\n            Laravel Framework\n        ")
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-card",
+        [
+          _c("md-card-media", [
+            _c("img", {
+              attrs: { src: "/assets/examples/vue-js.png", alt: "People" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("md-card-content", [_vm._v("\n            Vue.js\n        ")])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-card",
+        [
+          _c("md-card-media", [
+            _c("img", {
+              attrs: { src: "/assets/examples/vue-material.png", alt: "People" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("md-card-content", [
+            _vm._v("\n            Vue Material\n        ")
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-card",
+        [
+          _c("md-card-media", [
+            _c("img", {
+              attrs: { src: "/assets/examples/mysql.png", alt: "People" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("md-card-content", [
+            _vm._v("\n            MySql Database\n        ")
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-card",
+        [
+          _c("md-card-media", [
+            _c("img", {
+              attrs: { src: "/assets/examples/eloquent.png", alt: "People" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("md-card-content", [
+            _vm._v("\n            Eloquent ORM\n        ")
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-card",
+        [
+          _c("md-card-media", [
+            _c("img", {
+              attrs: { src: "/assets/examples/front.png", alt: "People" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("md-card-content", [
+            _vm._v("\n            HTML, CSS, JavaScript\n        ")
+          ])
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7833af22", module.exports)
+  }
+}
+
+/***/ }),
+/* 192 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(193)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\vue\\components\\Title.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-48c0506d", Component.options)
+  } else {
+    hotAPI.reload("data-v-48c0506d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60030,41 +60233,355 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("Використані технології:")]),
+    return _c("div", [
+      _c(
+        "h4",
+        {
+          staticStyle: {
+            "text-align": "center",
+            "font-weight": "bold",
+            "font-size": "14px"
+          }
+        },
+        [
+          _vm._v("\n        Міністерство освіти і науки України"),
+          _c("br"),
+          _vm._v(
+            "\n        Чернівецький національний університет імені Юрія Федьковича"
+          ),
+          _c("br")
+        ]
+      ),
       _vm._v(" "),
-      _c("div", { staticStyle: { "margin-left": "150px" } }, [
-        _c("a", { attrs: { href: "https://laravel.com/", target: "_blank" } }, [
-          _c("img", { attrs: { src: "/assets/examples/laravel.png", alt: "" } })
-        ]),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "https://vuejs.org/", target: "_blank" } }, [
-          _c("img", { attrs: { src: "/assets/examples/vue-js.png", alt: "" } })
-        ]),
-        _vm._v(" "),
-        _c("div", [
+      _c(
+        "p",
+        {
+          staticStyle: {
+            "text-decoration": "underline",
+            "margin-bottom": "-27px",
+            "font-size": "14px"
+          },
+          attrs: { align: "center" }
+        },
+        [
+          _vm._v(
+            "\n          Програмного забезпечення комп’ютерних систем  \n    "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "h6",
+        {
+          staticStyle: { "font-weight": "normal", "font-size": "10px" },
+          attrs: { align: "center" }
+        },
+        [_vm._v("\n        (повна назва кафедри, циклової комісії)"), _c("br")]
+      ),
+      _vm._v(" "),
+      _c("h2", { attrs: { align: "center" } }, [_vm._v(" КУРСОВИЙ ПРОЕКТ")]),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticStyle: {
+            "text-decoration": "underline",
+            "margin-bottom": "-27px",
+            "font-size": "14px"
+          },
+          attrs: { align: "center" }
+        },
+        [_vm._v("\n            з Баз даних    \n    ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "h6",
+        {
+          staticStyle: { "font-weight": "normal", "font-size": "10px" },
+          attrs: { align: "center" }
+        },
+        [_vm._v("\n        (назва дисципліни)\n    ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        { staticStyle: { "font-size": "14px" }, attrs: { align: "center" } },
+        [
+          _vm._v("\n        на тему: "),
           _c(
-            "a",
-            { attrs: { href: "https://vuematerial.io/", target: "_blank" } },
-            [
-              _c("img", {
-                attrs: { src: "/assets/examples/vue-material.png", alt: "" }
-              }),
-              _c("span", [_vm._v("Vue Material")])
-            ]
+            "span",
+            {
+              staticStyle: {
+                "text-decoration": "underline",
+                "font-weight": "bold"
+              }
+            },
+            [_vm._v("\n     Інформаційна система підприємства ")]
           ),
           _vm._v(" "),
+          _c("br"),
+          _c("br")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticStyle: {
+            "font-size": "12px",
+            "margin-left": "200px",
+            "margin-bottom": "-15px"
+          },
+          attrs: { align: "center" }
+        },
+        [
+          _vm._v("\n        Виконав: студент (ка)\n        "),
+          _c("span", { staticStyle: { "text-decoration": "underline" } }, [
+            _vm._v(" 3 ")
+          ]),
+          _vm._v("\n        курсу, групи\n        "),
+          _c("span", { staticStyle: { "text-decoration": "underline" } }, [
+            _vm._v(" 343ск ")
+          ]),
+          _c("br"),
+          _vm._v("\n        спеціальності\n        "),
+          _c("span", { staticStyle: { "text-decoration": "underline" } }, [
+            _vm._v("   6.121 \n                 ")
+          ]),
+          _c("br")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticStyle: {
+            "font-size": "12px",
+            "margin-left": "200px",
+            "margin-bottom": "-15px"
+          },
+          attrs: { align: "center" }
+        },
+        [
           _c(
-            "a",
-            { attrs: { href: "https://www.mysql.com/", target: "_blank" } },
-            [
-              _c("img", {
-                attrs: { src: "/assets/examples/mysql.png", alt: "" }
-              })
-            ]
-          )
+            "span",
+            {
+              staticStyle: {
+                "text-decoration": "underline",
+                "font-size": "10px"
+              }
+            },
+            [_vm._v("(шифр спеціальності)")]
+          ),
+          _c("br"),
+          _vm._v(" "),
+          _c("span", { staticStyle: { "text-decoration": "underline" } }, [
+            _vm._v("\n           Інженерія програмного забезпечення   ")
+          ]),
+          _c("br")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticStyle: {
+            "font-size": "12px",
+            "margin-left": "200px",
+            "margin-bottom": "-15px"
+          },
+          attrs: { align: "center" }
+        },
+        [
+          _c(
+            "span",
+            {
+              staticStyle: {
+                "text-decoration": "underline",
+                "font-size": "10px"
+              }
+            },
+            [_vm._v("(назва спеціальності)")]
+          ),
+          _c("br"),
+          _vm._v(" "),
+          _c("span", { staticStyle: { "text-decoration": "underline" } }, [
+            _vm._v("        ")
+          ]),
+          _vm._v("\n          \n        "),
+          _c("span", { staticStyle: { "text-decoration": "underline" } }, [
+            _vm._v("   Шпилька А. А.   ")
+          ]),
+          _c("br")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticStyle: {
+            "font-size": "12px",
+            "margin-left": "200px",
+            "margin-bottom": "-15px"
+          },
+          attrs: { align: "center" }
+        },
+        [
+          _c(
+            "span",
+            {
+              staticStyle: {
+                "text-decoration": "underline",
+                "font-size": "10px"
+              }
+            },
+            [_vm._v("(підпис)")]
+          ),
+          _vm._v("\n              \n        "),
+          _c(
+            "span",
+            {
+              staticStyle: {
+                "text-decoration": "underline",
+                "font-size": "10px"
+              }
+            },
+            [_vm._v("(прізвище, ініціали)")]
+          ),
+          _c("br"),
+          _vm._v("\n        Керівник     \n        "),
+          _c("span", { staticStyle: { "text-decoration": "underline" } }, [
+            _vm._v("    Прохоров Г. В.   ")
+          ]),
+          _c("br")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticStyle: {
+            "font-size": "12px",
+            "margin-left": "200px",
+            "margin-bottom": "-15px"
+          },
+          attrs: { align: "center" }
+        },
+        [
+          _vm._v("\n                 \n        "),
+          _c(
+            "span",
+            {
+              staticStyle: {
+                "text-decoration": "underline",
+                "font-size": "10px"
+              }
+            },
+            [_vm._v("(прізвище, ініціали)")]
+          ),
+          _c("br"),
+          _vm._v("\n        Нормоконтролер \n        "),
+          _c("span", { staticStyle: { "text-decoration": "underline" } }, [
+            _vm._v("    Комісарчук В.В.   ")
+          ]),
+          _c("br")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticStyle: {
+            "font-size": "12px",
+            "margin-left": "200px",
+            "margin-bottom": "-15px"
+          },
+          attrs: { align: "center" }
+        },
+        [
+          _vm._v("\n                 \n        "),
+          _c(
+            "span",
+            {
+              staticStyle: {
+                "text-decoration": "underline",
+                "font-size": "10px"
+              }
+            },
+            [_vm._v("(прізвище, ініціали)")]
+          ),
+          _c("br")
+        ]
+      ),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
+      _c("table", { attrs: { align: "center" } }, [
+        _c("tr", { staticStyle: { "font-size": "12px" } }, [
+          _c("td", [
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("До захисту допущено:")
+            ]),
+            _c("br"),
+            _vm._v("\n                від «_____»______________ 20____р."),
+            _c("br"),
+            _vm._v("\n                Керівник   __________________"),
+            _c("br"),
+            _vm._v("\n                          (підпис)  "),
+            _c("br"),
+            _vm._v("\n                Нормоконтролер  _________________"),
+            _c("br"),
+            _vm._v("\n                          (підпис)  "),
+            _c("br"),
+            _vm._v(" "),
+            _c("br"),
+            _c("br")
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v("\n                 "),
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("Дата захисту")
+            ]),
+            _vm._v(" «______»_____________ 20____р."),
+            _c("br"),
+            _vm._v("\n                 "),
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("Оцінка:")
+            ]),
+            _c("br"),
+            _vm._v(
+              "\n                 за національною шкалою ___________________"
+            ),
+            _c("br"),
+            _vm._v("\n                               (словами)"),
+            _c("br"),
+            _vm._v(
+              "\n                 кількість балів      ___________________"
+            ),
+            _c("br"),
+            _vm._v("\n                               (цифра)"),
+            _c("br"),
+            _vm._v("\n                 за шкалою ECTS     ___________________"),
+            _c("br"),
+            _vm._v("\n                               (літера)"),
+            _c("br")
+          ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "p",
+        { staticStyle: { "font-size": "12px" }, attrs: { align: "center" } },
+        [
+          _vm._v("Чернівці–20\n        "),
+          _c("span", { staticStyle: { "text-decoration": "underline" } }, [
+            _vm._v("18")
+          ])
+        ]
+      )
     ])
   }
 ]
@@ -60073,12 +60590,12 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7833af22", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-48c0506d", module.exports)
   }
 }
 
 /***/ }),
-/* 192 */
+/* 194 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

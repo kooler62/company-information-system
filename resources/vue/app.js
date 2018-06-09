@@ -41,6 +41,7 @@ let Engineers         = require('./components/Engineers');
 let Workers           = require('./components/Workers');
 let TestLabs          = require('./components/TestLab');
 let About             = require('./components/About');
+let Title             = require('./components/Title');
 
 Vue.use(VueMaterial);
 Vue.use(VueRouter, VueAxios, axios);
@@ -51,6 +52,7 @@ const routes = [
     { name: 'Workers',        path: '/app/workers',         component: Workers },
     { name: 'TestLabs',       path: '/app/test-labs',       component: TestLabs },
     { name: 'About',          path: '/app/about',           component: About },
+    { name: 'Title',          path: '/app/title',           component: Title },
 ];
 
 const router = new VueRouter({ mode: 'history', routes: routes });

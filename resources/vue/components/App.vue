@@ -6,10 +6,16 @@
             <md-button :to="{ name: 'Engineers' }">Інженерно-технічний персонал</md-button>
             <md-button :to="{ name: 'Workers' }">Робітники</md-button>
             <md-button :to="{ name: 'TestLabs' }">Іспитові лабораторії</md-button>
-            <md-button :to="{ name: 'About' }" class="md-icon-button md-primary">
-                <md-icon>info</md-icon>
-                <md-tooltip md-delay="200">Використані технології</md-tooltip>
-            </md-button>
+
+            <md-menu md-direction="bottom-start">
+                <md-button md-menu-trigger>Інше</md-button>
+
+                <md-menu-content>
+                    <md-menu-item :to="{ name: 'About' }">Використані технології</md-menu-item>
+                    <md-menu-item :to="{ name: 'Title' }">Титульна сторінка</md-menu-item>
+                    <md-menu-item href="/assets/Документація.pdf" target="_blank">Документація</md-menu-item>
+                </md-menu-content>
+            </md-menu>
         </md-toolbar>
             <router-view class="content"></router-view>
     </section>
